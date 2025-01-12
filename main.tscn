@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://btvagxoog6kxd"]
+
+[ext_resource type="Script" path="res://card_list.gd" id="2_y1fm4"]
+
+[node name="Root" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DaddyDiv" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CardList" type="HFlowContainer" parent="DaddyDiv"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("2_y1fm4")
+
+[node name="TabBar" type="HBoxContainer" parent="DaddyDiv"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+alignment = 1
+
+[node name="Cards" type="Button" parent="DaddyDiv/TabBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Cards"
+
+[node name="Packs" type="Button" parent="DaddyDiv/TabBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Packs"

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1xge1xedmall"]
+
+[ext_resource type="Texture2D" uid="uid://c63islxiimhob" path="res://img/cards/default.png" id="1_u1703"]
+
+[node name="Root" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Card" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="Card"]
+layout_mode = 2
+texture_normal = ExtResource("1_u1703")
+stretch_mode = 5
