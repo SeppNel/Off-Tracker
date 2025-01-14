@@ -1,17 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1xge1xedmall"]
+[gd_scene load_steps=4 format=3 uid="uid://d1xge1xedmall"]
 
+[ext_resource type="Script" path="res://card.gd" id="1_3x822"]
 [ext_resource type="Texture2D" uid="uid://c63islxiimhob" path="res://img/cards/default.png" id="1_u1703"]
+[ext_resource type="Script" path="res://card_button.gd" id="2_ckfuw"]
 
 [node name="Root" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 1
 
 [node name="Card" type="CenterContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_3x822")
 
-[node name="TextureButton" type="TextureButton" parent="Card"]
+[node name="CardButton" type="TextureButton" parent="Card"]
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("1_u1703")
 stretch_mode = 5
+script = ExtResource("2_ckfuw")
+
+[node name="NotGotOverlay" type="ColorRect" parent="Card"]
+custom_minimum_size = Vector2(367, 512)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.364706, 0.364706, 0.364706, 0.490196)
+
+[node name="HoldTimer" type="Timer" parent="Card"]
+wait_time = 0.9
+one_shot = true
+
+[connection signal="button_down" from="Card/CardButton" to="Card/CardButton" method="_on_button_down"]
+[connection signal="button_up" from="Card/CardButton" to="Card/CardButton" method="_on_button_up"]
+[connection signal="pressed" from="Card/CardButton" to="Card/CardButton" method="_on_pressed"]
+[connection signal="timeout" from="Card/HoldTimer" to="Card" method="_on_hold_timer_timeout"]
