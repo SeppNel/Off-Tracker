@@ -1,10 +1,8 @@
 extends Node
 
 var db : SQLite = null
-
 const verbosity_level : int = SQLite.VERBOSE
-
-var db_name := "res://data/db.sqlite"
+const db_name := "res://data/db.sqlite"
 
 # Called when the node enters the scene tree for the first time.
 func _init() -> void:
@@ -12,9 +10,6 @@ func _init() -> void:
 	db.path = db_name
 	db.verbosity_level = verbosity_level
 	db.read_only = true
-
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -28,6 +23,43 @@ func getAllCards():
 
 	db.close_db()
 	return selected_array
+	
+func getGeneticApexCards():
+	db.open_db()
+
+	db.query("
+		SELECT cards.*
+		FROM cards
+		JOIN packs ON cards.pack = packs.id
+		JOIN collections ON packs.collection = collections.id
+		WHERE collections.id = 1;")
+	
+	db.close_db()
+	return db.query_result
+	
+func getMythicalIslandsCards():
+	db.open_db()
+
+	db.query("
+		SELECT cards.*
+		FROM cards
+		JOIN packs ON cards.pack = packs.id
+		JOIN collections ON packs.collection = collections.id
+		WHERE collections.id = 2;")
+	
+	db.close_db()
+	return db.query_result
+	
+func getPromoCards():
+	db.open_db()
+
+	db.query("
+		SELECT *
+		FROM cards
+		WHERE rarity = 0;")
+	
+	db.close_db()
+	return db.query_result
 
 func example_of_read_only_database():
 	# Select all the creatures
