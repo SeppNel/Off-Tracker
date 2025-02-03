@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://btvagxoog6kxd"]
+[gd_scene load_steps=5 format=3 uid="uid://btvagxoog6kxd"]
 
+[ext_resource type="Texture2D" uid="uid://xvpp8eeqjbbc" path="res://img/checkbox_filled.png" id="2_347lu"]
 [ext_resource type="Script" path="res://card_list.gd" id="2_y1fm4"]
+[ext_resource type="Texture2D" uid="uid://cqqj3cjw8qbrf" path="res://img/checkbox_empty.png" id="3_q3pvi"]
+[ext_resource type="Theme" uid="uid://b0tymje06mj6e" path="res://OptionsTheme.tres" id="4_3d3hq"]
 
 [node name="Root" type="ScrollContainer"]
 anchors_preset = 15
@@ -17,6 +20,8 @@ size_flags_vertical = 3
 [node name="ScrollContainer" type="ScrollContainer" parent="DaddyDiv"]
 layout_mode = 2
 size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
 
 [node name="CardList" type="HFlowContainer" parent="DaddyDiv/ScrollContainer"]
 layout_mode = 2
@@ -24,6 +29,83 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 script = ExtResource("2_y1fm4")
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/ScrollContainer/CardList"]
+custom_minimum_size = Vector2(1080, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Controls" type="HBoxContainer" parent="DaddyDiv/ScrollContainer/CardList"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="MissingContainer" type="HBoxContainer" parent="DaddyDiv/ScrollContainer/CardList/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="OnlyMissingLabel" type="Label" parent="DaddyDiv/ScrollContainer/CardList/Controls/MissingContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Show Only Missing"
+
+[node name="OnlyMissingCheck" type="CheckBox" parent="DaddyDiv/ScrollContainer/CardList/Controls/MissingContainer"]
+layout_mode = 2
+theme_override_icons/checked = ExtResource("2_347lu")
+theme_override_icons/unchecked = ExtResource("3_q3pvi")
+
+[node name="CollectionContainer" type="HBoxContainer" parent="DaddyDiv/ScrollContainer/CardList/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="CollectionLabel" type="Label" parent="DaddyDiv/ScrollContainer/CardList/Controls/CollectionContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Collection "
+
+[node name="CollectionSelect" type="OptionButton" parent="DaddyDiv/ScrollContainer/CardList/Controls/CollectionContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("4_3d3hq")
+alignment = 1
+selected = 0
+fit_to_longest_item = false
+item_count = 5
+popup/item_0/text = "All"
+popup/item_1/text = "Genetic Apex"
+popup/item_1/id = 1
+popup/item_2/text = "Mythical Island"
+popup/item_2/id = 2
+popup/item_3/text = "Space-Time Smackdown"
+popup/item_3/id = 3
+popup/item_4/text = "Promo"
+popup/item_4/id = 4
+
+[node name="OrderContainer" type="HBoxContainer" parent="DaddyDiv/ScrollContainer/CardList/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="OrderLabel" type="Label" parent="DaddyDiv/ScrollContainer/CardList/Controls/OrderContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Order "
+
+[node name="OrderSelect" type="OptionButton" parent="DaddyDiv/ScrollContainer/CardList/Controls/OrderContainer"]
+layout_mode = 2
+theme = ExtResource("4_3d3hq")
+selected = 0
+item_count = 4
+popup/item_0/text = "ID ↓"
+popup/item_1/text = "ID ↑"
+popup/item_1/id = 1
+popup/item_2/text = "Rarity ↓"
+popup/item_2/id = 2
+popup/item_3/text = "Rarity ↑"
+popup/item_3/id = 3
 
 [node name="TabBar" type="HBoxContainer" parent="DaddyDiv"]
 custom_minimum_size = Vector2(0, 150)
@@ -47,3 +129,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
 text = "Packs"
+
+[connection signal="pressed" from="DaddyDiv/ScrollContainer/CardList/Controls/MissingContainer/OnlyMissingCheck" to="DaddyDiv/ScrollContainer/CardList" method="_on_only_missing_check_pressed"]
+[connection signal="item_selected" from="DaddyDiv/ScrollContainer/CardList/Controls/CollectionContainer/CollectionSelect" to="DaddyDiv/ScrollContainer/CardList" method="_on_collection_select_item_selected"]
+[connection signal="item_selected" from="DaddyDiv/ScrollContainer/CardList/Controls/OrderContainer/OrderSelect" to="DaddyDiv/ScrollContainer/CardList" method="_on_order_select_item_selected"]

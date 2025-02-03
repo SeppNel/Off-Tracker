@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c63islxiimhob" path="res://img/cards/default.png" id="1_u1703"]
 [ext_resource type="Script" path="res://card_button.gd" id="2_ckfuw"]
 
-[node name="Root" type="Control"]
+[node name="CardRoot" type="Control"]
 custom_minimum_size = Vector2(300, 400)
 layout_mode = 3
 anchors_preset = 0
@@ -17,10 +17,11 @@ offset_bottom = 40.0
 script = ExtResource("1_3x822")
 
 [node name="CardButton" type="TextureButton" parent="Card"]
+custom_minimum_size = Vector2(367, 512)
 layout_mode = 2
 mouse_filter = 1
 texture_normal = ExtResource("1_u1703")
-stretch_mode = 5
+stretch_mode = 0
 script = ExtResource("2_ckfuw")
 
 [node name="NotGotOverlay" type="ColorRect" parent="Card"]

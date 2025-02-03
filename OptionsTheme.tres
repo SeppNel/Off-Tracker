@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://b0tymje06mj6e"]
+
+[resource]
+OptionButton/font_sizes/font_size = 28
+PopupMenu/constants/v_separation = 60
+PopupMenu/font_sizes/font_size = 38

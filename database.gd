@@ -1,7 +1,7 @@
 extends Node
 
 var db : SQLite = null
-const verbosity_level : int = SQLite.VERBOSE
+const verbosity_level : int = SQLite.QUIET
 const db_name := "res://data/db.sqlite"
 
 # Called when the node enters the scene tree for the first time.
@@ -24,31 +24,58 @@ func getAllCards():
 	db.close_db()
 	return selected_array
 	
-func getGeneticApexCards():
+func getGeneticApexCards(order: String = "c.id ASC"):
+	db.open_db()
+	
+	print(order)
+
+	db.query("
+		SELECT c.*
+		FROM cards c
+		JOIN packs p ON c.pack = p.id
+		JOIN collections col ON p.collection = col.id
+		WHERE col.id = 1
+
+		UNION
+
+		SELECT c.*
+		FROM cards c
+		JOIN card_packs cp ON c.id = cp.card_id
+		JOIN packs p ON cp.pack = p.id
+		JOIN collections col ON p.collection = col.id
+		WHERE col.id = 1
+		
+		UNION
+
+		SELECT * FROM cards where id = 283 
+		ORDER BY " + order + ";") # Add Mew
+	
+	db.close_db()
+	return db.query_result_by_reference
+	
+func getMythicalIslandsCards(order: String = "c.id ASC"):
 	db.open_db()
 
 	db.query("
-		SELECT cards.*
-		FROM cards
-		JOIN packs ON cards.pack = packs.id
-		JOIN collections ON packs.collection = collections.id
-		WHERE collections.id = 1;")
-	
-	db.close_db()
-	return db.query_result
-	
-func getMythicalIslandsCards():
-	db.open_db()
+		SELECT c.*
+		FROM cards c
+		JOIN packs p ON c.pack = p.id
+		JOIN collections col ON p.collection = col.id
+		WHERE col.id = 2
 
-	db.query("
-		SELECT cards.*
-		FROM cards
-		JOIN packs ON cards.pack = packs.id
-		JOIN collections ON packs.collection = collections.id
-		WHERE collections.id = 2;")
+		UNION
+
+		SELECT c.*
+		FROM cards c
+		JOIN card_packs cp ON c.id = cp.card_id
+		JOIN packs p ON cp.pack = p.id
+		JOIN collections col ON p.collection = col.id
+		WHERE col.id = 2
+		  AND c.id != 218
+		ORDER BY " + order + ";") # Remove Old Amber
 	
 	db.close_db()
-	return db.query_result
+	return db.query_result_by_reference
 	
 func getPromoCards():
 	db.open_db()
@@ -59,27 +86,27 @@ func getPromoCards():
 		WHERE rarity = 0;")
 	
 	db.close_db()
-	return db.query_result
+	return db.query_result_by_reference
+	
+func getSpaceTimeCards(order: String = "c.id ASC"):
+	db.open_db()
 
-func example_of_read_only_database():
-	# Select all the creatures
-	var select_condition : String = ""
-	var selected_array : Array = db.select_rows("creatures", select_condition, ["*"])
-	print("condition: " + select_condition)
-	print("result: {0}".format([str(selected_array)]))
+	db.query("
+		SELECT c.*
+		FROM cards c
+		JOIN packs p ON c.pack = p.id
+		JOIN collections col ON p.collection = col.id
+		WHERE col.id = 3
 
-	# Select all the creatures that start with the letter 'b'
-	select_condition = "name LIKE 'b%'"
-	selected_array = db.select_rows("creatures", select_condition, ["name"])
-	print("condition: " + select_condition)
-	print("Following creatures start with the letter 'b':")
-	for row in selected_array:
-		print("* " + row["name"])
+		UNION
 
-	# Get the experience you would get by kiling a mimic.
-	select_condition = "name = 'mimic'"
-	selected_array = db.select_rows("creatures", select_condition, ["experience"])
-	print("Killing a mimic yields " + str(selected_array[0]["experience"]) + " experience points!")
-
-	# Close the current database
+		SELECT c.*
+		FROM cards c
+		JOIN card_packs cp ON c.id = cp.card_id
+		JOIN packs p ON cp.pack = p.id
+		JOIN collections col ON p.collection = col.id
+		WHERE col.id = 3
+		ORDER BY " + order + ";")
+	
 	db.close_db()
+	return db.query_result_by_reference
