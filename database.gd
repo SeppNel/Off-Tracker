@@ -26,8 +26,6 @@ func getAllCards():
 	
 func getGeneticApexCards(order: String = "c.id ASC"):
 	db.open_db()
-	
-	print(order)
 
 	db.query("
 		SELECT c.*
@@ -110,3 +108,22 @@ func getSpaceTimeCards(order: String = "c.id ASC"):
 	
 	db.close_db()
 	return db.query_result_by_reference
+
+func getCardsIdFromPack(pack: int):
+	db.open_db()
+	
+	var query = "
+		SELECT DISTINCT c.id
+		FROM cards c
+		LEFT JOIN card_packs cp ON c.id = cp.card_id
+		WHERE c.pack = ? OR cp.pack = ?;"
+
+	db.query_with_bindings(query, [pack, pack])
+	db.close_db()
+	
+	var result = db.query_result_by_reference
+	var id_array = []
+	for item in result:
+		id_array.append(item["id"])
+	
+	return id_array

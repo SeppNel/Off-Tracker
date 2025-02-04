@@ -1,9 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://btvagxoog6kxd"]
+[gd_scene load_steps=23 format=3 uid="uid://btvagxoog6kxd"]
 
+[ext_resource type="Script" path="res://home_page.gd" id="1_72cy4"]
+[ext_resource type="Texture2D" uid="uid://bb014ml2v8vo1" path="res://img/genetic_apex.png" id="1_eu85o"]
 [ext_resource type="Texture2D" uid="uid://xvpp8eeqjbbc" path="res://img/checkbox_filled.png" id="2_347lu"]
+[ext_resource type="Texture2D" uid="uid://cotyngo6klbdx" path="res://img/packs/mewtwo.jpg" id="2_jsjli"]
+[ext_resource type="Script" path="res://mewtwo_pack.gd" id="2_tk48n"]
 [ext_resource type="Script" path="res://card_list.gd" id="2_y1fm4"]
+[ext_resource type="Theme" uid="uid://dlrghbkew0egs" path="res://homeLabelTheme.tres" id="3_4c0bm"]
 [ext_resource type="Texture2D" uid="uid://cqqj3cjw8qbrf" path="res://img/checkbox_empty.png" id="3_q3pvi"]
+[ext_resource type="Texture2D" uid="uid://cv3dar2k82jx8" path="res://img/packs/charizard.jpg" id="4_1xa4d"]
 [ext_resource type="Theme" uid="uid://b0tymje06mj6e" path="res://OptionsTheme.tres" id="4_3d3hq"]
+[ext_resource type="Texture2D" uid="uid://cc2gcefacqw2s" path="res://img/packs/pikachu.jpg" id="5_3fda5"]
+[ext_resource type="Texture2D" uid="uid://sjljs762c3r8" path="res://img/mythical_island.png" id="6_1w6dv"]
+[ext_resource type="Script" path="res://charizard_pack.gd" id="6_ss7up"]
+[ext_resource type="Texture2D" uid="uid://bhnq462o08ss" path="res://img/packs/mew.jpg" id="7_k0a3d"]
+[ext_resource type="Script" path="res://pikachu_pack.gd" id="8_2wd2h"]
+[ext_resource type="Texture2D" uid="uid://cc0ywxs6donwx" path="res://img/space_time_smackdown.png" id="8_yosdd"]
+[ext_resource type="Texture2D" uid="uid://7nahyeux7hfu" path="res://img/packs/dialga.jpg" id="9_yx8dm"]
+[ext_resource type="Texture2D" uid="uid://8c8mxxcx8pc" path="res://img/packs/palkia.jpg" id="10_74j5j"]
+[ext_resource type="Script" path="res://mew_pack.gd" id="11_mj6ji"]
+[ext_resource type="Script" path="res://dialga_pack.gd" id="14_oadtb"]
+[ext_resource type="Script" path="res://tab_bar.gd" id="15_fu1sk"]
+[ext_resource type="Script" path="res://palkia_pack.gd" id="16_cqi2a"]
 
 [node name="Root" type="ScrollContainer"]
 anchors_preset = 15
@@ -17,56 +35,334 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="DaddyDiv"]
+[node name="HomePage" type="ScrollContainer" parent="DaddyDiv"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+script = ExtResource("1_72cy4")
+
+[node name="Home" type="HFlowContainer" parent="DaddyDiv/HomePage"]
+layout_mode = 2
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="GeneticApex" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+
+[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/GeneticApex"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/GeneticApex/Title"]
+custom_minimum_size = Vector2(302, 152)
+layout_mode = 2
+texture = ExtResource("1_eu85o")
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/GeneticApex"]
+custom_minimum_size = Vector2(1080, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/GeneticApex"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="MewtwoPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_tk48n")
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs/MewtwoPack"]
+layout_mode = 2
+texture = ExtResource("2_jsjli")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs/MewtwoPack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs/MewtwoPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs/MewtwoPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="CharizardPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("6_ss7up")
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs/CharizardPack"]
+layout_mode = 2
+texture = ExtResource("4_1xa4d")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs/CharizardPack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs/CharizardPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs/CharizardPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="PikachuPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("8_2wd2h")
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs/PikachuPack"]
+layout_mode = 2
+texture = ExtResource("5_3fda5")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs/PikachuPack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs/PikachuPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs/PikachuPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="MarginTop2" type="Control" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="MythicalIsland" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+
+[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/MythicalIsland"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/MythicalIsland/Title"]
+custom_minimum_size = Vector2(302, 152)
+layout_mode = 2
+texture = ExtResource("6_1w6dv")
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/MythicalIsland"]
+custom_minimum_size = Vector2(1080, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/MythicalIsland"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="MewPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("11_mj6ji")
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs/MewPack"]
+layout_mode = 2
+texture = ExtResource("7_k0a3d")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs/MewPack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs/MewPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs/MewPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="MarginTop3" type="Control" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="SpaceTime" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+
+[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/SpaceTime"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/SpaceTime/Title"]
+custom_minimum_size = Vector2(302, 152)
+layout_mode = 2
+texture = ExtResource("8_yosdd")
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/SpaceTime"]
+custom_minimum_size = Vector2(1080, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/SpaceTime"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="DialgaPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("14_oadtb")
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/DialgaPack"]
+layout_mode = 2
+texture = ExtResource("9_yx8dm")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/DialgaPack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/DialgaPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/DialgaPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="PalkiaPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("16_cqi2a")
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/PalkiaPack"]
+layout_mode = 2
+texture = ExtResource("10_74j5j")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/PalkiaPack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/PalkiaPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/PalkiaPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="MarginTop4" type="Control" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="CardPage" type="ScrollContainer" parent="DaddyDiv"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 
-[node name="CardList" type="HFlowContainer" parent="DaddyDiv/ScrollContainer"]
+[node name="CardList" type="HFlowContainer" parent="DaddyDiv/CardPage"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 script = ExtResource("2_y1fm4")
 
-[node name="MarginTop" type="Control" parent="DaddyDiv/ScrollContainer/CardList"]
+[node name="MarginTop" type="Control" parent="DaddyDiv/CardPage/CardList"]
 custom_minimum_size = Vector2(1080, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Controls" type="HBoxContainer" parent="DaddyDiv/ScrollContainer/CardList"]
+[node name="Controls" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="MissingContainer" type="HBoxContainer" parent="DaddyDiv/ScrollContainer/CardList/Controls"]
+[node name="MissingContainer" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList/Controls"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="OnlyMissingLabel" type="Label" parent="DaddyDiv/ScrollContainer/CardList/Controls/MissingContainer"]
+[node name="OnlyMissingLabel" type="Label" parent="DaddyDiv/CardPage/CardList/Controls/MissingContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Show Only Missing"
 
-[node name="OnlyMissingCheck" type="CheckBox" parent="DaddyDiv/ScrollContainer/CardList/Controls/MissingContainer"]
+[node name="OnlyMissingCheck" type="CheckBox" parent="DaddyDiv/CardPage/CardList/Controls/MissingContainer"]
 layout_mode = 2
 theme_override_icons/checked = ExtResource("2_347lu")
 theme_override_icons/unchecked = ExtResource("3_q3pvi")
 
-[node name="CollectionContainer" type="HBoxContainer" parent="DaddyDiv/ScrollContainer/CardList/Controls"]
+[node name="CollectionContainer" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList/Controls"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="CollectionLabel" type="Label" parent="DaddyDiv/ScrollContainer/CardList/Controls/CollectionContainer"]
+[node name="CollectionLabel" type="Label" parent="DaddyDiv/CardPage/CardList/Controls/CollectionContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Collection "
 
-[node name="CollectionSelect" type="OptionButton" parent="DaddyDiv/ScrollContainer/CardList/Controls/CollectionContainer"]
+[node name="CollectionSelect" type="OptionButton" parent="DaddyDiv/CardPage/CardList/Controls/CollectionContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme = ExtResource("4_3d3hq")
@@ -84,17 +380,17 @@ popup/item_3/id = 3
 popup/item_4/text = "Promo"
 popup/item_4/id = 4
 
-[node name="OrderContainer" type="HBoxContainer" parent="DaddyDiv/ScrollContainer/CardList/Controls"]
+[node name="OrderContainer" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList/Controls"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="OrderLabel" type="Label" parent="DaddyDiv/ScrollContainer/CardList/Controls/OrderContainer"]
+[node name="OrderLabel" type="Label" parent="DaddyDiv/CardPage/CardList/Controls/OrderContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Order "
 
-[node name="OrderSelect" type="OptionButton" parent="DaddyDiv/ScrollContainer/CardList/Controls/OrderContainer"]
+[node name="OrderSelect" type="OptionButton" parent="DaddyDiv/CardPage/CardList/Controls/OrderContainer"]
 layout_mode = 2
 theme = ExtResource("4_3d3hq")
 selected = 0
@@ -111,6 +407,7 @@ popup/item_3/id = 3
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 alignment = 1
+script = ExtResource("15_fu1sk")
 
 [node name="Home" type="Button" parent="DaddyDiv/TabBar"]
 layout_mode = 2
@@ -130,6 +427,8 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
 text = "Packs"
 
-[connection signal="pressed" from="DaddyDiv/ScrollContainer/CardList/Controls/MissingContainer/OnlyMissingCheck" to="DaddyDiv/ScrollContainer/CardList" method="_on_only_missing_check_pressed"]
-[connection signal="item_selected" from="DaddyDiv/ScrollContainer/CardList/Controls/CollectionContainer/CollectionSelect" to="DaddyDiv/ScrollContainer/CardList" method="_on_collection_select_item_selected"]
-[connection signal="item_selected" from="DaddyDiv/ScrollContainer/CardList/Controls/OrderContainer/OrderSelect" to="DaddyDiv/ScrollContainer/CardList" method="_on_order_select_item_selected"]
+[connection signal="pressed" from="DaddyDiv/CardPage/CardList/Controls/MissingContainer/OnlyMissingCheck" to="DaddyDiv/CardPage/CardList" method="_on_only_missing_check_pressed"]
+[connection signal="item_selected" from="DaddyDiv/CardPage/CardList/Controls/CollectionContainer/CollectionSelect" to="DaddyDiv/CardPage/CardList" method="_on_collection_select_item_selected"]
+[connection signal="item_selected" from="DaddyDiv/CardPage/CardList/Controls/OrderContainer/OrderSelect" to="DaddyDiv/CardPage/CardList" method="_on_order_select_item_selected"]
+[connection signal="pressed" from="DaddyDiv/TabBar/Home" to="DaddyDiv/TabBar" method="_on_home_pressed"]
+[connection signal="pressed" from="DaddyDiv/TabBar/Cards" to="DaddyDiv/TabBar" method="_on_cards_pressed"]
