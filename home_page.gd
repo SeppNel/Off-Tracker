@@ -11,9 +11,9 @@ func _process(delta: float) -> void:
 	pass
 	
 func updateUi():
-	$Home/GeneticApex/Packs/MewtwoPack.updateNumberofCards()
-	$Home/GeneticApex/Packs/CharizardPack.updateNumberofCards()
-	$Home/GeneticApex/Packs/PikachuPack.updateNumberofCards()
-	$Home/MythicalIsland/Packs/MewPack.updateNumberofCards()
-	$Home/SpaceTime/Packs/DialgaPack.updateNumberofCards()
-	$Home/SpaceTime/Packs/PalkiaPack.updateNumberofCards()
+	$Home/GeneticApex/Packs/MewtwoPack.update()
+	$Home/GeneticApex/Packs/CharizardPack.update()
+	$Home/GeneticApex/Packs/PikachuPack.update()
+	$Home/MythicalIsland/Packs/MewPack.update()
+	$Home/SpaceTime/Packs/DialgaPack.update()
+	$Home/SpaceTime/Packs/PalkiaPack.update()

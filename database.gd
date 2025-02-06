@@ -127,3 +127,66 @@ func getCardsIdFromPack(pack: int):
 		id_array.append(item["id"])
 	
 	return id_array
+	
+func countRarityCardsFromPack(pack: int, r: int):
+	db.open_db()
+	
+	var query = "
+		SELECT COUNT(c.id) AS count
+		FROM cards c
+		LEFT JOIN card_packs cp ON c.id = cp.card_id
+		WHERE (c.pack = ? OR cp.pack = ?) AND c.rarity = ?;"
+
+	db.query_with_bindings(query, [pack, pack, r])
+	db.close_db()
+	
+	return db.query_result[0]["count"]
+
+func getPacksOfCard(card: int):
+	db.open_db()
+	
+	var query = "
+		SELECT pack
+		FROM cards
+		WHERE id = ? AND is_multipack = 0
+
+		UNION
+
+		SELECT pack
+		FROM card_packs
+		where card_id = ?;"
+
+	db.query_with_bindings(query, [card, card])
+	db.close_db()
+	
+	var arr = []
+	for item in db.query_result_by_reference:
+		arr.append(item["pack"])
+	
+	return arr
+	
+func getCardRarity(card: int):
+	db.open_db()
+	
+	var query = "
+		SELECT rarity
+		FROM cards
+		WHERE id = ?;"
+
+	db.query_with_bindings(query, [card])
+	db.close_db()
+	
+	return db.query_result[0]["rarity"]
+	
+func getCardName(card: int):
+	db.open_db()
+	
+	var query = "
+		SELECT name
+		FROM cards
+		WHERE id = ?;"
+
+	db.query_with_bindings(query, [card])
+	db.close_db()
+	
+	return db.query_result[0]["name"]
