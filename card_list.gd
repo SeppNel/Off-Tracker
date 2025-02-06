@@ -1,9 +1,8 @@
 extends HFlowContainer
 
-var Database = preload("res://database.gd")
+var DbManager = preload("res://database.gd")
 var CardScene = preload("res://card.tscn")
 var SaveManager = preload("res://save_manager.gd")
-var DbManager = Database.new()
 
 var OnlyMissing: bool = 0
 var CollectionFilter: int = 0
