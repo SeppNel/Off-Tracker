@@ -62,7 +62,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/GeneticApex/Title"]
-custom_minimum_size = Vector2(302, 152)
+custom_minimum_size = Vector2(302, 142)
 layout_mode = 2
 texture = ExtResource("1_eu85o")
 
@@ -177,7 +177,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/MythicalIsland/Title"]
-custom_minimum_size = Vector2(302, 152)
+custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
 texture = ExtResource("6_1w6dv")
 
@@ -236,7 +236,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/SpaceTime/Title"]
-custom_minimum_size = Vector2(302, 152)
+custom_minimum_size = Vector2(400, 136)
 layout_mode = 2
 texture = ExtResource("8_yosdd")
 
