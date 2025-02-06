@@ -426,7 +426,7 @@ text = "Cards"
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
-text = "Packs"
+text = "Settings"
 
 [connection signal="pressed" from="DaddyDiv/CardPage/CardList/Controls/MissingContainer/OnlyMissingCheck" to="DaddyDiv/CardPage/CardList" method="_on_only_missing_check_pressed"]
 [connection signal="item_selected" from="DaddyDiv/CardPage/CardList/Controls/CollectionContainer/CollectionSelect" to="DaddyDiv/CardPage/CardList" method="_on_collection_select_item_selected"]
