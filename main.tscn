@@ -47,7 +47,7 @@ script = ExtResource("1_72cy4")
 layout_mode = 2
 
 [node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home"]
-custom_minimum_size = Vector2(1080, 100)
+custom_minimum_size = Vector2(1080, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -328,7 +328,7 @@ alignment = 1
 script = ExtResource("2_y1fm4")
 
 [node name="MarginTop" type="Control" parent="DaddyDiv/CardPage/CardList"]
-custom_minimum_size = Vector2(1080, 100)
+custom_minimum_size = Vector2(1080, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 

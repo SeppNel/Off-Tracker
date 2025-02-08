@@ -5,30 +5,49 @@
 [ext_resource type="Script" path="res://card_button.gd" id="2_ckfuw"]
 
 [node name="CardRoot" type="Control"]
-custom_minimum_size = Vector2(300, 400)
+custom_minimum_size = Vector2(340, 460)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 311.0
+offset_bottom = 435.0
 mouse_filter = 1
 
-[node name="Card" type="CenterContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Card" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_3x822")
+metadata/_edit_use_anchors_ = true
 
 [node name="CardButton" type="TextureButton" parent="Card"]
-custom_minimum_size = Vector2(367, 512)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 texture_normal = ExtResource("1_u1703")
-stretch_mode = 0
+stretch_mode = 5
 script = ExtResource("2_ckfuw")
 
 [node name="NotGotOverlay" type="ColorRect" parent="Card"]
-custom_minimum_size = Vector2(367, 512)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -157.0
+offset_right = 157.0
+grow_horizontal = 2
 mouse_filter = 2
 color = Color(0.364706, 0.364706, 0.364706, 0.490196)
+metadata/_edit_use_anchors_ = true
 
 [node name="HoldTimer" type="Timer" parent="Card"]
 wait_time = 0.9

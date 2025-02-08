@@ -55,7 +55,7 @@ func addCardToList(card, gotCards):
 		card_data.got = true
 
 	#Styling
-	cs.get_node("Card").scale = Vector2(0.7, 0.7)
+	#cs.get_node("Card").scale = Vector2(0.8, 0.8)
 	cs.get_node("Card/CardButton").texture_normal = cardImg_cache[img_path]
 	#cs.get_node("Card/CardButton").texture_normal = ResourceLoader.load_threaded_get(img_path)
 	add_child(cs)

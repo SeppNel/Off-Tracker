@@ -1,4 +1,4 @@
-extends CenterContainer
+extends Control
 
 var SaveManager = preload("res://save_manager.gd")
 
