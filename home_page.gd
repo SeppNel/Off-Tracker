@@ -21,10 +21,7 @@ func updateUi():
 	$Home/SpaceTime/Packs/DialgaPack.gotCards = gotCards
 	$Home/SpaceTime/Packs/PalkiaPack.gotCards = gotCards
 	
-	var start = Time.get_ticks_usec()
 	countCardsOfRarity()
-	var end = Time.get_ticks_usec()
-	print("Count: ", (end - start) / 1000, " ms")
 
 	$Home/GeneticApex/Packs/MewtwoPack.update()
 	$Home/GeneticApex/Packs/CharizardPack.update()
