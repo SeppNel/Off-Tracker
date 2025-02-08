@@ -21,7 +21,10 @@ func updateUi():
 	$Home/SpaceTime/Packs/DialgaPack.gotCards = gotCards
 	$Home/SpaceTime/Packs/PalkiaPack.gotCards = gotCards
 	
+	var start = Time.get_ticks_usec()
 	countCardsOfRarity()
+	var end = Time.get_ticks_usec()
+	print("Count: ", (end - start) / 1000, " ms")
 
 	$Home/GeneticApex/Packs/MewtwoPack.update()
 	$Home/GeneticApex/Packs/CharizardPack.update()
@@ -41,28 +44,24 @@ func initCardsOfRarity():
 	7 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0},
 	8 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0},
 	}
-
+			
 func countCardsOfRarity():
 	initCardsOfRarity()
 	
-	var r: int = 1
-	while r <= 8:
-		for card in gotCards:
-			var rarity: int
-			if card in cardRarity_cache:
-				rarity = cardRarity_cache[card]
-			else:
-				rarity = DbManager.getCardRarity(card)
-				cardRarity_cache[card] = rarity
-				
-			if rarity == r:
-				var packs
-				if card in cardPacks_cache:
-					packs = cardPacks_cache[card]
-				else:
-					packs = DbManager.getPacksOfCard(card)
-					cardPacks_cache[card] = packs
-				
-				for pack_id in packs:
-					cardsOfRarity[r][pack_id] += 1
-		r += 1
+	for card in gotCards:
+		var rarity: int
+		if card in cardRarity_cache:
+			rarity = cardRarity_cache[card]
+		else:
+			rarity = DbManager.getCardRarity(card)
+			cardRarity_cache[card] = rarity
+			
+		var packs
+		if card in cardPacks_cache:
+			packs = cardPacks_cache[card]
+		else:
+			packs = DbManager.getPacksOfCard(card)
+			cardPacks_cache[card] = packs
+		
+		for pack_id in packs:
+			cardsOfRarity[rarity][pack_id] += 1

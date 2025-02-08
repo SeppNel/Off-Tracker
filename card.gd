@@ -12,12 +12,6 @@ var mouse_position = Vector2(-1,-1)
 func _ready() -> void:
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_hold_timer_timeout() -> void:
 	#delete card
 	var new_mouse_pos = get_viewport().get_mouse_position()

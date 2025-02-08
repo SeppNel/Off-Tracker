@@ -12,16 +12,13 @@ var cardImg_cache = {}
 func preload_cardImages(cards):
 	for card in cards:
 		var img_path = "res://img/cards/" + card.image
+		#ResourceLoader.load_threaded_request(img_path)
 		cardImg_cache[img_path] = load(img_path)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	preload_cardImages(DbManager.getAllCards())
 	loadCards(OnlyMissing, CollectionFilter)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func parseOrder(order: int) -> String:
 	match order:
@@ -60,6 +57,7 @@ func addCardToList(card, gotCards):
 	#Styling
 	cs.get_node("Card").scale = Vector2(0.7, 0.7)
 	cs.get_node("Card/CardButton").texture_normal = cardImg_cache[img_path]
+	#cs.get_node("Card/CardButton").texture_normal = ResourceLoader.load_threaded_get(img_path)
 	add_child(cs)
 	
 

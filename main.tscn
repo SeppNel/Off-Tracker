@@ -328,7 +328,7 @@ alignment = 1
 script = ExtResource("2_y1fm4")
 
 [node name="MarginTop" type="Control" parent="DaddyDiv/CardPage/CardList"]
-custom_minimum_size = Vector2(1080, 50)
+custom_minimum_size = Vector2(1080, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -404,6 +404,39 @@ popup/item_2/id = 2
 popup/item_3/text = "Rarity ↑"
 popup/item_3/id = 3
 
+[node name="SettingsPage" type="ScrollContainer" parent="DaddyDiv"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="Settings" type="VFlowContainer" parent="DaddyDiv/SettingsPage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="DaddyDiv/SettingsPage/Settings"]
+custom_minimum_size = Vector2(1080, 200)
+layout_mode = 2
+
+[node name="ExportButton" type="Button" parent="DaddyDiv/SettingsPage/Settings/CenterContainer"]
+custom_minimum_size = Vector2(900, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Export Data"
+
+[node name="CenterContainer2" type="CenterContainer" parent="DaddyDiv/SettingsPage/Settings"]
+custom_minimum_size = Vector2(1080, 200)
+layout_mode = 2
+
+[node name="ImportButton" type="Button" parent="DaddyDiv/SettingsPage/Settings/CenterContainer2"]
+custom_minimum_size = Vector2(900, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Import Data"
+
 [node name="TabBar" type="HBoxContainer" parent="DaddyDiv"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
@@ -422,7 +455,7 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
 text = "Cards"
 
-[node name="Packs" type="Button" parent="DaddyDiv/TabBar"]
+[node name="Settings" type="Button" parent="DaddyDiv/TabBar"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
@@ -433,3 +466,4 @@ text = "Settings"
 [connection signal="item_selected" from="DaddyDiv/CardPage/CardList/Controls/OrderContainer/OrderSelect" to="DaddyDiv/CardPage/CardList" method="_on_order_select_item_selected"]
 [connection signal="pressed" from="DaddyDiv/TabBar/Home" to="DaddyDiv/TabBar" method="_on_home_pressed"]
 [connection signal="pressed" from="DaddyDiv/TabBar/Cards" to="DaddyDiv/TabBar" method="_on_cards_pressed"]
+[connection signal="pressed" from="DaddyDiv/TabBar/Settings" to="DaddyDiv/TabBar" method="_on_settings_pressed"]
