@@ -61,4 +61,5 @@ func countCardsOfRarity():
 			cardPacks_cache[card] = packs
 		
 		for pack_id in packs:
-			cardsOfRarity[rarity][pack_id] += 1
+			if pack_id != 0:
+				cardsOfRarity[rarity][pack_id] += 1
