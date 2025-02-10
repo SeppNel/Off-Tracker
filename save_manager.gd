@@ -46,3 +46,10 @@ static func getGotCards():
 		gotCards.append(int(card_id))
 	
 	return gotCards
+	
+static func getSaveJson():
+	if not FileAccess.file_exists("user://user_cards.save"):
+		return ""# Error! We don't have a save to load.
+
+	var save_file = FileAccess.open("user://user_cards.save", FileAccess.READ)
+	return save_file.get_line()

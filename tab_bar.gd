@@ -23,4 +23,5 @@ func _on_settings_pressed() -> void:
 	parent.get_node("CardPage").hide()
 	parent.get_node("HomePage").hide()
 	
+	parent.get_node("SettingsPage/Settings/Output").text = ""
 	parent.get_node("SettingsPage").show()

@@ -7,28 +7,27 @@ var gotCards = []
 var cardRarity_cache = {}
 var cardPacks_cache = {}
 var cardsOfRarity
+var packsArray = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	packsArray = [
+	$Home/GeneticApex/Packs/MewtwoPack,
+	$Home/GeneticApex/Packs/CharizardPack,
+	$Home/GeneticApex/Packs/PikachuPack,
+	$Home/MythicalIsland/Packs/MewPack,
+	$Home/SpaceTime/Packs/DialgaPack,
+	$Home/SpaceTime/Packs/PalkiaPack
+	]
 	updateUi()
 	
 func updateUi():
 	gotCards = SaveManager.getGotCards()
-	$Home/GeneticApex/Packs/MewtwoPack.gotCards = gotCards
-	$Home/GeneticApex/Packs/CharizardPack.gotCards = gotCards
-	$Home/GeneticApex/Packs/PikachuPack.gotCards = gotCards
-	$Home/MythicalIsland/Packs/MewPack.gotCards = gotCards
-	$Home/SpaceTime/Packs/DialgaPack.gotCards = gotCards
-	$Home/SpaceTime/Packs/PalkiaPack.gotCards = gotCards
-	
 	countCardsOfRarity()
 
-	$Home/GeneticApex/Packs/MewtwoPack.update()
-	$Home/GeneticApex/Packs/CharizardPack.update()
-	$Home/GeneticApex/Packs/PikachuPack.update()
-	$Home/MythicalIsland/Packs/MewPack.update()
-	$Home/SpaceTime/Packs/DialgaPack.update()
-	$Home/SpaceTime/Packs/PalkiaPack.update()
+	for pack in packsArray:
+		pack.gotCards = gotCards
+		pack.update()
 
 func initCardsOfRarity():
 	cardsOfRarity = {
