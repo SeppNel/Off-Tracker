@@ -316,6 +316,7 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="CardPage" type="ScrollContainer" parent="DaddyDiv"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
@@ -481,6 +482,7 @@ text = "Settings"
 [connection signal="item_selected" from="DaddyDiv/CardPage/CardList/Controls/CollectionContainer/CollectionSelect" to="DaddyDiv/CardPage/CardList" method="_on_collection_select_item_selected"]
 [connection signal="item_selected" from="DaddyDiv/CardPage/CardList/Controls/OrderContainer/OrderSelect" to="DaddyDiv/CardPage/CardList" method="_on_order_select_item_selected"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/CenterContainer/ExportButton" to="DaddyDiv/SettingsPage/Settings" method="_on_export_button_pressed"]
+[connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/CenterContainer2/ImportButton" to="DaddyDiv/SettingsPage/Settings" method="_on_import_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/TabBar/Home" to="DaddyDiv/TabBar" method="_on_home_pressed"]
 [connection signal="pressed" from="DaddyDiv/TabBar/Cards" to="DaddyDiv/TabBar" method="_on_cards_pressed"]
 [connection signal="pressed" from="DaddyDiv/TabBar/Settings" to="DaddyDiv/TabBar" method="_on_settings_pressed"]

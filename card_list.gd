@@ -4,24 +4,27 @@ var DbManager = preload("res://database.gd")
 var CardScene = preload("res://card.tscn")
 var SaveManager = preload("res://save_manager.gd")
 
-var OnlyMissing: bool = 0
-var CollectionFilter: int = 0
-var Order: int = 0
-var cardImg_cache = {}
+var m_onlyMissing: bool = 0
+var m_collectionFilter: int = 0
+var m_order: int = 0
+var m_cardImgCache = {}
 
 func preload_cardImages(cards):
 	for card in cards:
 		var img_path = "res://img/cards/" + card.image
-		#ResourceLoader.load_threaded_request(img_path)
-		cardImg_cache[img_path] = load(img_path)
+		m_cardImgCache[img_path] = load(img_path)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	preload_cardImages(DbManager.getAllCards())
-	loadCards(OnlyMissing, CollectionFilter)
+	loadCards()
+	
+func update() -> void:
+	clearCardList()
+	loadCards()
 
-func parseOrder(order: int) -> String:
-	match order:
+func parse_order() -> String:
+	match m_order:
 		0:
 			return "c.id ASC"
 		1:
@@ -55,14 +58,12 @@ func addCardToList(card, gotCards):
 		card_data.got = true
 
 	#Styling
-	#cs.get_node("Card").scale = Vector2(0.8, 0.8)
-	cs.get_node("Card/CardButton").texture_normal = cardImg_cache[img_path]
-	#cs.get_node("Card/CardButton").texture_normal = ResourceLoader.load_threaded_get(img_path)
+	cs.get_node("Card/CardButton").texture_normal = m_cardImgCache[img_path]
 	add_child(cs)
 	
 
-func addCollectionCards(cardList, gotCards, onlyMissing : bool = 0):
-	if onlyMissing:
+func addCollectionCards(cardList, gotCards):
+	if m_onlyMissing:
 		for card in cardList:
 			if not gotCards.has(card.id):
 				addCardToList(card, gotCards)
@@ -70,28 +71,27 @@ func addCollectionCards(cardList, gotCards, onlyMissing : bool = 0):
 		for card in cardList:
 			addCardToList(card, gotCards)
 
-func loadCards(missingOnly: bool = 0, collection: int = 0):
+func loadCards():
 	var gotCards = SaveManager.getGotCards()
-	
-	if collection == 1 or collection == 0:
-		var genApexCards = DbManager.getGeneticApexCards(parseOrder(Order))
+	if m_collectionFilter == 1 or m_collectionFilter == 0:
+		var genApexCards = DbManager.getGeneticApexCards(parse_order())
 		addCollectionTitle("res://img/genetic_apex.png")
-		addCollectionCards(genApexCards, gotCards, missingOnly)
+		addCollectionCards(genApexCards, gotCards)
 			
-	if collection == 2 or collection == 0:
-		var mythIslandCards = DbManager.getMythicalIslandsCards(parseOrder(Order))
+	if m_collectionFilter == 2 or m_collectionFilter == 0:
+		var mythIslandCards = DbManager.getMythicalIslandsCards(parse_order())
 		addCollectionTitle("res://img/mythical_island.png")
-		addCollectionCards(mythIslandCards, gotCards, missingOnly)
+		addCollectionCards(mythIslandCards, gotCards)
 	
-	if collection == 3 or collection == 0:
-		var spaceTimeCards = DbManager.getSpaceTimeCards(parseOrder(Order))
+	if m_collectionFilter == 3 or m_collectionFilter == 0:
+		var spaceTimeCards = DbManager.getSpaceTimeCards(parse_order())
 		addCollectionTitle("res://img/space_time_smackdown.png")
-		addCollectionCards(spaceTimeCards, gotCards, missingOnly)
+		addCollectionCards(spaceTimeCards, gotCards)
 			
-	if collection == 4 or collection == 0:
+	if m_collectionFilter == 4 or m_collectionFilter == 0:
 		var promoCards = DbManager.getPromoCards()
 		addCollectionTitle("res://img/promo_a.png")
-		addCollectionCards(promoCards, gotCards, missingOnly)
+		addCollectionCards(promoCards, gotCards)
 
 func clearCardList():
 	for child in get_children():
@@ -99,16 +99,13 @@ func clearCardList():
 			child.queue_free()
 
 func _on_only_missing_check_pressed() -> void:
-	OnlyMissing = !OnlyMissing
-	clearCardList()
-	loadCards(OnlyMissing, CollectionFilter)
+	m_onlyMissing = !m_onlyMissing
+	update()
 
 func _on_collection_select_item_selected(index: int) -> void:
-	CollectionFilter = index
-	clearCardList()
-	loadCards(OnlyMissing, CollectionFilter)
+	m_collectionFilter = index
+	update()
 
 func _on_order_select_item_selected(index: int) -> void:
-	Order = index
-	clearCardList()
-	loadCards(OnlyMissing, CollectionFilter)
+	m_order = index
+	update()

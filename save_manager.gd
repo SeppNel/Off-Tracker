@@ -1,4 +1,6 @@
 extends Node
+
+const SAVE_PATH = "user://user_cards.save"
 	
 static func saveNewCard(id: int):
 	var gotCards = getGotCards()
@@ -8,7 +10,7 @@ static func saveNewCard(id: int):
 		"got_cards" : gotCards,
 	}
 
-	var save_file = FileAccess.open("user://user_cards.save", FileAccess.WRITE)
+	var save_file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	var json_string = JSON.stringify(save_dict)
 	save_file.store_line(json_string)
 	
@@ -20,15 +22,15 @@ static func removeSavedCard(id: int):
 		"got_cards" : gotCards,
 	}
 
-	var save_file = FileAccess.open("user://user_cards.save", FileAccess.WRITE)
+	var save_file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	var json_string = JSON.stringify(save_dict)
 	save_file.store_line(json_string)
 
 static func getGotCards():
-	if not FileAccess.file_exists("user://user_cards.save"):
+	if not FileAccess.file_exists(SAVE_PATH):
 		return []# Error! We don't have a save to load.
 
-	var save_file = FileAccess.open("user://user_cards.save", FileAccess.READ)
+	var save_file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	var json_string = save_file.get_line()
 
 	# Creates the helper class to interact with JSON
@@ -48,8 +50,8 @@ static func getGotCards():
 	return gotCards
 	
 static func getSaveJson():
-	if not FileAccess.file_exists("user://user_cards.save"):
+	if not FileAccess.file_exists(SAVE_PATH):
 		return ""# Error! We don't have a save to load.
 
-	var save_file = FileAccess.open("user://user_cards.save", FileAccess.READ)
+	var save_file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	return save_file.get_line()
