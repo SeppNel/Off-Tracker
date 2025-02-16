@@ -3,6 +3,7 @@ extends VFlowContainer
 var SaveManager = preload("res://save_manager.gd")
 var android_picker
 var filedialog
+var filledHeartIcon = preload("res://img/donate_filled.webp")
 
 func _ready() -> void:
 	if Engine.has_singleton("GodotFilePicker"):
@@ -79,3 +80,7 @@ func _on_native_import_file_selected(path: String):
 	
 func _on_native_import_canceled():
 	filedialog.queue_free()
+
+func _on_donate_button_pressed() -> void:
+	$VFlowContainer/DonateContainer/DonateButton.icon = filledHeartIcon
+	OS.shell_open("https://ko-fi.com/seppnel")

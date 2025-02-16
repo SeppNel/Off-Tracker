@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://btvagxoog6kxd"]
+[gd_scene load_steps=30 format=3 uid="uid://btvagxoog6kxd"]
 
+[ext_resource type="Texture2D" uid="uid://c5fdp2owmfgit" path="res://img/pokemon.webp" id="1_45rvw"]
 [ext_resource type="Script" path="res://home_page.gd" id="1_72cy4"]
 [ext_resource type="Texture2D" uid="uid://bb014ml2v8vo1" path="res://img/genetic_apex.png" id="1_eu85o"]
 [ext_resource type="Texture2D" uid="uid://xvpp8eeqjbbc" path="res://img/checkbox_filled.png" id="2_347lu"]
@@ -23,13 +24,30 @@
 [ext_resource type="Script" path="res://tab_bar.gd" id="15_fu1sk"]
 [ext_resource type="Script" path="res://packs/palkia_pack.gd" id="16_cqi2a"]
 [ext_resource type="Script" path="res://settings.gd" id="22_7rxlr"]
+[ext_resource type="Texture2D" uid="uid://d0ubk1htgggof" path="res://img/donate.webp" id="23_4gfh8"]
+[ext_resource type="StyleBox" uid="uid://bay7lpvne6o2x" path="res://themes/donate.tres" id="23_nfep2"]
+[ext_resource type="StyleBox" uid="uid://cpid8ybowndxq" path="res://themes/donate_hover.tres" id="24_7pxmk"]
 
-[node name="Root" type="ScrollContainer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlw3j"]
+bg_color = Color(0.211765, 0.211765, 0.211765, 1)
+
+[sub_resource type="Theme" id="Theme_u3gw2"]
+Button/styles/hover = ExtResource("24_7pxmk")
+Button/styles/normal = ExtResource("23_nfep2")
+Button/styles/pressed = ExtResource("23_nfep2")
+
+[node name="Root" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tlw3j")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_45rvw")
+stretch_mode = 3
 
 [node name="DaddyDiv" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -38,7 +56,6 @@ size_flags_vertical = 3
 
 [node name="HomePage" type="ScrollContainer" parent="DaddyDiv"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 3
@@ -409,6 +426,7 @@ popup/item_3/text = "Rarity ↑"
 popup/item_3/id = 3
 
 [node name="SettingsPage" type="ScrollContainer" parent="DaddyDiv"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
@@ -445,6 +463,21 @@ custom_minimum_size = Vector2(900, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Import Data"
+
+[node name="DonateContainer" type="CenterContainer" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 200)
+layout_mode = 2
+
+[node name="DonateButton" type="Button" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer/DonateContainer"]
+custom_minimum_size = Vector2(900, 150)
+layout_mode = 2
+theme = SubResource("Theme_u3gw2")
+theme_override_constants/icon_max_width = 90
+theme_override_font_sizes/font_size = 60
+text = "      Donate"
+icon = ExtResource("23_4gfh8")
+icon_alignment = 2
+text_direction = 1
 
 [node name="Output" type="Label" parent="DaddyDiv/SettingsPage/Settings"]
 custom_minimum_size = Vector2(0, 83)
@@ -483,6 +516,7 @@ text = "Settings"
 [connection signal="item_selected" from="DaddyDiv/CardPage/CardList/Controls/OrderContainer/OrderSelect" to="DaddyDiv/CardPage/CardList" method="_on_order_select_item_selected"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/CenterContainer/ExportButton" to="DaddyDiv/SettingsPage/Settings" method="_on_export_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/CenterContainer2/ImportButton" to="DaddyDiv/SettingsPage/Settings" method="_on_import_button_pressed"]
+[connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/DonateContainer/DonateButton" to="DaddyDiv/SettingsPage/Settings" method="_on_donate_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/TabBar/Home" to="DaddyDiv/TabBar" method="_on_home_pressed"]
 [connection signal="pressed" from="DaddyDiv/TabBar/Cards" to="DaddyDiv/TabBar" method="_on_cards_pressed"]
 [connection signal="pressed" from="DaddyDiv/TabBar/Settings" to="DaddyDiv/TabBar" method="_on_settings_pressed"]
