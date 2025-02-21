@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1xge1xedmall"]
+[gd_scene load_steps=3 format=3 uid="uid://d1xge1xedmall"]
 
 [ext_resource type="Script" path="res://card.gd" id="1_3x822"]
-[ext_resource type="Texture2D" path="res://img/cards/default.png" id="1_u1703"]
 [ext_resource type="Script" path="res://card_button.gd" id="2_ckfuw"]
 
 [node name="CardRoot" type="Control"]
@@ -32,7 +31,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-texture_normal = ExtResource("1_u1703")
 stretch_mode = 5
 script = ExtResource("2_ckfuw")
 
