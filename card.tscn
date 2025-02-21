@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d1xge1xedmall"]
 
 [ext_resource type="Script" path="res://card.gd" id="1_3x822"]
-[ext_resource type="Texture2D" uid="uid://c63islxiimhob" path="res://img/cards/default.png" id="1_u1703"]
+[ext_resource type="Texture2D" path="res://img/cards/default.png" id="1_u1703"]
 [ext_resource type="Script" path="res://card_button.gd" id="2_ckfuw"]
 
 [node name="CardRoot" type="Control"]

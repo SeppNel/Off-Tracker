@@ -16,8 +16,11 @@ func preload_cardImages(cards):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var start = Time.get_ticks_msec()
 	preload_cardImages(DbManager.getAllCards())
 	loadCards()
+	var end = Time.get_ticks_msec()
+	print("CardPage load: ", end - start, " ms")
 	
 func update() -> void:
 	clearCardList()
@@ -75,22 +78,22 @@ func loadCards():
 	var gotCards = SaveManager.getGotCards()
 	if m_collectionFilter == 1 or m_collectionFilter == 0:
 		var genApexCards = DbManager.getGeneticApexCards(parse_order())
-		addCollectionTitle("res://img/genetic_apex.png")
+		addCollectionTitle("res://img/genetic_apex.webp")
 		addCollectionCards(genApexCards, gotCards)
 			
 	if m_collectionFilter == 2 or m_collectionFilter == 0:
 		var mythIslandCards = DbManager.getMythicalIslandsCards(parse_order())
-		addCollectionTitle("res://img/mythical_island.png")
+		addCollectionTitle("res://img/mythical_island.webp")
 		addCollectionCards(mythIslandCards, gotCards)
 	
 	if m_collectionFilter == 3 or m_collectionFilter == 0:
 		var spaceTimeCards = DbManager.getSpaceTimeCards(parse_order())
-		addCollectionTitle("res://img/space_time_smackdown.png")
+		addCollectionTitle("res://img/space_time_smackdown.webp")
 		addCollectionCards(spaceTimeCards, gotCards)
 			
 	if m_collectionFilter == 4 or m_collectionFilter == 0:
 		var promoCards = DbManager.getPromoCards()
-		addCollectionTitle("res://img/promo_a.png")
+		addCollectionTitle("res://img/promo_a.webp")
 		addCollectionCards(promoCards, gotCards)
 
 func clearCardList():
