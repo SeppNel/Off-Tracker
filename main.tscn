@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://btvagxoog6kxd"]
+[gd_scene load_steps=35 format=3 uid="uid://btvagxoog6kxd"]
 
 [ext_resource type="Texture2D" uid="uid://c5fdp2owmfgit" path="res://img/pokemon.webp" id="1_45rvw"]
 [ext_resource type="Script" path="res://home_page.gd" id="1_72cy4"]
@@ -24,12 +24,38 @@
 [ext_resource type="Script" path="res://packs/palkia_pack.gd" id="16_cqi2a"]
 [ext_resource type="Texture2D" uid="uid://ddcg8uahry7em" path="res://img/packs/palkia.webp" id="18_8d08n"]
 [ext_resource type="Script" path="res://settings.gd" id="22_7rxlr"]
+[ext_resource type="Script" path="res://search_modal.gd" id="23_3jxyi"]
 [ext_resource type="Texture2D" uid="uid://d0ubk1htgggof" path="res://img/donate.webp" id="23_4gfh8"]
 [ext_resource type="StyleBox" uid="uid://bay7lpvne6o2x" path="res://themes/donate.tres" id="23_nfep2"]
 [ext_resource type="StyleBox" uid="uid://cpid8ybowndxq" path="res://themes/donate_hover.tres" id="24_7pxmk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlw3j"]
 bg_color = Color(0.211765, 0.211765, 0.211765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rsnn7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_hpach"]
+Button/font_sizes/font_size = 30
+Button/styles/focus = SubResource("StyleBoxFlat_rsnn7")
+Button/styles/hover = SubResource("StyleBoxFlat_rsnn7")
+Button/styles/pressed = SubResource("StyleBoxFlat_rsnn7")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fnsfe"]
+bg_color = Color(0.303233, 0.303233, 0.303233, 0.843137)
+
+[sub_resource type="Theme" id="Theme_7tex0"]
+PopupMenu/constants/v_separation = 6
+PopupMenu/font_sizes/font_size = 50
 
 [sub_resource type="Theme" id="Theme_u3gw2"]
 Button/styles/hover = ExtResource("24_7pxmk")
@@ -353,38 +379,44 @@ custom_minimum_size = Vector2(1080, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Controls" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList"]
+[node name="Controls" type="VBoxContainer" parent="DaddyDiv/CardPage/CardList"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="MissingContainer" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList/Controls"]
+[node name="Level1" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList/Controls"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="OnlyMissingLabel" type="Label" parent="DaddyDiv/CardPage/CardList/Controls/MissingContainer"]
+[node name="MissingContainer" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList/Controls/Level1"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="OnlyMissingLabel" type="Label" parent="DaddyDiv/CardPage/CardList/Controls/Level1/MissingContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Show Only Missing"
 
-[node name="OnlyMissingCheck" type="CheckBox" parent="DaddyDiv/CardPage/CardList/Controls/MissingContainer"]
+[node name="OnlyMissingCheck" type="CheckBox" parent="DaddyDiv/CardPage/CardList/Controls/Level1/MissingContainer"]
 layout_mode = 2
 theme_override_icons/checked = ExtResource("2_347lu")
 theme_override_icons/unchecked = ExtResource("3_q3pvi")
 
-[node name="CollectionContainer" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList/Controls"]
+[node name="CollectionContainer" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList/Controls/Level1"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="CollectionLabel" type="Label" parent="DaddyDiv/CardPage/CardList/Controls/CollectionContainer"]
+[node name="CollectionLabel" type="Label" parent="DaddyDiv/CardPage/CardList/Controls/Level1/CollectionContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Collection "
 
-[node name="CollectionSelect" type="OptionButton" parent="DaddyDiv/CardPage/CardList/Controls/CollectionContainer"]
+[node name="CollectionSelect" type="OptionButton" parent="DaddyDiv/CardPage/CardList/Controls/Level1/CollectionContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme = ExtResource("4_3d3hq")
@@ -402,17 +434,17 @@ popup/item_3/id = 3
 popup/item_4/text = "Promo"
 popup/item_4/id = 4
 
-[node name="OrderContainer" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList/Controls"]
+[node name="OrderContainer" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList/Controls/Level1"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="OrderLabel" type="Label" parent="DaddyDiv/CardPage/CardList/Controls/OrderContainer"]
+[node name="OrderLabel" type="Label" parent="DaddyDiv/CardPage/CardList/Controls/Level1/OrderContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Order "
 
-[node name="OrderSelect" type="OptionButton" parent="DaddyDiv/CardPage/CardList/Controls/OrderContainer"]
+[node name="OrderSelect" type="OptionButton" parent="DaddyDiv/CardPage/CardList/Controls/Level1/OrderContainer"]
 layout_mode = 2
 theme = ExtResource("4_3d3hq")
 selected = 0
@@ -424,6 +456,243 @@ popup/item_2/text = "Rarity ↓"
 popup/item_2/id = 2
 popup/item_3/text = "Rarity ↑"
 popup/item_3/id = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/CardPage/CardList/Controls"]
+process_mode = 4
+custom_minimum_size = Vector2(1080, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Search" type="Button" parent="DaddyDiv/CardPage/CardList/Controls"]
+custom_minimum_size = Vector2(1050, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_hpach")
+text = "Search..."
+alignment = 0
+
+[node name="SearchModal" type="PanelContainer" parent="DaddyDiv/CardPage"]
+visible = false
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_force_pass_scroll_events = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_fnsfe")
+script = ExtResource("23_3jxyi")
+
+[node name="VFlowContainer" type="VFlowContainer" parent="DaddyDiv/CardPage/SearchModal"]
+layout_mode = 2
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "    Name:"
+
+[node name="NameInput" type="LineEdit" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Croagunk"
+
+[node name="TypeLabel" type="Label" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 80)
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "    Type:"
+vertical_alignment = 2
+
+[node name="TypeInput" type="OptionButton" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_7tex0")
+theme_override_font_sizes/font_size = 40
+selected = 0
+item_count = 11
+popup/item_0/text = "Any"
+popup/item_1/text = "Colorless"
+popup/item_1/id = 1
+popup/item_2/text = "Fire"
+popup/item_2/id = 2
+popup/item_3/text = "Water"
+popup/item_3/id = 3
+popup/item_4/text = "Dragon"
+popup/item_4/id = 4
+popup/item_5/text = "Darkness"
+popup/item_5/id = 5
+popup/item_6/text = "Metal"
+popup/item_6/id = 6
+popup/item_7/text = "Psychic"
+popup/item_7/id = 7
+popup/item_8/text = "Lightning"
+popup/item_8/id = 8
+popup/item_9/text = "Fighting"
+popup/item_9/id = 9
+popup/item_10/text = "Grass"
+popup/item_10/id = 10
+
+[node name="StageLabel" type="Label" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 80)
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "    Stage:"
+vertical_alignment = 2
+
+[node name="StageInput" type="OptionButton" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_7tex0")
+theme_override_font_sizes/font_size = 40
+selected = 0
+item_count = 7
+popup/item_0/text = "Any"
+popup/item_1/text = "Basic"
+popup/item_1/id = 4
+popup/item_2/text = "Stage 1"
+popup/item_2/id = 3
+popup/item_3/text = "Stage 2"
+popup/item_3/id = 2
+popup/item_4/text = "Item"
+popup/item_4/id = 1
+popup/item_5/text = "Trainer"
+popup/item_5/id = 5
+popup/item_6/text = "Tool"
+popup/item_6/id = 6
+
+[node name="RarityLabel" type="Label" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 80)
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "    Rarity:"
+vertical_alignment = 2
+
+[node name="RarityInput" type="OptionButton" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_7tex0")
+theme_override_font_sizes/font_size = 40
+selected = 0
+item_count = 9
+popup/item_0/text = "Any"
+popup/item_1/text = "1 Diamond"
+popup/item_1/id = 1
+popup/item_2/text = "2 Diamond"
+popup/item_2/id = 2
+popup/item_3/text = "3 Diamond"
+popup/item_3/id = 3
+popup/item_4/text = "4 Diamond"
+popup/item_4/id = 4
+popup/item_5/text = "1 Star"
+popup/item_5/id = 5
+popup/item_6/text = "2 Stars"
+popup/item_6/id = 6
+popup/item_7/text = "3 Stars"
+popup/item_7/id = 7
+popup/item_8/text = "Crown"
+popup/item_8/id = 8
+
+[node name="PackLabel" type="Label" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 80)
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "    Pack:"
+vertical_alignment = 2
+
+[node name="PackInput" type="OptionButton" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_7tex0")
+theme_override_font_sizes/font_size = 40
+selected = 0
+item_count = 7
+popup/item_0/text = "Any"
+popup/item_1/text = "Charizard"
+popup/item_1/id = 4
+popup/item_2/text = "Mewtwo"
+popup/item_2/id = 3
+popup/item_3/text = "Pikachu"
+popup/item_3/id = 2
+popup/item_4/text = "Mew"
+popup/item_4/id = 1
+popup/item_5/text = "Dialga"
+popup/item_5/id = 5
+popup/item_6/text = "Palkia"
+popup/item_6/id = 6
+
+[node name="WeaknessLabel" type="Label" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 80)
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "    Weakness:"
+vertical_alignment = 2
+
+[node name="WeaknessInput" type="OptionButton" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_7tex0")
+theme_override_font_sizes/font_size = 40
+selected = 0
+item_count = 11
+popup/item_0/text = "Any"
+popup/item_1/text = "Colorless"
+popup/item_1/id = 1
+popup/item_2/text = "Fire"
+popup/item_2/id = 2
+popup/item_3/text = "Water"
+popup/item_3/id = 3
+popup/item_4/text = "Dragon"
+popup/item_4/id = 4
+popup/item_5/text = "Darkness"
+popup/item_5/id = 5
+popup/item_6/text = "Metal"
+popup/item_6/id = 6
+popup/item_7/text = "Psychic"
+popup/item_7/id = 7
+popup/item_8/text = "Lightning"
+popup/item_8/id = 8
+popup/item_9/text = "Fighting"
+popup/item_9/id = 9
+popup/item_10/text = "Grass"
+popup/item_10/id = 10
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
+process_mode = 4
+custom_minimum_size = Vector2(1080, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="AcceptSearch" type="Button" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Search"
+
+[node name="CancelSearch" type="Button" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Cancel"
+
+[node name="ClearSearch" type="Button" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Clear"
 
 [node name="SettingsPage" type="ScrollContainer" parent="DaddyDiv"]
 visible = false
@@ -511,9 +780,13 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
 text = "Settings"
 
-[connection signal="pressed" from="DaddyDiv/CardPage/CardList/Controls/MissingContainer/OnlyMissingCheck" to="DaddyDiv/CardPage/CardList" method="_on_only_missing_check_pressed"]
-[connection signal="item_selected" from="DaddyDiv/CardPage/CardList/Controls/CollectionContainer/CollectionSelect" to="DaddyDiv/CardPage/CardList" method="_on_collection_select_item_selected"]
-[connection signal="item_selected" from="DaddyDiv/CardPage/CardList/Controls/OrderContainer/OrderSelect" to="DaddyDiv/CardPage/CardList" method="_on_order_select_item_selected"]
+[connection signal="pressed" from="DaddyDiv/CardPage/CardList/Controls/Level1/MissingContainer/OnlyMissingCheck" to="DaddyDiv/CardPage/CardList" method="_on_only_missing_check_pressed"]
+[connection signal="item_selected" from="DaddyDiv/CardPage/CardList/Controls/Level1/CollectionContainer/CollectionSelect" to="DaddyDiv/CardPage/CardList" method="_on_collection_select_item_selected"]
+[connection signal="item_selected" from="DaddyDiv/CardPage/CardList/Controls/Level1/OrderContainer/OrderSelect" to="DaddyDiv/CardPage/CardList" method="_on_order_select_item_selected"]
+[connection signal="pressed" from="DaddyDiv/CardPage/CardList/Controls/Search" to="DaddyDiv/CardPage/SearchModal" method="_on_search_pressed"]
+[connection signal="pressed" from="DaddyDiv/CardPage/SearchModal/VFlowContainer/HBoxContainer/AcceptSearch" to="DaddyDiv/CardPage/SearchModal" method="_on_accept_search_pressed"]
+[connection signal="pressed" from="DaddyDiv/CardPage/SearchModal/VFlowContainer/HBoxContainer/CancelSearch" to="DaddyDiv/CardPage/SearchModal" method="_on_cancel_search_pressed"]
+[connection signal="pressed" from="DaddyDiv/CardPage/SearchModal/VFlowContainer/HBoxContainer/ClearSearch" to="DaddyDiv/CardPage/SearchModal" method="_on_clear_search_pressed"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/CenterContainer/ExportButton" to="DaddyDiv/SettingsPage/Settings" method="_on_export_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/CenterContainer2/ImportButton" to="DaddyDiv/SettingsPage/Settings" method="_on_import_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/DonateContainer/DonateButton" to="DaddyDiv/SettingsPage/Settings" method="_on_donate_button_pressed"]

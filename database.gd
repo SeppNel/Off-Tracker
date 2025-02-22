@@ -157,3 +157,20 @@ static func getCardName(card: int):
 	db.query_with_bindings(query, [card])
 	
 	return db.query_result[0]["name"]
+
+static func search(n: String, t: int, s: int, r: int, p: int, w: int, order: String = "c.id ASC"):
+	n += "%"
+	var query = "
+		SELECT id, image
+		FROM cards c
+		WHERE name LIKE ?
+		AND (? IS 0 OR type = ?)
+		AND (? IS 0 OR card_type = ?)
+		AND (? IS 0 OR rarity = ?)
+		AND (? IS 0 OR pack = ?)
+		AND (? IS 0 OR weakness = ?)
+		ORDER BY " + order + ";"
+	
+	db.query_with_bindings(query, [n, t, t, s, s, r, r, p, p, w, w])
+	
+	return db.query_result_by_reference

@@ -4,10 +4,18 @@ var DbManager = preload("res://database.gd")
 var CardScene = preload("res://card.tscn")
 var SaveManager = preload("res://save_manager.gd")
 
-var m_onlyMissing: bool = 0
+var m_onlyMissing: bool = false
 var m_collectionFilter: int = 0
 var m_order: int = 0
 var m_cardImgCache = {}
+
+var m_searchState: bool = false
+var m_lastSearchName: String
+var m_lastSearchType: int
+var m_lastSearchStage: int
+var m_lastSearchRarity: int
+var m_lastSearchPack: int
+var m_lastSearchWeakness: int
 
 func preload_cardImages(cards):
 	for card in cards:
@@ -24,7 +32,10 @@ func _ready() -> void:
 	
 func update() -> void:
 	clearCardList()
-	loadCards()
+	if m_searchState:
+		loadCardsSearch(m_lastSearchName, m_lastSearchType, m_lastSearchStage, m_lastSearchRarity, m_lastSearchPack, m_lastSearchWeakness)
+	else:
+		loadCards()
 
 func parse_order() -> String:
 	match m_order:
@@ -75,6 +86,7 @@ func addCollectionCards(cardList, gotCards):
 			addCardToList(card, gotCards)
 
 func loadCards():
+	m_searchState = false
 	var gotCards = SaveManager.getGotCards()
 	if m_collectionFilter == 1 or m_collectionFilter == 0:
 		var genApexCards = DbManager.getGeneticApexCards(parse_order())
@@ -112,3 +124,24 @@ func _on_collection_select_item_selected(index: int) -> void:
 func _on_order_select_item_selected(index: int) -> void:
 	m_order = index
 	update()
+	
+func loadCardsSearch(n, t, s, r, p, w):
+	m_lastSearchName = n
+	m_lastSearchType = t
+	m_lastSearchStage = s
+	m_lastSearchRarity = r
+	m_searchState = true
+	
+	clearCardList()
+	var cards = DbManager.search(n, t, s, r, p, w, parse_order())
+	
+	var gotCards = SaveManager.getGotCards()
+	var title = Label.new()
+	title.text = "    Search results"
+	title.custom_minimum_size = Vector2(1080, 100)
+	title.add_theme_font_size_override("font_size", 40)
+	title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	add_child(title)
+	addCollectionCards(cards, gotCards)
+	
+	
