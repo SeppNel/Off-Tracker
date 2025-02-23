@@ -12,6 +12,7 @@ func _on_cards_pressed() -> void:
 	%HomePage.hide()
 	%SettingsPage.hide()
 	%FriendsPage.hide()
+	%CardPage/SearchModal.hide()
 	
 	%CardPage.show()
 
@@ -30,6 +31,8 @@ func _on_friends_pressed() -> void:
 	%CardPage.hide()
 	%HomePage.hide()
 	%SettingsPage.hide()
+	%FriendsPage/ScrollContainer/AddModal.hide()
+	%FriendsPage/ScrollContainer/PublishModal.closeModal()
 	
 	%FriendsPage.update()
 	%FriendsPage.show()
