@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnnoavej66qid"]
+
+[ext_resource type="Script" path="res://friend.gd" id="1_a6auo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omrvd"]
+bg_color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[node name="FriendRoot" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a6auo")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_omrvd")
+text = "Pablito"
+
+[node name="Wants" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Wants:"
+
+[node name="MissingContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(1080, 460)
+layout_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="Cards" type="HBoxContainer" parent="MissingContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Has" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Has to offer:"
+
+[node name="OfferContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(1080, 460)
+layout_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="Cards" type="HBoxContainer" parent="OfferContainer"]
+layout_mode = 2

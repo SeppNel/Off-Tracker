@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1xge1xedmall"]
+[gd_scene load_steps=4 format=3 uid="uid://d1xge1xedmall"]
 
 [ext_resource type="Script" path="res://card.gd" id="1_3x822"]
 [ext_resource type="Script" path="res://card_button.gd" id="2_ckfuw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5j7kp"]
+bg_color = Color(0.176419, 0.176419, 0.176419, 1)
 
 [node name="CardRoot" type="Control"]
 custom_minimum_size = Vector2(340, 460)
@@ -51,7 +54,17 @@ metadata/_edit_use_anchors_ = true
 wait_time = 0.9
 one_shot = true
 
+[node name="Counter" type="Label" parent="Card"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 380.0
+offset_right = 53.0
+offset_bottom = 435.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_5j7kp")
+text = "0"
+horizontal_alignment = 1
+
 [connection signal="button_down" from="Card/CardButton" to="Card/CardButton" method="_on_button_down"]
 [connection signal="button_up" from="Card/CardButton" to="Card/CardButton" method="_on_button_up"]
-[connection signal="pressed" from="Card/CardButton" to="Card/CardButton" method="_on_pressed"]
 [connection signal="timeout" from="Card/HoldTimer" to="Card" method="_on_hold_timer_timeout"]

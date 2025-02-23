@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://btvagxoog6kxd"]
+[gd_scene load_steps=39 format=3 uid="uid://btvagxoog6kxd"]
 
 [ext_resource type="Texture2D" uid="uid://c5fdp2owmfgit" path="res://img/pokemon.webp" id="1_45rvw"]
 [ext_resource type="Script" path="res://home_page.gd" id="1_72cy4"]
@@ -28,6 +28,10 @@
 [ext_resource type="Texture2D" uid="uid://d0ubk1htgggof" path="res://img/donate.webp" id="23_4gfh8"]
 [ext_resource type="StyleBox" uid="uid://bay7lpvne6o2x" path="res://themes/donate.tres" id="23_nfep2"]
 [ext_resource type="StyleBox" uid="uid://cpid8ybowndxq" path="res://themes/donate_hover.tres" id="24_7pxmk"]
+[ext_resource type="Script" path="res://friends_page.gd" id="24_ngodf"]
+[ext_resource type="Script" path="res://publish_modal.gd" id="25_1xfmc"]
+[ext_resource type="Script" path="res://publish_card_list.gd" id="25_utdwa"]
+[ext_resource type="Script" path="res://manage_friends.gd" id="31_oj3rj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlw3j"]
 bg_color = Color(0.211765, 0.211765, 0.211765, 1)
@@ -82,6 +86,7 @@ size_flags_vertical = 3
 
 [node name="HomePage" type="ScrollContainer" parent="DaddyDiv"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 3
@@ -694,14 +699,207 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
 text = "Clear"
 
-[node name="SettingsPage" type="ScrollContainer" parent="DaddyDiv"]
+[node name="FriendsPage" type="VBoxContainer" parent="DaddyDiv"]
+unique_name_in_owner = true
 visible = false
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("24_ngodf")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DaddyDiv/FriendsPage"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="HFlowContainer" type="HFlowContainer" parent="DaddyDiv/FriendsPage/ScrollContainer"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/FriendsPage/ScrollContainer/HFlowContainer"]
+process_mode = 4
+custom_minimum_size = Vector2(1080, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AddContainer" type="HBoxContainer" parent="DaddyDiv/FriendsPage/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="DaddyDiv/FriendsPage/ScrollContainer/HFlowContainer/AddContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "    Add a friend to check possible trades    "
+horizontal_alignment = 1
+
+[node name="AddButton" type="Button" parent="DaddyDiv/FriendsPage/ScrollContainer/HFlowContainer/AddContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "Add friend"
+
+[node name="MarginTop2" type="Control" parent="DaddyDiv/FriendsPage/ScrollContainer/HFlowContainer"]
+process_mode = 4
+custom_minimum_size = Vector2(1080, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FriendsContainer" type="VBoxContainer" parent="DaddyDiv/FriendsPage/ScrollContainer/HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AddModal" type="PanelContainer" parent="DaddyDiv/FriendsPage/ScrollContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_force_pass_scroll_events = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_fnsfe")
+
+[node name="VFlowContainer" type="VFlowContainer" parent="DaddyDiv/FriendsPage/ScrollContainer/AddModal"]
+layout_mode = 2
+alignment = 1
+
+[node name="FcLabel" type="Label" parent="DaddyDiv/FriendsPage/ScrollContainer/AddModal/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "    Friend Code:"
+
+[node name="FcInput" type="LineEdit" parent="DaddyDiv/FriendsPage/ScrollContainer/AddModal/VFlowContainer"]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+placeholder_text = "69"
+virtual_keyboard_type = 2
+
+[node name="FNameLabel" type="Label" parent="DaddyDiv/FriendsPage/ScrollContainer/AddModal/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "    Local name (15 characters max):"
+
+[node name="FNameInput" type="LineEdit" parent="DaddyDiv/FriendsPage/ScrollContainer/AddModal/VFlowContainer"]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Can be anything"
+virtual_keyboard_type = 2
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/FriendsPage/ScrollContainer/AddModal/VFlowContainer"]
+process_mode = 4
+custom_minimum_size = Vector2(1080, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DaddyDiv/FriendsPage/ScrollContainer/AddModal/VFlowContainer"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="AcceptAdd" type="Button" parent="DaddyDiv/FriendsPage/ScrollContainer/AddModal/VFlowContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Add"
+
+[node name="CancelAdd" type="Button" parent="DaddyDiv/FriendsPage/ScrollContainer/AddModal/VFlowContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Cancel"
+
+[node name="PublishModal" type="PanelContainer" parent="DaddyDiv/FriendsPage/ScrollContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_fnsfe")
+script = ExtResource("25_1xfmc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DaddyDiv/FriendsPage/ScrollContainer/PublishModal"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="DaddyDiv/FriendsPage/ScrollContainer/PublishModal/VBoxContainer"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "    Select cards:"
+
+[node name="CardList" type="HFlowContainer" parent="DaddyDiv/FriendsPage/ScrollContainer/PublishModal/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("25_utdwa")
+
+[node name="NoCodeAlert" type="HBoxContainer" parent="DaddyDiv/FriendsPage"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="DaddyDiv/FriendsPage/NoCodeAlert"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "     You don't have a friend code     "
+horizontal_alignment = 1
+
+[node name="CodeButton" type="Button" parent="DaddyDiv/FriendsPage/NoCodeAlert"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "Request code"
+
+[node name="PublishContainer" type="HBoxContainer" parent="DaddyDiv/FriendsPage"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="DaddyDiv/FriendsPage/PublishContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "     Publish your missing cards     "
+horizontal_alignment = 1
+
+[node name="PublishButton" type="Button" parent="DaddyDiv/FriendsPage/PublishContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "Publish Cards"
+
+[node name="PublishConfirmContainer" type="HBoxContainer" parent="DaddyDiv/FriendsPage"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="AcceptPublish" type="Button" parent="DaddyDiv/FriendsPage/PublishConfirmContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Accept"
+
+[node name="CancelPublish" type="Button" parent="DaddyDiv/FriendsPage/PublishConfirmContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Cancel"
+
+[node name="SettingsPage" type="ScrollContainer" parent="DaddyDiv"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
 [node name="Settings" type="VFlowContainer" parent="DaddyDiv/SettingsPage"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -713,21 +911,40 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer"]
+[node name="FCContainer" type="CenterContainer" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer"]
 custom_minimum_size = Vector2(1080, 200)
 layout_mode = 2
 
-[node name="ExportButton" type="Button" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer/CenterContainer"]
+[node name="FriendCodeLabel" type="Label" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer/FCContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "You don't have a friend code"
+
+[node name="FriendsContainer" type="CenterContainer" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 200)
+layout_mode = 2
+
+[node name="FriendsButton" type="Button" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer/FriendsContainer"]
+custom_minimum_size = Vector2(900, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Manage Friends"
+
+[node name="ExportContainer" type="CenterContainer" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 200)
+layout_mode = 2
+
+[node name="ExportButton" type="Button" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer/ExportContainer"]
 custom_minimum_size = Vector2(900, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Export Data"
 
-[node name="CenterContainer2" type="CenterContainer" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer"]
+[node name="ImportContainer" type="CenterContainer" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer"]
 custom_minimum_size = Vector2(1080, 200)
 layout_mode = 2
 
-[node name="ImportButton" type="Button" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer/CenterContainer2"]
+[node name="ImportButton" type="Button" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer/ImportContainer"]
 custom_minimum_size = Vector2(900, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
@@ -756,6 +973,25 @@ theme_override_font_sizes/font_size = 60
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="FriendsModal" type="PanelContainer" parent="DaddyDiv/SettingsPage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_force_pass_scroll_events = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_fnsfe")
+script = ExtResource("31_oj3rj")
+
+[node name="VFlowContainer" type="VBoxContainer" parent="DaddyDiv/SettingsPage/FriendsModal"]
+layout_mode = 2
+alignment = 1
+
+[node name="CloseFriendsButton" type="Button" parent="DaddyDiv/SettingsPage/FriendsModal"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "  X  "
+
 [node name="TabBar" type="HBoxContainer" parent="DaddyDiv"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
@@ -774,6 +1010,12 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
 text = "Cards"
 
+[node name="Friends" type="Button" parent="DaddyDiv/TabBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Friends"
+
 [node name="Settings" type="Button" parent="DaddyDiv/TabBar"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -787,9 +1029,19 @@ text = "Settings"
 [connection signal="pressed" from="DaddyDiv/CardPage/SearchModal/VFlowContainer/HBoxContainer/AcceptSearch" to="DaddyDiv/CardPage/SearchModal" method="_on_accept_search_pressed"]
 [connection signal="pressed" from="DaddyDiv/CardPage/SearchModal/VFlowContainer/HBoxContainer/CancelSearch" to="DaddyDiv/CardPage/SearchModal" method="_on_cancel_search_pressed"]
 [connection signal="pressed" from="DaddyDiv/CardPage/SearchModal/VFlowContainer/HBoxContainer/ClearSearch" to="DaddyDiv/CardPage/SearchModal" method="_on_clear_search_pressed"]
-[connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/CenterContainer/ExportButton" to="DaddyDiv/SettingsPage/Settings" method="_on_export_button_pressed"]
-[connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/CenterContainer2/ImportButton" to="DaddyDiv/SettingsPage/Settings" method="_on_import_button_pressed"]
+[connection signal="pressed" from="DaddyDiv/FriendsPage/ScrollContainer/HFlowContainer/AddContainer/AddButton" to="DaddyDiv/FriendsPage" method="_on_add_button_pressed"]
+[connection signal="pressed" from="DaddyDiv/FriendsPage/ScrollContainer/AddModal/VFlowContainer/HBoxContainer/AcceptAdd" to="DaddyDiv/FriendsPage" method="_on_accept_add_pressed"]
+[connection signal="pressed" from="DaddyDiv/FriendsPage/ScrollContainer/AddModal/VFlowContainer/HBoxContainer/CancelAdd" to="DaddyDiv/FriendsPage" method="_on_cancel_add_pressed"]
+[connection signal="pressed" from="DaddyDiv/FriendsPage/NoCodeAlert/CodeButton" to="DaddyDiv/FriendsPage" method="_on_code_button_pressed"]
+[connection signal="pressed" from="DaddyDiv/FriendsPage/PublishContainer/PublishButton" to="DaddyDiv/FriendsPage" method="_on_publish_button_pressed"]
+[connection signal="pressed" from="DaddyDiv/FriendsPage/PublishConfirmContainer/AcceptPublish" to="DaddyDiv/FriendsPage/ScrollContainer/PublishModal" method="_on_accept_publish_pressed"]
+[connection signal="pressed" from="DaddyDiv/FriendsPage/PublishConfirmContainer/CancelPublish" to="DaddyDiv/FriendsPage/ScrollContainer/PublishModal" method="_on_cancel_publish_pressed"]
+[connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/FriendsContainer/FriendsButton" to="DaddyDiv/SettingsPage/Settings" method="_on_friends_button_pressed"]
+[connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/ExportContainer/ExportButton" to="DaddyDiv/SettingsPage/Settings" method="_on_export_button_pressed"]
+[connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/ImportContainer/ImportButton" to="DaddyDiv/SettingsPage/Settings" method="_on_import_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/DonateContainer/DonateButton" to="DaddyDiv/SettingsPage/Settings" method="_on_donate_button_pressed"]
+[connection signal="pressed" from="DaddyDiv/SettingsPage/FriendsModal/CloseFriendsButton" to="DaddyDiv/SettingsPage/Settings" method="_on_close_friends_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/TabBar/Home" to="DaddyDiv/TabBar" method="_on_home_pressed"]
 [connection signal="pressed" from="DaddyDiv/TabBar/Cards" to="DaddyDiv/TabBar" method="_on_cards_pressed"]
+[connection signal="pressed" from="DaddyDiv/TabBar/Friends" to="DaddyDiv/TabBar" method="_on_friends_pressed"]
 [connection signal="pressed" from="DaddyDiv/TabBar/Settings" to="DaddyDiv/TabBar" method="_on_settings_pressed"]

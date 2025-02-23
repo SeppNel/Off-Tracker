@@ -67,9 +67,10 @@ func addCardToList(card, gotCards):
 	var img_path = "res://img/cards/" + card.image
 	card_data.id = card.id
 	
-	if gotCards.has(card.id):
+	if gotCards.has(str(card.id)):
 		cs.get_node("Card/NotGotOverlay").hide()
 		card_data.got = true
+		card_data.set_count(gotCards[str(card.id)])
 
 	#Styling
 	cs.get_node("Card/CardButton").texture_normal = m_cardImgCache[img_path]
@@ -79,7 +80,7 @@ func addCardToList(card, gotCards):
 func addCollectionCards(cardList, gotCards):
 	if m_onlyMissing:
 		for card in cardList:
-			if not gotCards.has(card.id):
+			if not gotCards.has(str(card.id)):
 				addCardToList(card, gotCards)
 	else:
 		for card in cardList:
@@ -144,4 +145,9 @@ func loadCardsSearch(n, t, s, r, p, w):
 	add_child(title)
 	addCollectionCards(cards, gotCards)
 	
-	
+
+func has_card_id(data, card_id: int) -> bool:
+	for card in data:
+		if card.id == card_id:
+			return true
+	return false

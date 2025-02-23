@@ -22,7 +22,7 @@ func _ready() -> void:
 	updateUi()
 	
 func updateUi():
-	gotCards = SaveManager.getGotCards()
+	gotCards = SaveManager.getGotCardsIds()
 	countCardsOfRarity()
 
 	for pack in packsArray:

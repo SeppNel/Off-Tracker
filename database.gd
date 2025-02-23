@@ -174,3 +174,32 @@ static func search(n: String, t: int, s: int, r: int, p: int, w: int, order: Str
 	db.query_with_bindings(query, [n, t, t, s, s, r, r, p, p, w, w])
 	
 	return db.query_result_by_reference
+
+static func getCard(id: int):
+	var query = "
+		SELECT *
+		FROM cards
+		WHERE id = ?;"
+
+	db.query_with_bindings(query, [id])
+	
+	return db.query_result[0]
+	
+static func getTradeableCards():
+	db.query("
+		SELECT * 
+		FROM cards 
+		WHERE rarity > 0 AND rarity < 6
+		AND pack in (1,2,3,4)
+
+		UNION
+
+		SELECT DISTINCT c.*
+		FROM cards c
+		JOIN card_packs cp ON c.id = cp.card_id
+		JOIN packs p ON cp.pack = p.id
+		JOIN collections col ON p.collection = col.id
+		WHERE col.id != 3
+		AND rarity > 0 and rarity < 6;")
+	
+	return db.query_result_by_reference

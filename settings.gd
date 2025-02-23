@@ -9,6 +9,9 @@ func _ready() -> void:
 	if Engine.has_singleton("GodotFilePicker"):
 		android_picker = Engine.get_singleton("GodotFilePicker")
 		android_picker.file_picked.connect(_on_read_file_picked)
+	
+	if SaveManager.m_friend_code != -1:
+		$VFlowContainer/FCContainer/FriendCodeLabel.text = "Friend Code: " + str(SaveManager.m_friend_code)
 
 func _on_export_button_pressed() -> void:
 	var file = FileAccess.open(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/ptcgp_export.json", FileAccess.WRITE)  # Open file for writing
@@ -45,6 +48,7 @@ func _on_read_file_picked(temp_path: String, mime_type: String) -> void:
 		
 		if not fail:	
 			DirAccess.copy_absolute(temp_path, SaveManager.SAVE_PATH)
+			SaveManager.checkVersion()
 			%CardPage/CardList.update()
 			showSuccess("Import successful")
 
@@ -84,3 +88,15 @@ func _on_native_import_canceled():
 func _on_donate_button_pressed() -> void:
 	$VFlowContainer/DonateContainer/DonateButton.icon = filledHeartIcon
 	OS.shell_open("https://ko-fi.com/seppnel")
+
+
+func _on_close_friends_button_pressed() -> void:
+	get_parent().get_node("FriendsModal").hide()
+	self.show()
+
+
+func _on_friends_button_pressed() -> void:
+	self.hide()
+	var modal = get_parent().get_node("FriendsModal")
+	modal.update()
+	modal.show()
