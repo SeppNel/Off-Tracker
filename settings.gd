@@ -91,7 +91,7 @@ func _on_donate_button_pressed() -> void:
 
 
 func _on_close_friends_button_pressed() -> void:
-	get_parent().get_node("FriendsModal").hide()
+	%SettingsPage/FriendsModal.hide()
 	self.show()
 
 

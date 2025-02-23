@@ -75,6 +75,7 @@ func removeWantCard(id: int):
 	wantCards.erase(id)
 	
 func closeModal() -> void:
+	wantCards = []
 	self.hide()
 	%FriendsPage/PublishConfirmContainer.hide()
 	%FriendsPage/ScrollContainer/HFlowContainer.show()

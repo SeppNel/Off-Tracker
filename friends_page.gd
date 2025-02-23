@@ -70,6 +70,8 @@ func _on_code_button_pressed() -> void:
 
 func _on_create_request_completed(result, response_code, headers, body):
 	var my_fc = body.get_string_from_utf8()
+	if my_fc == "Error" or my_fc == "":
+		return
 	SaveManager.setFriendCode(int(my_fc))
 	get_parent().get_node("SettingsPage/Settings/VFlowContainer/FCContainer/FriendCodeLabel").text = "Friend Code: " + my_fc
 	$NoCodeAlert.hide()
@@ -78,6 +80,8 @@ func _on_create_request_completed(result, response_code, headers, body):
 
 func _on_add_button_pressed() -> void:
 	$ScrollContainer.scroll_vertical = 0
+	$ScrollContainer/AddModal/VFlowContainer/FcInput.text = ""
+	$ScrollContainer/AddModal/VFlowContainer/FNameInput.text = ""
 	$ScrollContainer/AddModal.show()
 
 

@@ -86,7 +86,6 @@ size_flags_vertical = 3
 
 [node name="HomePage" type="ScrollContainer" parent="DaddyDiv"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 3
@@ -789,7 +788,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 40
 placeholder_text = "Can be anything"
-virtual_keyboard_type = 2
 
 [node name="MarginTop" type="Control" parent="DaddyDiv/FriendsPage/ScrollContainer/AddModal/VFlowContainer"]
 process_mode = 4
@@ -893,13 +891,14 @@ theme_override_font_sizes/font_size = 50
 text = "Cancel"
 
 [node name="SettingsPage" type="ScrollContainer" parent="DaddyDiv"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
 [node name="Settings" type="VFlowContainer" parent="DaddyDiv/SettingsPage"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -974,6 +973,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="FriendsModal" type="PanelContainer" parent="DaddyDiv/SettingsPage"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
