@@ -203,3 +203,27 @@ static func getTradeableCards():
 		AND rarity > 0 and rarity < 6;")
 	
 	return db.query_result_by_reference
+	
+static func getTradeableCardsIds():
+	db.query("
+		SELECT id 
+		FROM cards 
+		WHERE rarity > 0 AND rarity < 6
+		AND pack in (1,2,3,4)
+
+		UNION
+
+		SELECT DISTINCT c.id
+		FROM cards c
+		JOIN card_packs cp ON c.id = cp.card_id
+		JOIN packs p ON cp.pack = p.id
+		JOIN collections col ON p.collection = col.id
+		WHERE col.id != 3
+		AND rarity > 0 and rarity < 6;")
+	
+	var result = db.query_result_by_reference
+	var id_array = []
+	for item in result:
+		id_array.append(item["id"])
+	
+	return id_array

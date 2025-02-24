@@ -6,29 +6,22 @@ var DbManager = preload("res://database.gd")
 const BASE_URL = "http://pertusa.myftp.org/.resources/php/off/"
 var wantCards = []
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_accept_publish_pressed() -> void:
 	var validRarities = wantCardsRarities()
 	var gotCards = SaveManager.getGotCards()
+	var tradeableCards = DbManager.getTradeableCardsIds()
 	var offerCards = []
 	
 	for card in gotCards:
+		if not int(card) in tradeableCards:
+			continue
+		
 		var count = gotCards[card]
 		if count > 1:
 			var rarity = DbManager.getCardRarity(int(card))
 			if rarity in validRarities:
 				offerCards.append(int(card))
 				
-	print(offerCards)
 	sendRestAPI(offerCards)
 	closeModal()
 

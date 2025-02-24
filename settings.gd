@@ -50,6 +50,7 @@ func _on_read_file_picked(temp_path: String, mime_type: String) -> void:
 			DirAccess.copy_absolute(temp_path, SaveManager.SAVE_PATH)
 			SaveManager.checkVersion()
 			%CardPage/CardList.update()
+			SaveManager.update()
 			showSuccess("Import successful")
 
 		file.close()

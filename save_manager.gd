@@ -9,9 +9,7 @@ static var m_secret: String = ""
 
 static func _static_init() -> void:
 	checkVersion()
-	m_friend_code = readFriendCode()
-	m_friends = readFriends()
-	m_secret = readSecret()
+	update()
 
 static func saveCard(id: int):
 	var sId = str(id)
@@ -199,3 +197,8 @@ static func getFriendName(fc: int) -> String:
 static func setSecret(s) -> void:
 	m_secret = s
 	save(getGotCards())
+	
+static func update() -> void:
+	m_friend_code = readFriendCode()
+	m_friends = readFriends()
+	m_secret = readSecret()
