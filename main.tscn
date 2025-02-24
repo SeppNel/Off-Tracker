@@ -837,7 +837,7 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(1080, 0)
 layout_mode = 2
 theme = ExtResource("3_4c0bm")
-text = "    Select up to 5 cards:"
+text = "    Select up to 6 cards:"
 
 [node name="CardList" type="HFlowContainer" parent="DaddyDiv/FriendsPage/ScrollContainer/PublishModal/VBoxContainer"]
 layout_mode = 2

@@ -7,6 +7,9 @@ const BASE_URL = "http://pertusa.myftp.org/.resources/php/off/"
 var wantCards = []
 
 func _on_accept_publish_pressed() -> void:
+	if wantCards.is_empty():
+		return
+		
 	var validRarities = wantCardsRarities()
 	var gotCards = SaveManager.getGotCards()
 	var tradeableCards = DbManager.getTradeableCardsIds()
@@ -58,7 +61,7 @@ func addWantCard(id: int) -> bool:
 		removeWantCard(id)
 		return true
 		
-	if wantCards.size() + 1 > 5:
+	if wantCards.size() + 1 > 6:
 		return false
 		
 	wantCards.append(id)
