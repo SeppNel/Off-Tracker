@@ -12,6 +12,15 @@ func clear():
 
 func loadFriends() -> void:
 	var friends = SaveManager.m_friends
+	
+	if friends.is_empty():
+		var label = Label.new()
+		label.text = "Nobody here but us chickens"
+		label.add_theme_font_size_override("font_size", 60)
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		$VFlowContainer.add_child(label)
+		return
+	
 	for friend in friends:
 		var panelCont = PanelContainer.new()
 		panelCont.add_theme_stylebox_override("panel", load("res://themes/manageFriendsPanel.tres"))

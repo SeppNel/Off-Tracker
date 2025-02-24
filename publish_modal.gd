@@ -75,4 +75,5 @@ func closeModal() -> void:
 	self.hide()
 	%FriendsPage/PublishConfirmContainer.hide()
 	%FriendsPage/ScrollContainer/HFlowContainer.show()
-	%FriendsPage/PublishContainer.show()
+	if SaveManager.m_friend_code != -1:
+		%FriendsPage/PublishContainer.show()
