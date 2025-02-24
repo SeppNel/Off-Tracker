@@ -3,7 +3,7 @@ define("ERROR_MSG", "Error");
 require_once("../lib/json_decode.php");
 require_once("../lib/json_encode.php");
 
-$USERS_PATH = "../../bd/off/users/";
+$USERS_PATH = "/home/steam/web_secrets/off/users/";
 $TRADES_PATH = "../../bd/off/trades/";
 
 function validateFriendCode($fc){

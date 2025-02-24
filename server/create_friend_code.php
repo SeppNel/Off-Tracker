@@ -1,6 +1,6 @@
 <?php
 define("ERROR_MSG", "Error");
-$BD_PATH = "../../bd/off/users/";
+$BD_PATH = "/home/steam/web_secrets/off/users/";
 
 if (!isset($_GET["secret"])) {
 	exit(ERROR_MSG);
