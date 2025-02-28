@@ -10,8 +10,12 @@ func _ready() -> void:
 		android_picker = Engine.get_singleton("GodotFilePicker")
 		android_picker.file_picked.connect(_on_read_file_picked)
 	
+	update()
+
+func update() -> void:
 	if SaveManager.m_friend_code != -1:
 		$VFlowContainer/FCContainer/FriendCodeLabel.text = "Friend Code: " + str(SaveManager.m_friend_code)
+	
 
 func _on_export_button_pressed() -> void:
 	var file = FileAccess.open(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/ptcgp_export.json", FileAccess.WRITE)  # Open file for writing
@@ -51,6 +55,11 @@ func _on_read_file_picked(temp_path: String, mime_type: String) -> void:
 			SaveManager.checkVersion()
 			%CardPage/CardList.update()
 			SaveManager.update()
+			self.update()
+			
+			if %FriendsPage/NoCodeAlert.visible and SaveManager.m_friend_code != -1:
+				%FriendsPage/NoCodeAlert.hide()
+			
 			showSuccess("Import successful")
 
 		file.close()
