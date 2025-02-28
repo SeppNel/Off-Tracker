@@ -176,6 +176,7 @@ static func readSecret() -> String:
 
 static func setFriendCode(fc: int) -> void:
 	m_friend_code = fc
+	addFriend(fc, "Myself")
 	save(getGotCards())
 
 static func addFriend(fc: int, name: String) -> void:
