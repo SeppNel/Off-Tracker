@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgpk4jp4t04l1"
-path="res://.godot/imported/Nidorina170.webp-04fcc68aa6b1aa8a251708f311b83c31.ctex"
+uid="uid://do31jd5kuin4d"
+path="res://.godot/imported/Nidorina167.webp-4a5278fb4fa7db9349a46e622e715e7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/cards/Nidorina170.webp"
-dest_files=["res://.godot/imported/Nidorina170.webp-04fcc68aa6b1aa8a251708f311b83c31.ctex"]
+source_file="res://img/cards/Nidorina167.webp"
+dest_files=["res://.godot/imported/Nidorina167.webp-4a5278fb4fa7db9349a46e622e715e7e.ctex"]
 
 [params]
 
