@@ -820,6 +820,7 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_fnsfe")
 script = ExtResource("25_1xfmc")
 
