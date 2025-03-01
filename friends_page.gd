@@ -49,6 +49,7 @@ func _on_fc_get_request_completed(result, response_code, headers, body):
 	%FriendsContainer.add_child(friend)
 	var marginTop = Control.new()
 	marginTop.custom_minimum_size = Vector2(1080, 50)
+	marginTop.MouseFilter = MOUSE_FILTER_IGNORE
 	%FriendsContainer.add_child(marginTop)
 
 func clear():

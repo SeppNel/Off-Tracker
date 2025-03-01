@@ -1,7 +1,7 @@
 extends ScrollContainer
 
-var SaveManager = preload("res://save_manager.gd")
-var DbManager = preload("res://database.gd")
+const SaveManager = preload("res://save_manager.gd")
+const DbManager = preload("res://database.gd")
 
 var gotCards = []
 var cardRarity_cache = {}
@@ -17,7 +17,8 @@ func _ready() -> void:
 	$Home/GeneticApex/Packs/PikachuPack,
 	$Home/MythicalIsland/Packs/MewPack,
 	$Home/SpaceTime/Packs/DialgaPack,
-	$Home/SpaceTime/Packs/PalkiaPack
+	$Home/SpaceTime/Packs/PalkiaPack,
+	$Home/TriumphantLight/Packs/ArceusPack
 	]
 	updateUi()
 	
@@ -31,14 +32,14 @@ func updateUi():
 
 func initCardsOfRarity():
 	cardsOfRarity = {
-	1 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0},
-	2 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0},
-	3 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0},
-	4 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0},
-	5 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0},
-	6 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0},
-	7 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0},
-	8 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0},
+	1 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0},
+	2 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0},
+	3 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0},
+	4 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0},
+	5 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0},
+	6 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0},
+	7 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0},
+	8 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0},
 	}
 			
 func countCardsOfRarity():

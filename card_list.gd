@@ -1,9 +1,14 @@
 extends HFlowContainer
 
-var DbManager = preload("res://database.gd")
-var CardScene = preload("res://card.tscn")
-var SaveManager = preload("res://save_manager.gd")
+# Static includes
+const DbManager = preload("res://database.gd")
+const CardScene = preload("res://card.tscn")
+const SaveManager = preload("res://save_manager.gd")
 
+# Node references
+var r_collectionSelect
+
+# Member variables
 var m_onlyMissing: bool = false
 var m_collectionFilter: int = 0
 var m_order: int = 0
@@ -24,6 +29,7 @@ func preload_cardImages(cards):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	r_collectionSelect = $Controls/Level1/CollectionContainer/CollectionSelect
 	var start = Time.get_ticks_msec()
 	preload_cardImages(DbManager.getAllCards())
 	loadCards()
@@ -108,6 +114,11 @@ func loadCards():
 		var promoCards = DbManager.getPromoCards()
 		addCollectionTitle("res://img/promo_a.webp")
 		addCollectionCards(promoCards, gotCards)
+		
+	if m_collectionFilter == 5 or m_collectionFilter == 0:
+		var tlCards = DbManager.getTriumphantLightCards()
+		addCollectionTitle("res://img/triumphant_light.webp")
+		addCollectionCards(tlCards, gotCards)
 
 func clearCardList():
 	for child in get_children():
@@ -119,7 +130,7 @@ func _on_only_missing_check_pressed() -> void:
 	update()
 
 func _on_collection_select_item_selected(index: int) -> void:
-	m_collectionFilter = index
+	m_collectionFilter = r_collectionSelect.get_item_id(index)
 	update()
 
 func _on_order_select_item_selected(index: int) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://btvagxoog6kxd"]
+[gd_scene load_steps=42 format=3 uid="uid://btvagxoog6kxd"]
 
 [ext_resource type="Texture2D" uid="uid://c5fdp2owmfgit" path="res://img/pokemon.webp" id="1_45rvw"]
 [ext_resource type="Script" path="res://home_page.gd" id="1_72cy4"]
@@ -23,6 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://2ysbdxy4c8yg" path="res://img/packs/dialga.webp" id="16_24lec"]
 [ext_resource type="Script" path="res://packs/palkia_pack.gd" id="16_cqi2a"]
 [ext_resource type="Texture2D" uid="uid://ddcg8uahry7em" path="res://img/packs/palkia.webp" id="18_8d08n"]
+[ext_resource type="Texture2D" uid="uid://dystwyoh0358r" path="res://img/triumphant_light.webp" id="19_0thj2"]
+[ext_resource type="Script" path="res://arceus_pack.gd" id="20_db15c"]
+[ext_resource type="Texture2D" uid="uid://boawury6jclwf" path="res://img/packs/arceus.webp" id="20_ihgxh"]
 [ext_resource type="Script" path="res://settings.gd" id="22_7rxlr"]
 [ext_resource type="Script" path="res://search_modal.gd" id="23_3jxyi"]
 [ext_resource type="Texture2D" uid="uid://d0ubk1htgggof" path="res://img/donate.webp" id="23_4gfh8"]
@@ -211,7 +214,7 @@ text = "12.454%"
 horizontal_alignment = 1
 
 [node name="MarginTop2" type="Control" parent="DaddyDiv/HomePage/Home"]
-custom_minimum_size = Vector2(1080, 100)
+custom_minimum_size = Vector2(1080, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -270,7 +273,7 @@ text = "12.454%"
 horizontal_alignment = 1
 
 [node name="MarginTop3" type="Control" parent="DaddyDiv/HomePage/Home"]
-custom_minimum_size = Vector2(1080, 100)
+custom_minimum_size = Vector2(1080, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -357,7 +360,66 @@ text = "12.454%"
 horizontal_alignment = 1
 
 [node name="MarginTop4" type="Control" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="TriumphantLight" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+
+[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/TriumphantLight"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/TriumphantLight/Title"]
+custom_minimum_size = Vector2(400, 136)
+layout_mode = 2
+texture = ExtResource("19_0thj2")
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/TriumphantLight"]
+custom_minimum_size = Vector2(1080, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/TriumphantLight"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="ArceusPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("20_db15c")
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs/ArceusPack"]
+layout_mode = 2
+texture = ExtResource("20_ihgxh")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs/ArceusPack"]
 custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs/ArceusPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs/ArceusPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="MarginTop5" type="Control" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 10)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -427,7 +489,7 @@ theme = ExtResource("4_3d3hq")
 alignment = 1
 selected = 0
 fit_to_longest_item = false
-item_count = 5
+item_count = 6
 popup/item_0/text = "All"
 popup/item_1/text = "Genetic Apex"
 popup/item_1/id = 1
@@ -435,8 +497,10 @@ popup/item_2/text = "Mythical Island"
 popup/item_2/id = 2
 popup/item_3/text = "Space-Time Smackdown"
 popup/item_3/id = 3
-popup/item_4/text = "Promo"
-popup/item_4/id = 4
+popup/item_4/text = "Triumphant Light"
+popup/item_4/id = 5
+popup/item_5/text = "Promo"
+popup/item_5/id = 4
 
 [node name="OrderContainer" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList/Controls/Level1"]
 layout_mode = 2
@@ -720,6 +784,7 @@ process_mode = 4
 custom_minimum_size = Vector2(1080, 50)
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="AddContainer" type="HBoxContainer" parent="DaddyDiv/FriendsPage/ScrollContainer/HFlowContainer"]
 custom_minimum_size = Vector2(0, 100)
@@ -745,6 +810,7 @@ process_mode = 4
 custom_minimum_size = Vector2(1080, 50)
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="FriendsContainer" type="VBoxContainer" parent="DaddyDiv/FriendsPage/ScrollContainer/HFlowContainer"]
 unique_name_in_owner = true
@@ -833,6 +899,7 @@ process_mode = 4
 custom_minimum_size = Vector2(1080, 30)
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="DaddyDiv/FriendsPage/ScrollContainer/PublishModal/VBoxContainer"]
 custom_minimum_size = Vector2(1080, 0)
