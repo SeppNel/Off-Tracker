@@ -6,6 +6,9 @@ const FriendScene = preload("res://friend.tscn")
 
 const BASE_URL = "http://pertusa.myftp.org/.resources/php/off/"
 
+var m_onlyMissing: bool = false
+var m_gotCards: Array[int]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if SaveManager.m_friend_code == -1:
@@ -16,6 +19,7 @@ func _ready() -> void:
 
 func update() -> void:
 	clear()
+	m_gotCards = SaveManager.getGotCardsIds()
 	fillFriends()
 
 func fillFriends() -> void:
@@ -34,22 +38,26 @@ func _on_fc_get_request_completed(result, response_code, headers, body):
 		print("Friend error")
 		return
 	var json = JSON.parse_string(content)
-	var fc = int(json["friend_code"])
-	var name = SaveManager.getFriendName(fc)
+	var fc: int = json["friend_code"]
+	var name: String = SaveManager.getFriendName(fc)
 	
 	var friend = FriendScene.instantiate()
 	friend.setName(name + " (" + str(fc) + ")")
 	
-	for card in json["wants"]:
+	for card: int in json["wants"]:
 		friend.addMissingCard(card)
 		
-	for card in json["has"]:
-		friend.addOfferCard(card)
+	for card: int in json["has"]:
+		if m_onlyMissing:
+			if card not in m_gotCards:
+				friend.addOfferCard(card)
+		else:
+			friend.addOfferCard(card)
 	
 	%FriendsContainer.add_child(friend)
 	var marginTop = Control.new()
 	marginTop.custom_minimum_size = Vector2(1080, 50)
-	marginTop.MouseFilter = MOUSE_FILTER_IGNORE
+	marginTop.mouse_filter = MOUSE_FILTER_IGNORE
 	%FriendsContainer.add_child(marginTop)
 
 func clear():
@@ -110,3 +118,8 @@ func _on_publish_button_pressed() -> void:
 	
 	$ScrollContainer/PublishModal.show()
 	%FriendsPage/PublishConfirmContainer.show()
+
+
+func _on_only_missing_check_pressed() -> void:
+	m_onlyMissing = !m_onlyMissing
+	update()

@@ -11,7 +11,7 @@ static func _static_init() -> void:
 	checkVersion()
 	update()
 
-static func saveCard(id: int):
+static func saveCard(id: int) -> void:
 	var sId = str(id)
 	var gotCards = getGotCards()
 	if gotCards.has(sId):
@@ -21,7 +21,7 @@ static func saveCard(id: int):
 	
 	save(gotCards)
 	
-static func removeSavedCard(id: int):
+static func removeSavedCard(id: int) -> void:
 	var sId = str(id)
 	var gotCards = getGotCards()
 	gotCards[sId] -= 1
@@ -49,7 +49,7 @@ static func getGotCards():
 
 	return data["got_cards"]
 
-static func getGotCardsIds():
+static func getGotCardsIds() -> Array[int]:
 	if not FileAccess.file_exists(SAVE_PATH):
 		return []# Error! We don't have a save to load.
 
@@ -66,7 +66,7 @@ static func getGotCardsIds():
 	# Get the data from the JSON object
 	var data = json.get_data()
 
-	var gotCards = []
+	var gotCards: Array[int] = []
 	for card_id in data["got_cards"].keys():
 		gotCards.append(int(card_id))
 
@@ -79,7 +79,7 @@ static func getSaveJson():
 	var save_file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	return save_file.get_line()
 	
-static func checkVersion():
+static func checkVersion() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
 		return #Error! We don't have a save
 
@@ -98,7 +98,7 @@ static func checkVersion():
 	if not data.has("version"):
 		migrateSave()
 
-static func migrateSave():
+static func migrateSave() -> void:
 	var save_file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	var json_string = save_file.get_line()
 
@@ -117,7 +117,7 @@ static func migrateSave():
 	for card in data["got_cards"]:
 		saveCard(card)
 
-static func save(gotCards):
+static func save(gotCards) -> void:
 	var save_dict = {
 		"got_cards" : gotCards,
 		"friend_code": m_friend_code,
@@ -142,7 +142,7 @@ static func readFriendCode() -> int:
 		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
 
 	var data = json.get_data()
-	return data["friend_code"]
+	return int(data["friend_code"])
 	
 static func readFriends() -> Dictionary:
 	if not FileAccess.file_exists(SAVE_PATH):

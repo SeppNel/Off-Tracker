@@ -805,6 +805,30 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
 text = "Add friend"
 
+[node name="OnlyContainer" type="HBoxContainer" parent="DaddyDiv/FriendsPage/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Margin" type="Control" parent="DaddyDiv/FriendsPage/ScrollContainer/HFlowContainer/OnlyContainer"]
+process_mode = 4
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="OnlyMissingCheck" type="CheckBox" parent="DaddyDiv/FriendsPage/ScrollContainer/HFlowContainer/OnlyContainer"]
+layout_mode = 2
+theme_override_icons/checked = ExtResource("2_347lu")
+theme_override_icons/unchecked = ExtResource("3_q3pvi")
+
+[node name="Label" type="Label" parent="DaddyDiv/FriendsPage/ScrollContainer/HFlowContainer/OnlyContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+theme_override_font_sizes/font_size = 40
+text = "  Only show missing cards on offers"
+
 [node name="MarginTop2" type="Control" parent="DaddyDiv/FriendsPage/ScrollContainer/HFlowContainer"]
 process_mode = 4
 custom_minimum_size = Vector2(1080, 50)
@@ -1104,6 +1128,7 @@ text = "Settings"
 [connection signal="pressed" from="DaddyDiv/CardPage/SearchModal/VFlowContainer/HBoxContainer/CancelSearch" to="DaddyDiv/CardPage/SearchModal" method="_on_cancel_search_pressed"]
 [connection signal="pressed" from="DaddyDiv/CardPage/SearchModal/VFlowContainer/HBoxContainer/ClearSearch" to="DaddyDiv/CardPage/SearchModal" method="_on_clear_search_pressed"]
 [connection signal="pressed" from="DaddyDiv/FriendsPage/ScrollContainer/HFlowContainer/AddContainer/AddButton" to="DaddyDiv/FriendsPage" method="_on_add_button_pressed"]
+[connection signal="pressed" from="DaddyDiv/FriendsPage/ScrollContainer/HFlowContainer/OnlyContainer/OnlyMissingCheck" to="DaddyDiv/FriendsPage" method="_on_only_missing_check_pressed"]
 [connection signal="pressed" from="DaddyDiv/FriendsPage/ScrollContainer/AddModal/VFlowContainer/HBoxContainer/AcceptAdd" to="DaddyDiv/FriendsPage" method="_on_accept_add_pressed"]
 [connection signal="pressed" from="DaddyDiv/FriendsPage/ScrollContainer/AddModal/VFlowContainer/HBoxContainer/CancelAdd" to="DaddyDiv/FriendsPage" method="_on_cancel_add_pressed"]
 [connection signal="pressed" from="DaddyDiv/FriendsPage/NoCodeAlert/CodeButton" to="DaddyDiv/FriendsPage" method="_on_code_button_pressed"]

@@ -14,6 +14,9 @@ func addMissingCard(id: int) -> void:
 	addCardToList(card, $MissingContainer/Cards)
 	
 func addOfferCard(id: int) -> void:
+	$OfferContainer/NoOffer.hide()
+	$OfferContainer/Cards.show()
+	
 	var card = DbManager.getCard(id)
 	addCardToList(card, $OfferContainer/Cards)
 

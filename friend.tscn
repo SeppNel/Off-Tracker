@@ -49,4 +49,13 @@ horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
 [node name="Cards" type="HBoxContainer" parent="OfferContainer"]
+visible = false
 layout_mode = 2
+
+[node name="NoOffer" type="Label" parent="OfferContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 40
+text = "No cards to offer :("
+horizontal_alignment = 1
