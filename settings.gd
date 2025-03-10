@@ -1,6 +1,6 @@
 extends VFlowContainer
 
-var SaveManager = preload("res://save_manager.gd")
+var SaveManager = preload("res://static/save_manager.gd")
 var android_picker
 var filedialog
 var filledHeartIcon = preload("res://img/donate_filled.webp")

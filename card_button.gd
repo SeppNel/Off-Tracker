@@ -1,6 +1,6 @@
 extends TextureButton
 
-var SaveManager = preload("res://save_manager.gd")
+var SaveManager = preload("res://static/save_manager.gd")
 
 var PublishModal
 

@@ -1,6 +1,6 @@
 extends PanelContainer
 
-const SaveManager = preload("res://save_manager.gd")
+const SaveManager = preload("res://static/save_manager.gd")
 
 func update():
 	clear()

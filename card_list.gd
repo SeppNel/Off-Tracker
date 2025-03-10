@@ -1,9 +1,9 @@
 extends HFlowContainer
 
 # Static includes
-const DbManager = preload("res://database.gd")
+const DbManager = preload("res://static/database.gd")
 const CardScene = preload("res://card.tscn")
-const SaveManager = preload("res://save_manager.gd")
+const SaveManager = preload("res://static/save_manager.gd")
 
 # Node references
 var r_collectionSelect

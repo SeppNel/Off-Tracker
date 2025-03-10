@@ -1,7 +1,7 @@
 extends PanelContainer
 
-const SaveManager = preload("res://save_manager.gd")
-var DbManager = preload("res://database.gd")
+const SaveManager = preload("res://static/save_manager.gd")
+var DbManager = preload("res://static/database.gd")
 
 const BASE_URL = "http://pertusa.myftp.org/.resources/php/off/"
 var wantCards = []

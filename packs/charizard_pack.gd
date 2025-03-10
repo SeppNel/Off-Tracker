@@ -1,7 +1,7 @@
 extends VBoxContainer
 
-var DbManager = preload("res://database.gd")
-var SaveManager = preload("res://save_manager.gd")
+var DbManager = preload("res://static/database.gd")
+var SaveManager = preload("res://static/save_manager.gd")
 
 const PACK_ID = 4
 const CARD_4_RATES = [0.9, 0.05, 0.01666, 0.02572, 0.005, 0.00222, 0.0004]

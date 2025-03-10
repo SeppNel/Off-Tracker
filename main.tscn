@@ -24,7 +24,7 @@
 [ext_resource type="Script" path="res://packs/palkia_pack.gd" id="16_cqi2a"]
 [ext_resource type="Texture2D" uid="uid://ddcg8uahry7em" path="res://img/packs/palkia.webp" id="18_8d08n"]
 [ext_resource type="Texture2D" uid="uid://dystwyoh0358r" path="res://img/triumphant_light.webp" id="19_0thj2"]
-[ext_resource type="Script" path="res://arceus_pack.gd" id="20_db15c"]
+[ext_resource type="Script" path="res://packs/arceus_pack.gd" id="20_5ck2r"]
 [ext_resource type="Texture2D" uid="uid://boawury6jclwf" path="res://img/packs/arceus.webp" id="20_ihgxh"]
 [ext_resource type="Script" path="res://settings.gd" id="22_7rxlr"]
 [ext_resource type="Script" path="res://search_modal.gd" id="23_3jxyi"]
@@ -393,7 +393,7 @@ alignment = 1
 [node name="ArceusPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs"]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("20_db15c")
+script = ExtResource("20_5ck2r")
 
 [node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs/ArceusPack"]
 layout_mode = 2

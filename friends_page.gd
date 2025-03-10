@@ -1,7 +1,7 @@
 extends VBoxContainer
 
-const SaveManager = preload("res://save_manager.gd")
-const UuidManager = preload('res://uuid.gd')
+const SaveManager = preload("res://static/save_manager.gd")
+const UuidManager = preload('res://static/uuid.gd')
 const FriendScene = preload("res://friend.tscn")
 
 const BASE_URL = "http://pertusa.myftp.org/.resources/php/off/"

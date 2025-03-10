@@ -1,7 +1,7 @@
 extends ScrollContainer
 
-const SaveManager = preload("res://save_manager.gd")
-const DbManager = preload("res://database.gd")
+const SaveManager = preload("res://static/save_manager.gd")
+const DbManager = preload("res://static/database.gd")
 
 var gotCards = []
 var cardRarity_cache = {}
