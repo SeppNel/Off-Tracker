@@ -11,12 +11,10 @@ static func _static_init() -> void:
 	db.verbosity_level = verbosity_level
 	db.read_only = true
 	db.open_db()
-
+	
 static func getAllCards():
-	var select_condition : String = ""
-	var selected_array : Array = db.select_rows("cards", select_condition, ["*"])
-
-	return selected_array
+	db.query("SELECT * FROM cards;")
+	return db.query_result_by_reference
 	
 static func getGeneticApexCards(order: String = "c.id ASC"):
 	db.query("

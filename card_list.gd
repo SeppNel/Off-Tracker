@@ -30,11 +30,8 @@ func preload_cardImages(cards):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	r_collectionSelect = $Controls/Level1/CollectionContainer/CollectionSelect
-	var start = Time.get_ticks_msec()
 	preload_cardImages(DbManager.getAllCards())
 	loadCards()
-	var end = Time.get_ticks_msec()
-	print("CardPage load: ", end - start, " ms")
 	
 func update() -> void:
 	clearCardList()
@@ -65,7 +62,7 @@ func addCollectionTitle(img: String):
 	var title = TextureRect.new()
 	title.texture = load(img)
 	titleCont.add_child(title)
-	add_child(titleCont)
+	call_deferred("add_child", titleCont)
 
 func addCardToList(card, gotCards):
 	var cs = CardScene.instantiate()
@@ -73,14 +70,15 @@ func addCardToList(card, gotCards):
 	var img_path = "res://img/cards/" + card.image
 	card_data.id = card.id
 	
-	if gotCards.has(str(card.id)):
-		cs.get_node("Card/NotGotOverlay").hide()
+	var str_id = str(card.id)
+	if gotCards.has(str_id):
+		card_data.get_node("NotGotOverlay").hide()
 		card_data.got = true
-		card_data.set_count(gotCards[str(card.id)])
+		card_data.set_count(gotCards[str_id])
 
 	#Styling
-	cs.get_node("Card/CardButton").texture_normal = m_cardImgCache[img_path]
-	add_child(cs)
+	card_data.get_node("CardButton").texture_normal = m_cardImgCache[img_path]
+	call_deferred("add_child", cs)
 	
 
 func addCollectionCards(cardList, gotCards):
@@ -95,6 +93,7 @@ func addCollectionCards(cardList, gotCards):
 func loadCards():
 	m_searchState = false
 	var gotCards = SaveManager.getGotCards()
+
 	if m_collectionFilter == 1 or m_collectionFilter == 0:
 		var genApexCards = DbManager.getGeneticApexCards(parse_order())
 		addCollectionTitle("res://img/genetic_apex.webp")
