@@ -108,16 +108,16 @@ func loadCards():
 		var spaceTimeCards = DbManager.getSpaceTimeCards(parse_order())
 		addCollectionTitle("res://img/space_time_smackdown.webp")
 		addCollectionCards(spaceTimeCards, gotCards)
-			
-	if m_collectionFilter == 4 or m_collectionFilter == 0:
-		var promoCards = DbManager.getPromoCards()
-		addCollectionTitle("res://img/promo_a.webp")
-		addCollectionCards(promoCards, gotCards)
 		
 	if m_collectionFilter == 5 or m_collectionFilter == 0:
 		var tlCards = DbManager.getTriumphantLightCards(parse_order())
 		addCollectionTitle("res://img/triumphant_light.webp")
 		addCollectionCards(tlCards, gotCards)
+	
+	if m_collectionFilter == 4 or m_collectionFilter == 0:
+		var promoCards = DbManager.getPromoCards()
+		addCollectionTitle("res://img/promo_a.webp")
+		addCollectionCards(promoCards, gotCards)
 
 func clearCardList():
 	for child in get_children():
