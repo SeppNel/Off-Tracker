@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://btvagxoog6kxd"]
+[gd_scene load_steps=45 format=3 uid="uid://btvagxoog6kxd"]
 
 [ext_resource type="Texture2D" uid="uid://c5fdp2owmfgit" path="res://img/pokemon.webp" id="1_45rvw"]
 [ext_resource type="Script" path="res://home_page.gd" id="1_72cy4"]
@@ -26,12 +26,15 @@
 [ext_resource type="Texture2D" uid="uid://dystwyoh0358r" path="res://img/triumphant_light.webp" id="19_0thj2"]
 [ext_resource type="Script" path="res://packs/arceus_pack.gd" id="20_5ck2r"]
 [ext_resource type="Texture2D" uid="uid://boawury6jclwf" path="res://img/packs/arceus.webp" id="20_ihgxh"]
+[ext_resource type="Texture2D" uid="uid://cyopws0jghl1q" path="res://img/shining_revelry.webp" id="22_0hve6"]
 [ext_resource type="Script" path="res://settings.gd" id="22_7rxlr"]
+[ext_resource type="Script" path="res://packs/shining_pack.gd" id="22_nmi2e"]
 [ext_resource type="Script" path="res://search_modal.gd" id="23_3jxyi"]
 [ext_resource type="Texture2D" uid="uid://d0ubk1htgggof" path="res://img/donate.webp" id="23_4gfh8"]
 [ext_resource type="StyleBox" uid="uid://bay7lpvne6o2x" path="res://themes/donate.tres" id="23_nfep2"]
 [ext_resource type="StyleBox" uid="uid://cpid8ybowndxq" path="res://themes/donate_hover.tres" id="24_7pxmk"]
 [ext_resource type="Script" path="res://friends_page.gd" id="24_ngodf"]
+[ext_resource type="Texture2D" uid="uid://c1wjm3o3a67te" path="res://img/packs/shining-revelry.webp" id="24_y2cia"]
 [ext_resource type="Script" path="res://publish_modal.gd" id="25_1xfmc"]
 [ext_resource type="Script" path="res://publish_card_list.gd" id="25_utdwa"]
 [ext_resource type="Script" path="res://manage_friends.gd" id="31_oj3rj"]
@@ -419,6 +422,65 @@ text = "12.454%"
 horizontal_alignment = 1
 
 [node name="MarginTop5" type="Control" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ShiningRevelry" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+
+[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/ShiningRevelry"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Title"]
+custom_minimum_size = Vector2(328, 152)
+layout_mode = 2
+texture = ExtResource("22_0hve6")
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/ShiningRevelry"]
+custom_minimum_size = Vector2(1080, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/ShiningRevelry"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="ShiningPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("22_nmi2e")
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Packs/ShiningPack"]
+layout_mode = 2
+texture = ExtResource("24_y2cia")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Packs/ShiningPack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Packs/ShiningPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Packs/ShiningPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="MarginTop6" type="Control" parent="DaddyDiv/HomePage/Home"]
 custom_minimum_size = Vector2(1080, 10)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -487,20 +549,22 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme = ExtResource("4_3d3hq")
 alignment = 1
-selected = 0
+selected = 1
 fit_to_longest_item = false
-item_count = 6
+item_count = 7
 popup/item_0/text = "All"
-popup/item_1/text = "Genetic Apex"
-popup/item_1/id = 1
-popup/item_2/text = "Mythical Island"
-popup/item_2/id = 2
+popup/item_1/text = "Shining Revelry"
+popup/item_1/id = 6
+popup/item_2/text = "Triumphant Light"
+popup/item_2/id = 5
 popup/item_3/text = "Space-Time Smackdown"
 popup/item_3/id = 3
-popup/item_4/text = "Triumphant Light"
-popup/item_4/id = 5
-popup/item_5/text = "Promo"
-popup/item_5/id = 4
+popup/item_4/text = "Mythical Island"
+popup/item_4/id = 2
+popup/item_5/text = "Genetic Apex"
+popup/item_5/id = 1
+popup/item_6/text = "Promo"
+popup/item_6/id = 4
 
 [node name="OrderContainer" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList/Controls/Level1"]
 layout_mode = 2

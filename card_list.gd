@@ -10,7 +10,7 @@ var r_collectionSelect
 
 # Member variables
 var m_onlyMissing: bool = false
-var m_collectionFilter: int = 0
+var m_collectionFilter: int
 var m_order: int = 0
 var m_cardImgCache = {}
 
@@ -30,6 +30,7 @@ func preload_cardImages(cards):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	r_collectionSelect = $Controls/Level1/CollectionContainer/CollectionSelect
+	m_collectionFilter = r_collectionSelect.get_item_id(1)
 	preload_cardImages(DbManager.getAllCards())
 	loadCards()
 	
@@ -112,6 +113,11 @@ func loadCards():
 	if m_collectionFilter == 5 or m_collectionFilter == 0:
 		var tlCards = DbManager.getTriumphantLightCards(parse_order())
 		addCollectionTitle("res://img/triumphant_light.webp")
+		addCollectionCards(tlCards, gotCards)
+		
+	if m_collectionFilter == 6 or m_collectionFilter == 0:
+		var tlCards = DbManager.getShiningRevelryCards(parse_order())
+		addCollectionTitle("res://img/shining_revelry.webp")
 		addCollectionCards(tlCards, gotCards)
 	
 	if m_collectionFilter == 4 or m_collectionFilter == 0:
