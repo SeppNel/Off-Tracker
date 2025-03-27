@@ -56,7 +56,7 @@ func parse_order() -> String:
 func addCollectionTitle(img: String):
 	var marginTop = Control.new()
 	marginTop.custom_minimum_size = Vector2(1080, 20)
-	add_child(marginTop)
+	call_deferred("add_child", marginTop)
 	var titleCont = CenterContainer.new()
 	titleCont.custom_minimum_size = Vector2(1080, 200)
 	var title = TextureRect.new()
