@@ -5,8 +5,8 @@ var SaveManager = preload("res://static/save_manager.gd")
 
 const PACK_ID = 8
 # This numbers are inaccurate but they are close enough for now
-const CARD_4_RATES = [0.8888, 0.0495, 0.0162, 0.0258, 0.0051, 0.0022, 0.007, 0.0032, 0.0004]
-const CARD_5_RATES = [0.5588, 0.198, 0.0666, 0.1026, 0.0204, 0.0089, 0.028, 0.0132, 0.0016]
+const CARD_4_RATES = [0.89, 0.04952, 0.01666, 0.02572, 0.005, 0.00222, 0.00714, 0.00333, 0.0004]
+const CARD_5_RATES = [0.56, 0.1981, 0.06664, 0.10288, 0.02, 0.00888, 0.02857, 0.01333, 0.0016]
 
 var gotCards = []
 
