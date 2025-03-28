@@ -1104,6 +1104,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Import Data"
 
+[node name="FAQContainer" type="CenterContainer" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 200)
+layout_mode = 2
+
+[node name="FAQButton" type="Button" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer/FAQContainer"]
+custom_minimum_size = Vector2(900, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "FAQ"
+
 [node name="DonateContainer" type="CenterContainer" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer"]
 custom_minimum_size = Vector2(1080, 200)
 layout_mode = 2
@@ -1141,6 +1151,205 @@ layout_mode = 2
 alignment = 1
 
 [node name="CloseFriendsButton" type="Button" parent="DaddyDiv/SettingsPage/FriendsModal"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "  X  "
+
+[node name="FAQModal" type="PanelContainer" parent="DaddyDiv/SettingsPage"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_force_pass_scroll_events = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_fnsfe")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DaddyDiv/SettingsPage/FAQModal"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VFlowContainer" type="VBoxContainer" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="MarginTop4" type="Control" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Entry1" type="VBoxContainer" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer"]
+layout_mode = 2
+
+[node name="Q" type="Label" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer/Entry1"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.603922, 0, 0, 0.54902)
+theme_override_constants/line_spacing = -5
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 6
+theme_override_font_sizes/font_size = 55
+text = "Q: ¿What does the percentage under a pack mean in the Home Screen?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer/Entry1"]
+custom_minimum_size = Vector2(1080, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="A" type="Label" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer/Entry1"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -5
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 50
+text = "A: The chance for a new card to appear"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginTop3" type="Control" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Entry4" type="VBoxContainer" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer"]
+layout_mode = 2
+
+[node name="Q" type="Label" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer/Entry4"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.603922, 0, 0, 0.54902)
+theme_override_constants/line_spacing = -5
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 6
+theme_override_font_sizes/font_size = 55
+text = "Q: ¿How do I decrease the card count?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer/Entry4"]
+custom_minimum_size = Vector2(1080, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="A" type="Label" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer/Entry4"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -5
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 50
+text = "A: Tap and hold the card"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Entry2" type="VBoxContainer" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer"]
+layout_mode = 2
+
+[node name="Q" type="Label" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer/Entry2"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.603922, 0, 0, 0.54902)
+theme_override_constants/line_spacing = -5
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 6
+theme_override_font_sizes/font_size = 55
+text = "Q: ¿How does the friend thing work?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer/Entry2"]
+custom_minimum_size = Vector2(1080, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="A" type="Label" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer/Entry2"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -5
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 50
+text = "A: You can publish up to 6 cards that you want and automatically cards of the same rarity that you have duplicates of will be added to the request as offers. Once you publish your request anyone that adds your Friend Code will be able to see it."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginTop2" type="Control" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Entry3" type="VBoxContainer" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer"]
+layout_mode = 2
+
+[node name="Q" type="Label" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer/Entry3"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.603922, 0, 0, 0.54902)
+theme_override_constants/line_spacing = -5
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 6
+theme_override_font_sizes/font_size = 55
+text = "Q: I got a new card and my request didn't update!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer/Entry3"]
+custom_minimum_size = Vector2(1080, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="A" type="Label" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer/Entry3"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -5
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 50
+text = "A: We belive that you should be in control of what and when you send data to the server. For that reason your card request won't update automatically, leaving it up to you to decide when to update it."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginTop5" type="Control" parent="DaddyDiv/SettingsPage/FAQModal/ScrollContainer/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="CloseFAQButton" type="Button" parent="DaddyDiv/SettingsPage/FAQModal"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -1195,8 +1404,10 @@ text = "Settings"
 [connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/FriendsContainer/FriendsButton" to="DaddyDiv/SettingsPage/Settings" method="_on_friends_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/ExportContainer/ExportButton" to="DaddyDiv/SettingsPage/Settings" method="_on_export_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/ImportContainer/ImportButton" to="DaddyDiv/SettingsPage/Settings" method="_on_import_button_pressed"]
+[connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/FAQContainer/FAQButton" to="DaddyDiv/SettingsPage/Settings" method="_on_faq_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/DonateContainer/DonateButton" to="DaddyDiv/SettingsPage/Settings" method="_on_donate_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/FriendsModal/CloseFriendsButton" to="DaddyDiv/SettingsPage/Settings" method="_on_close_friends_button_pressed"]
+[connection signal="pressed" from="DaddyDiv/SettingsPage/FAQModal/CloseFAQButton" to="DaddyDiv/SettingsPage/Settings" method="_on_close_faq_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/TabBar/Home" to="DaddyDiv/TabBar" method="_on_home_pressed"]
 [connection signal="pressed" from="DaddyDiv/TabBar/Cards" to="DaddyDiv/TabBar" method="_on_cards_pressed"]
 [connection signal="pressed" from="DaddyDiv/TabBar/Friends" to="DaddyDiv/TabBar" method="_on_friends_pressed"]

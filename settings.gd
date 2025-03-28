@@ -110,3 +110,13 @@ func _on_friends_button_pressed() -> void:
 	var modal = get_parent().get_node("FriendsModal")
 	modal.update()
 	modal.show()
+
+
+func _on_faq_button_pressed() -> void:
+	self.hide()
+	%SettingsPage/FAQModal.show()
+
+
+func _on_close_faq_button_pressed() -> void:
+	%SettingsPage/FAQModal.hide()
+	self.show()
