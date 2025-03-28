@@ -107,6 +107,263 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
+[node name="ShiningRevelry" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/ShiningRevelry"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Title"]
+custom_minimum_size = Vector2(328, 152)
+layout_mode = 2
+texture = ExtResource("22_0hve6")
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/ShiningRevelry"]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/ShiningRevelry"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="ShiningPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("22_nmi2e")
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Packs/ShiningPack"]
+layout_mode = 2
+texture = ExtResource("24_y2cia")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Packs/ShiningPack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Packs/ShiningPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Packs/ShiningPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="TriumphantLight" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/TriumphantLight"]
+custom_minimum_size = Vector2(0, 153)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/TriumphantLight/Title"]
+custom_minimum_size = Vector2(400, 136)
+layout_mode = 2
+texture = ExtResource("19_0thj2")
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/TriumphantLight"]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/TriumphantLight"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="ArceusPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("20_5ck2r")
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs/ArceusPack"]
+layout_mode = 2
+texture = ExtResource("20_ihgxh")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs/ArceusPack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs/ArceusPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs/ArceusPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="MarginTop3" type="Control" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="SpaceTime" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+
+[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/SpaceTime"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/SpaceTime/Title"]
+custom_minimum_size = Vector2(400, 136)
+layout_mode = 2
+texture = ExtResource("14_jfb4s")
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/SpaceTime"]
+custom_minimum_size = Vector2(1080, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/SpaceTime"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="DialgaPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("14_oadtb")
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/DialgaPack"]
+layout_mode = 2
+texture = ExtResource("16_24lec")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/DialgaPack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/DialgaPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/DialgaPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="PalkiaPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("16_cqi2a")
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/PalkiaPack"]
+layout_mode = 2
+texture = ExtResource("18_8d08n")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/PalkiaPack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/PalkiaPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/PalkiaPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="MarginTop4" type="Control" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="MythicalIsland" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+
+[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/MythicalIsland"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/MythicalIsland/Title"]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 2
+texture = ExtResource("11_awswk")
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/MythicalIsland"]
+custom_minimum_size = Vector2(1080, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/MythicalIsland"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="MewPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("11_mj6ji")
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs/MewPack"]
+layout_mode = 2
+texture = ExtResource("13_u2sdk")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs/MewPack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs/MewPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs/MewPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="MarginTop5" type="Control" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
 [node name="GeneticApex" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
 custom_minimum_size = Vector2(1080, 0)
 layout_mode = 2
@@ -122,7 +379,7 @@ layout_mode = 2
 texture = ExtResource("3_s1xry")
 
 [node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/GeneticApex"]
-custom_minimum_size = Vector2(1080, 50)
+custom_minimum_size = Vector2(1080, 30)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -211,270 +468,6 @@ text = "X of X"
 horizontal_alignment = 1
 
 [node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs/PikachuPack"]
-layout_mode = 2
-theme = ExtResource("3_4c0bm")
-text = "12.454%"
-horizontal_alignment = 1
-
-[node name="MarginTop2" type="Control" parent="DaddyDiv/HomePage/Home"]
-custom_minimum_size = Vector2(1080, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="MythicalIsland" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
-custom_minimum_size = Vector2(1080, 0)
-layout_mode = 2
-
-[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/MythicalIsland"]
-custom_minimum_size = Vector2(1080, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/MythicalIsland/Title"]
-custom_minimum_size = Vector2(300, 150)
-layout_mode = 2
-texture = ExtResource("11_awswk")
-
-[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/MythicalIsland"]
-custom_minimum_size = Vector2(1080, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/MythicalIsland"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="MewPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs"]
-layout_mode = 2
-size_flags_horizontal = 3
-script = ExtResource("11_mj6ji")
-
-[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs/MewPack"]
-layout_mode = 2
-texture = ExtResource("13_u2sdk")
-stretch_mode = 3
-
-[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs/MewPack"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs/MewPack"]
-layout_mode = 2
-theme = ExtResource("3_4c0bm")
-text = "X of X"
-horizontal_alignment = 1
-
-[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs/MewPack"]
-layout_mode = 2
-theme = ExtResource("3_4c0bm")
-text = "12.454%"
-horizontal_alignment = 1
-
-[node name="MarginTop3" type="Control" parent="DaddyDiv/HomePage/Home"]
-custom_minimum_size = Vector2(1080, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="SpaceTime" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
-custom_minimum_size = Vector2(1080, 0)
-layout_mode = 2
-
-[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/SpaceTime"]
-custom_minimum_size = Vector2(1080, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/SpaceTime/Title"]
-custom_minimum_size = Vector2(400, 136)
-layout_mode = 2
-texture = ExtResource("14_jfb4s")
-
-[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/SpaceTime"]
-custom_minimum_size = Vector2(1080, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/SpaceTime"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="DialgaPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs"]
-layout_mode = 2
-size_flags_horizontal = 3
-script = ExtResource("14_oadtb")
-
-[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/DialgaPack"]
-layout_mode = 2
-texture = ExtResource("16_24lec")
-stretch_mode = 3
-
-[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/DialgaPack"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/DialgaPack"]
-layout_mode = 2
-theme = ExtResource("3_4c0bm")
-text = "X of X"
-horizontal_alignment = 1
-
-[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/DialgaPack"]
-layout_mode = 2
-theme = ExtResource("3_4c0bm")
-text = "12.454%"
-horizontal_alignment = 1
-
-[node name="PalkiaPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs"]
-layout_mode = 2
-size_flags_horizontal = 3
-script = ExtResource("16_cqi2a")
-
-[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/PalkiaPack"]
-layout_mode = 2
-texture = ExtResource("18_8d08n")
-stretch_mode = 3
-
-[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/PalkiaPack"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/PalkiaPack"]
-layout_mode = 2
-theme = ExtResource("3_4c0bm")
-text = "X of X"
-horizontal_alignment = 1
-
-[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/PalkiaPack"]
-layout_mode = 2
-theme = ExtResource("3_4c0bm")
-text = "12.454%"
-horizontal_alignment = 1
-
-[node name="MarginTop4" type="Control" parent="DaddyDiv/HomePage/Home"]
-custom_minimum_size = Vector2(1080, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="TriumphantLight" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
-custom_minimum_size = Vector2(1080, 0)
-layout_mode = 2
-
-[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/TriumphantLight"]
-custom_minimum_size = Vector2(1080, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/TriumphantLight/Title"]
-custom_minimum_size = Vector2(400, 136)
-layout_mode = 2
-texture = ExtResource("19_0thj2")
-
-[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/TriumphantLight"]
-custom_minimum_size = Vector2(1080, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/TriumphantLight"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="ArceusPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs"]
-layout_mode = 2
-size_flags_horizontal = 3
-script = ExtResource("20_5ck2r")
-
-[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs/ArceusPack"]
-layout_mode = 2
-texture = ExtResource("20_ihgxh")
-stretch_mode = 3
-
-[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs/ArceusPack"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs/ArceusPack"]
-layout_mode = 2
-theme = ExtResource("3_4c0bm")
-text = "X of X"
-horizontal_alignment = 1
-
-[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs/ArceusPack"]
-layout_mode = 2
-theme = ExtResource("3_4c0bm")
-text = "12.454%"
-horizontal_alignment = 1
-
-[node name="MarginTop5" type="Control" parent="DaddyDiv/HomePage/Home"]
-custom_minimum_size = Vector2(1080, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="ShiningRevelry" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
-custom_minimum_size = Vector2(1080, 0)
-layout_mode = 2
-
-[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/ShiningRevelry"]
-custom_minimum_size = Vector2(1080, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Title"]
-custom_minimum_size = Vector2(328, 152)
-layout_mode = 2
-texture = ExtResource("22_0hve6")
-
-[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/ShiningRevelry"]
-custom_minimum_size = Vector2(1080, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/ShiningRevelry"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="ShiningPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Packs"]
-layout_mode = 2
-size_flags_horizontal = 3
-script = ExtResource("22_nmi2e")
-
-[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Packs/ShiningPack"]
-layout_mode = 2
-texture = ExtResource("24_y2cia")
-stretch_mode = 3
-
-[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Packs/ShiningPack"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Packs/ShiningPack"]
-layout_mode = 2
-theme = ExtResource("3_4c0bm")
-text = "X of X"
-horizontal_alignment = 1
-
-[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Packs/ShiningPack"]
 layout_mode = 2
 theme = ExtResource("3_4c0bm")
 text = "12.454%"
