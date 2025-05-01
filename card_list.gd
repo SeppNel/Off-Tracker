@@ -116,9 +116,14 @@ func loadCards():
 		addCollectionCards(tlCards, gotCards)
 		
 	if m_collectionFilter == 6 or m_collectionFilter == 0:
-		var tlCards = DbManager.getShiningRevelryCards(parse_order())
+		var srCards = DbManager.getShiningRevelryCards(parse_order())
 		addCollectionTitle("res://img/shining_revelry.webp")
-		addCollectionCards(tlCards, gotCards)
+		addCollectionCards(srCards, gotCards)
+		
+	if m_collectionFilter == 7 or m_collectionFilter == 0:
+		var cgCards = DbManager.getCelestialGuardiansCards(parse_order())
+		addCollectionTitle("res://img/celestial_guardians.webp")
+		addCollectionCards(cgCards, gotCards)
 	
 	if m_collectionFilter == 4 or m_collectionFilter == 0:
 		var promoCards = DbManager.getPromoCards()

@@ -188,7 +188,7 @@ static func getTradeableCards():
 		SELECT * 
 		FROM cards 
 		WHERE rarity > 0 AND rarity < 6
-		AND pack in (1,2,3,4,5,6,7)
+		AND pack in (1,2,3,4,5,6,7,8)
 
 		UNION
 
@@ -197,7 +197,7 @@ static func getTradeableCards():
 		JOIN card_packs cp ON c.id = cp.card_id
 		JOIN packs p ON cp.pack = p.id
 		JOIN collections col ON p.collection = col.id
-		WHERE col.id != 5
+		WHERE col.id != 6
 		AND rarity > 0 and rarity < 6;")
 	
 	return db.query_result_by_reference
@@ -207,7 +207,7 @@ static func getTradeableCardsIds():
 		SELECT id 
 		FROM cards 
 		WHERE rarity > 0 AND rarity < 6
-		AND pack in (1,2,3,4,5,6,7)
+		AND pack in (1,2,3,4,5,6,7,8)
 
 		UNION
 
@@ -216,7 +216,7 @@ static func getTradeableCardsIds():
 		JOIN card_packs cp ON c.id = cp.card_id
 		JOIN packs p ON cp.pack = p.id
 		JOIN collections col ON p.collection = col.id
-		WHERE col.id != 5
+		WHERE col.id != 6
 		AND rarity > 0 and rarity < 6;")
 	
 	var result = db.query_result_by_reference
@@ -240,6 +240,26 @@ static func getShiningRevelryCards(order: String = "c.id ASC"):
 		SELECT c.*
 		FROM cards c
 		WHERE c.pack = 8
+		ORDER BY " + order + ";")
+	
+	return db.query_result_by_reference
+	
+static func getCelestialGuardiansCards(order: String = "c.id ASC"):
+	db.query("
+		SELECT c.*
+		FROM cards c
+		JOIN packs p ON c.pack = p.id
+		JOIN collections col ON p.collection = col.id
+		WHERE col.id = 6
+
+		UNION
+
+		SELECT c.*
+		FROM cards c
+		JOIN card_packs cp ON c.id = cp.card_id
+		JOIN packs p ON cp.pack = p.id
+		JOIN collections col ON p.collection = col.id
+		WHERE col.id = 6
 		ORDER BY " + order + ";")
 	
 	return db.query_result_by_reference

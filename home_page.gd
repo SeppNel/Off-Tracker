@@ -2,11 +2,12 @@ extends ScrollContainer
 
 const SaveManager = preload("res://static/save_manager.gd")
 const DbManager = preload("res://static/database.gd")
+const MAX_RARITY = 10
 
 var gotCards = []
 var cardRarity_cache = {}
 var cardPacks_cache = {}
-var cardsOfRarity
+var cardsOfRarity : Dictionary
 var packsArray = []
 
 # Called when the node enters the scene tree for the first time.
@@ -19,7 +20,9 @@ func _ready() -> void:
 	$Home/SpaceTime/Packs/DialgaPack,
 	$Home/SpaceTime/Packs/PalkiaPack,
 	$Home/TriumphantLight/Packs/ArceusPack,
-	$Home/ShiningRevelry/Packs/ShiningPack
+	$Home/ShiningRevelry/Packs/ShiningPack,
+	$Home/CelestialGuardians/Packs/SolgaleoPack,
+	$Home/CelestialGuardians/Packs/LunalaPack
 	]
 	updateUi()
 	
@@ -32,18 +35,10 @@ func updateUi():
 		pack.update()
 
 func initCardsOfRarity():
-	cardsOfRarity = {
-	1 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0, 8 : 0},
-	2 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0, 8 : 0},
-	3 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0, 8 : 0},
-	4 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0, 8 : 0},
-	5 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0, 8 : 0},
-	6 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0, 8 : 0},
-	7 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0, 8 : 0},
-	8 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0, 8 : 0},
-	9 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0, 8 : 0},
-	10 : {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0, 7 : 0, 8 : 0},
-	}
+	for rarity in range(1, MAX_RARITY + 1):
+		cardsOfRarity[rarity] = {}
+		for pack in range(1, packsArray.size() + 1):
+			cardsOfRarity[rarity][pack] = 0
 			
 func countCardsOfRarity():
 	initCardsOfRarity()
