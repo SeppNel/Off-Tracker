@@ -124,6 +124,11 @@ func loadCards():
 		var cgCards = DbManager.getCelestialGuardiansCards(parse_order())
 		addCollectionTitle("res://img/celestial_guardians.webp")
 		addCollectionCards(cgCards, gotCards)
+		
+	if m_collectionFilter == 8 or m_collectionFilter == 0:
+		var cards = DbManager.getExtraCrisisCards(parse_order())
+		addCollectionTitle("res://img/extra_crisis.webp")
+		addCollectionCards(cards, gotCards)
 	
 	if m_collectionFilter == 4 or m_collectionFilter == 0:
 		var promoCards = DbManager.getPromoCards()

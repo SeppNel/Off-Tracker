@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://btvagxoog6kxd"]
+[gd_scene load_steps=53 format=3 uid="uid://btvagxoog6kxd"]
 
 [ext_resource type="Texture2D" uid="uid://c5fdp2owmfgit" path="res://img/pokemon.webp" id="1_45rvw"]
 [ext_resource type="Script" path="res://home_page.gd" id="1_72cy4"]
@@ -7,11 +7,14 @@
 [ext_resource type="Script" path="res://card_list.gd" id="2_y1fm4"]
 [ext_resource type="Theme" uid="uid://dlrghbkew0egs" path="res://themes/homeLabelTheme.tres" id="3_4c0bm"]
 [ext_resource type="Texture2D" uid="uid://c8tso54rwow5n" path="res://img/celestial_guardians.webp" id="3_aecaf"]
+[ext_resource type="Texture2D" uid="uid://do85wte2cmrda" path="res://img/extra_crisis.webp" id="3_k3ivj"]
 [ext_resource type="Texture2D" uid="uid://cqqj3cjw8qbrf" path="res://img/checkbox_empty.png" id="3_q3pvi"]
 [ext_resource type="Texture2D" uid="uid://cuwa2scl268ij" path="res://img/genetic_apex.webp" id="3_s1xry"]
 [ext_resource type="Theme" uid="uid://b0tymje06mj6e" path="res://themes/OptionsTheme.tres" id="4_3d3hq"]
 [ext_resource type="Script" path="res://packs/solgaleo_pack.gd" id="4_ux0lv"]
+[ext_resource type="Script" path="res://packs/buzzwole_pack.gd" id="4_yl67v"]
 [ext_resource type="Texture2D" uid="uid://dmg8g4bec5mkg" path="res://img/packs/solgaleo.webp" id="5_7uosv"]
+[ext_resource type="Texture2D" uid="uid://ceaqivicy3nn2" path="res://img/packs/buzzwole.webp" id="5_crccl"]
 [ext_resource type="Texture2D" uid="uid://bbrlj14blx20a" path="res://img/packs/mewtwo.webp" id="5_xddto"]
 [ext_resource type="Script" path="res://packs/charizard_pack.gd" id="6_ss7up"]
 [ext_resource type="Script" path="res://packs/lunala_pack.gd" id="7_hh5nt"]
@@ -108,6 +111,65 @@ layout_mode = 2
 
 [node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home"]
 custom_minimum_size = Vector2(1080, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ExtraCrisis" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+
+[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/ExtraCrisis"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/ExtraCrisis/Title"]
+custom_minimum_size = Vector2(500, 140)
+layout_mode = 2
+texture = ExtResource("3_k3ivj")
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/ExtraCrisis"]
+custom_minimum_size = Vector2(1080, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/ExtraCrisis"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="BuzzwolePack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/ExtraCrisis/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_yl67v")
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/ExtraCrisis/Packs/BuzzwolePack"]
+layout_mode = 2
+texture = ExtResource("5_crccl")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/ExtraCrisis/Packs/BuzzwolePack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/ExtraCrisis/Packs/BuzzwolePack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/ExtraCrisis/Packs/BuzzwolePack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="MarginTop8" type="Control" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 60)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -636,22 +698,24 @@ theme = ExtResource("4_3d3hq")
 alignment = 1
 selected = 1
 fit_to_longest_item = false
-item_count = 8
+item_count = 9
 popup/item_0/text = "All"
-popup/item_1/text = "Celestial Guardians"
-popup/item_1/id = 7
-popup/item_2/text = "Shining Revelry"
-popup/item_2/id = 6
-popup/item_3/text = "Triumphant Light"
-popup/item_3/id = 5
-popup/item_4/text = "Space-Time Smackdown"
-popup/item_4/id = 3
-popup/item_5/text = "Mythical Island"
-popup/item_5/id = 2
-popup/item_6/text = "Genetic Apex"
-popup/item_6/id = 1
-popup/item_7/text = "Promo"
-popup/item_7/id = 4
+popup/item_1/text = "Extradimensional Crisis"
+popup/item_1/id = 8
+popup/item_2/text = "Celestial Guardians"
+popup/item_2/id = 7
+popup/item_3/text = "Shining Revelry"
+popup/item_3/id = 6
+popup/item_4/text = "Triumphant Light"
+popup/item_4/id = 5
+popup/item_5/text = "Space-Time Smackdown"
+popup/item_5/id = 3
+popup/item_6/text = "Mythical Island"
+popup/item_6/id = 2
+popup/item_7/text = "Genetic Apex"
+popup/item_7/id = 1
+popup/item_8/text = "Promo"
+popup/item_8/id = 4
 
 [node name="OrderContainer" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList/Controls/Level1"]
 layout_mode = 2
@@ -834,7 +898,7 @@ size_flags_horizontal = 4
 theme = SubResource("Theme_7tex0")
 theme_override_font_sizes/font_size = 40
 selected = 0
-item_count = 11
+item_count = 12
 popup/item_0/text = "Any"
 popup/item_1/text = "Charizard"
 popup/item_1/id = 4
@@ -856,6 +920,8 @@ popup/item_9/text = "Solgaleo"
 popup/item_9/id = 9
 popup/item_10/text = "Lunala"
 popup/item_10/id = 10
+popup/item_11/text = "Buzzwole"
+popup/item_11/id = 11
 
 [node name="WeaknessLabel" type="Label" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
 custom_minimum_size = Vector2(1080, 80)
