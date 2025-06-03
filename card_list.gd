@@ -170,10 +170,3 @@ func loadCardsSearch(n, t, s, r, p, w):
 	title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	add_child(title)
 	addCollectionCards(cards, gotCards)
-	
-
-func has_card_id(data, card_id: int) -> bool:
-	for card in data:
-		if card.id == card_id:
-			return true
-	return false
