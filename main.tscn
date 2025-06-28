@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://btvagxoog6kxd"]
+[gd_scene load_steps=56 format=3 uid="uid://btvagxoog6kxd"]
 
 [ext_resource type="Texture2D" uid="uid://c5fdp2owmfgit" path="res://img/pokemon.webp" id="1_45rvw"]
 [ext_resource type="Script" path="res://home_page.gd" id="1_72cy4"]
@@ -18,9 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://bbrlj14blx20a" path="res://img/packs/mewtwo.webp" id="5_xddto"]
 [ext_resource type="Script" path="res://packs/charizard_pack.gd" id="6_ss7up"]
 [ext_resource type="Script" path="res://packs/lunala_pack.gd" id="7_hh5nt"]
+[ext_resource type="Texture2D" uid="uid://b2dbuou6nswco" path="res://img/eevee_grove.webp" id="7_utseg"]
 [ext_resource type="Script" path="res://packs/pikachu_pack.gd" id="8_2wd2h"]
+[ext_resource type="Script" path="res://packs/eevee_pack.gd" id="8_4u113"]
 [ext_resource type="Texture2D" uid="uid://whl3hsnh77j5" path="res://img/packs/lunala.webp" id="8_gik1q"]
 [ext_resource type="Texture2D" uid="uid://ptmtodnuk43k" path="res://img/packs/charizard.webp" id="8_gv0qj"]
+[ext_resource type="Texture2D" uid="uid://dpdvc2rw5kn06" path="res://img/packs/eevee.webp" id="9_k10ro"]
 [ext_resource type="Texture2D" uid="uid://bf3ke3ep7vigh" path="res://img/packs/pikachu.webp" id="10_ndfky"]
 [ext_resource type="Texture2D" uid="uid://b2fdlssuy8xsj" path="res://img/mythical_island.webp" id="11_awswk"]
 [ext_resource type="Script" path="res://packs/mew_pack.gd" id="11_mj6ji"]
@@ -116,11 +119,11 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="ExtraCrisis" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
-custom_minimum_size = Vector2(1080, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/ExtraCrisis"]
-custom_minimum_size = Vector2(1080, 0)
+custom_minimum_size = Vector2(0, 153)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -130,7 +133,7 @@ layout_mode = 2
 texture = ExtResource("3_k3ivj")
 
 [node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/ExtraCrisis"]
-custom_minimum_size = Vector2(1080, 30)
+custom_minimum_size = Vector2(400, 30)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -163,6 +166,59 @@ text = "X of X"
 horizontal_alignment = 1
 
 [node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/ExtraCrisis/Packs/BuzzwolePack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="EeveeGrove" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/EeveeGrove"]
+custom_minimum_size = Vector2(0, 153)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/EeveeGrove/Title"]
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+texture = ExtResource("7_utseg")
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/EeveeGrove"]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/EeveeGrove"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="EeveePack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/EeveeGrove/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("8_4u113")
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/EeveeGrove/Packs/EeveePack"]
+layout_mode = 2
+texture = ExtResource("9_k10ro")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/EeveeGrove/Packs/EeveePack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/EeveeGrove/Packs/EeveePack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/EeveeGrove/Packs/EeveePack"]
 layout_mode = 2
 theme = ExtResource("3_4c0bm")
 text = "12.454%"
@@ -698,24 +754,26 @@ theme = ExtResource("4_3d3hq")
 alignment = 1
 selected = 1
 fit_to_longest_item = false
-item_count = 9
+item_count = 10
 popup/item_0/text = "All"
-popup/item_1/text = "Extradimensional Crisis"
-popup/item_1/id = 8
-popup/item_2/text = "Celestial Guardians"
-popup/item_2/id = 7
-popup/item_3/text = "Shining Revelry"
-popup/item_3/id = 6
-popup/item_4/text = "Triumphant Light"
-popup/item_4/id = 5
-popup/item_5/text = "Space-Time Smackdown"
-popup/item_5/id = 3
-popup/item_6/text = "Mythical Island"
-popup/item_6/id = 2
-popup/item_7/text = "Genetic Apex"
-popup/item_7/id = 1
-popup/item_8/text = "Promo"
-popup/item_8/id = 4
+popup/item_1/text = "Eevee Grove"
+popup/item_1/id = 9
+popup/item_2/text = "Extradimensional Crisis"
+popup/item_2/id = 8
+popup/item_3/text = "Celestial Guardians"
+popup/item_3/id = 7
+popup/item_4/text = "Shining Revelry"
+popup/item_4/id = 6
+popup/item_5/text = "Triumphant Light"
+popup/item_5/id = 5
+popup/item_6/text = "Space-Time Smackdown"
+popup/item_6/id = 3
+popup/item_7/text = "Mythical Island"
+popup/item_7/id = 2
+popup/item_8/text = "Genetic Apex"
+popup/item_8/id = 1
+popup/item_9/text = "Promo"
+popup/item_9/id = 4
 
 [node name="OrderContainer" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList/Controls/Level1"]
 layout_mode = 2

@@ -188,7 +188,7 @@ static func getTradeableCards():
 		SELECT * 
 		FROM cards 
 		WHERE rarity > 0 AND rarity < 6
-		AND pack <= 10
+		AND pack <= 11
 
 		UNION
 
@@ -197,7 +197,7 @@ static func getTradeableCards():
 		JOIN card_packs cp ON c.id = cp.card_id
 		JOIN packs p ON cp.pack = p.id
 		JOIN collections col ON p.collection = col.id
-		WHERE col.id != 7
+		WHERE col.id != 8
 		AND rarity > 0 and rarity < 6;")
 	
 	return db.query_result_by_reference
@@ -207,7 +207,7 @@ static func getTradeableCardsIds():
 		SELECT id 
 		FROM cards 
 		WHERE rarity > 0 AND rarity < 6
-		AND pack <= 10
+		AND pack <= 11
 
 		UNION
 
@@ -216,7 +216,7 @@ static func getTradeableCardsIds():
 		JOIN card_packs cp ON c.id = cp.card_id
 		JOIN packs p ON cp.pack = p.id
 		JOIN collections col ON p.collection = col.id
-		WHERE col.id != 7
+		WHERE col.id != 8
 		AND rarity > 0 and rarity < 6;")
 	
 	var result = db.query_result_by_reference
@@ -269,6 +269,15 @@ static func getExtraCrisisCards(order: String = "c.id ASC"):
 		SELECT c.*
 		FROM cards c
 		WHERE c.pack = 11
+		ORDER BY " + order + ";")
+	
+	return db.query_result_by_reference
+	
+static func getEeveeGroveCards(order: String = "c.id ASC"):
+	db.query("
+		SELECT c.*
+		FROM cards c
+		WHERE c.pack = 12
 		ORDER BY " + order + ";")
 	
 	return db.query_result_by_reference
