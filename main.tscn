@@ -956,7 +956,7 @@ size_flags_horizontal = 4
 theme = SubResource("Theme_7tex0")
 theme_override_font_sizes/font_size = 40
 selected = 0
-item_count = 12
+item_count = 13
 popup/item_0/text = "Any"
 popup/item_1/text = "Charizard"
 popup/item_1/id = 4
@@ -980,6 +980,8 @@ popup/item_10/text = "Lunala"
 popup/item_10/id = 10
 popup/item_11/text = "Buzzwole"
 popup/item_11/id = 11
+popup/item_12/text = "Eevee"
+popup/item_12/id = 12
 
 [node name="WeaknessLabel" type="Label" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
 custom_minimum_size = Vector2(1080, 80)
