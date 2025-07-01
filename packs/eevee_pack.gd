@@ -3,7 +3,7 @@ extends VBoxContainer
 var DbManager = preload("res://static/database.gd")
 var SaveManager = preload("res://static/save_manager.gd")
 
-const PACK_ID = 11
+const PACK_ID = 12
 # This numbers are inaccurate but they are close enough for now
 const CARD_4_RATES = [0.89, 0.04952, 0.01666, 0.02572, 0.005, 0.00222, 0.00714, 0.00333, 0.0004]
 const CARD_5_RATES = [0.56, 0.1981, 0.06664, 0.10288, 0.02, 0.00888, 0.02857, 0.01333, 0.0016]
