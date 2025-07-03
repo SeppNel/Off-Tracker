@@ -157,20 +157,38 @@ static func getCardName(card: int):
 	return db.query_result[0]["name"]
 
 static func search(n: String, t: int, s: int, r: int, p: int, w: int, order: String = "c.id ASC"):
-	n += "%"
-	var query = "
+	n = "'" + n + "%'"
+	var format_query = "
 		SELECT id, image
 		FROM cards c
-		WHERE name LIKE ?
-		AND (? IS 0 OR type = ?)
-		AND (? IS 0 OR card_type = ?)
-		AND (? IS 0 OR rarity = ?)
-		AND (? IS 0 OR pack = ?)
-		AND (? IS 0 OR weakness = ?)
+		WHERE name LIKE {name}
+		AND ({type} IS 0 OR type = {type})
+		AND ({stage} IS 0 OR card_type = {stage})
+		AND ({rarity} IS 0 OR rarity = {rarity})
+		AND ({pack} IS 0 OR pack = {pack})
+		AND ({weak} IS 0 OR weakness = {weak})
+		
+		UNION
+
+		SELECT c.id, c.image
+		FROM card_packs cp
+		JOIN cards c ON cp.card_id = c.id
+		WHERE cp.pack IN (
+			SELECT id 
+			FROM packs 
+			WHERE collection = (SELECT collection FROM packs WHERE id = {pack})
+		)
+		AND c.name LIKE {name}
+		AND ({type} IS 0 OR c.type = {type})
+		AND ({stage} IS 0 OR c.card_type = {stage})
+		AND ({rarity} IS 0 OR c.rarity = {rarity})
+		AND ({weak} IS 0 OR c.weakness = {weak})
+		
 		ORDER BY " + order + ";"
+		
+	var query = format_query.format({"name": n, "type": t, "stage": s, "pack": p, "rarity": r, "weak": w})
 	
-	db.query_with_bindings(query, [n, t, t, s, s, r, r, p, p, w, w])
-	
+	db.query(query)
 	return db.query_result_by_reference
 
 static func getCard(id: int):

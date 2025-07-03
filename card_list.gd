@@ -162,6 +162,8 @@ func loadCardsSearch(n, t, s, r, p, w):
 	m_lastSearchType = t
 	m_lastSearchStage = s
 	m_lastSearchRarity = r
+	m_lastSearchPack = p
+	m_lastSearchWeakness = w
 	m_searchState = true
 	
 	clearCardList()
