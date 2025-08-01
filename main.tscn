@@ -103,6 +103,7 @@ size_flags_vertical = 3
 
 [node name="HomePage" type="ScrollContainer" parent="DaddyDiv"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 3
@@ -1279,7 +1280,6 @@ text = "Cancel"
 
 [node name="SettingsPage" type="ScrollContainer" parent="DaddyDiv"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
@@ -1360,6 +1360,17 @@ text = "      Donate"
 icon = ExtResource("23_4gfh8")
 icon_alignment = 2
 text_direction = 1
+
+[node name="TradeOverrideContainer" type="CenterContainer" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer"]
+custom_minimum_size = Vector2(1080, 200)
+layout_mode = 2
+
+[node name="CheckButton" type="CheckBox" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer/TradeOverrideContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+theme_override_icons/checked = ExtResource("2_347lu")
+theme_override_icons/unchecked = ExtResource("3_q3pvi")
+text = " Allow trading the latest pack"
 
 [node name="Output" type="Label" parent="DaddyDiv/SettingsPage/Settings"]
 custom_minimum_size = Vector2(0, 83)
@@ -1638,6 +1649,7 @@ text = "Settings"
 [connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/ImportContainer/ImportButton" to="DaddyDiv/SettingsPage/Settings" method="_on_import_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/FAQContainer/FAQButton" to="DaddyDiv/SettingsPage/Settings" method="_on_faq_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/DonateContainer/DonateButton" to="DaddyDiv/SettingsPage/Settings" method="_on_donate_button_pressed"]
+[connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/TradeOverrideContainer/CheckButton" to="DaddyDiv/SettingsPage/Settings" method="_on_trade_override_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/FriendsModal/CloseFriendsButton" to="DaddyDiv/SettingsPage/Settings" method="_on_close_friends_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/FAQModal/CloseFAQButton" to="DaddyDiv/SettingsPage/Settings" method="_on_close_faq_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/TabBar/Home" to="DaddyDiv/TabBar" method="_on_home_pressed"]
