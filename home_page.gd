@@ -24,7 +24,9 @@ func _ready() -> void:
 	$Home/CelestialGuardians/Packs/SolgaleoPack,
 	$Home/CelestialGuardians/Packs/LunalaPack,
 	$Home/ExtraCrisis/Packs/BuzzwolePack,
-	$Home/EeveeGrove/Packs/EeveePack
+	$Home/EeveeGrove/Packs/EeveePack,
+	$"Home/WisdomSeaSky/Packs/Ho-OhPack",
+	$Home/WisdomSeaSky/Packs/LugiaPack
 	]
 	updateUi()
 	

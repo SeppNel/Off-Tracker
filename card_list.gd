@@ -134,6 +134,11 @@ func loadCards():
 		var cards = DbManager.getEeveeGroveCards(parse_order())
 		addCollectionTitle("res://img/eevee_grove.webp")
 		addCollectionCards(cards, gotCards)
+		
+	if m_collectionFilter == 10 or m_collectionFilter == 0:
+		var cards = DbManager.getWisdomSeaSkyCards(parse_order())
+		addCollectionTitle("res://img/wisdom_sea_sky.webp")
+		addCollectionCards(cards, gotCards)
 	
 	if m_collectionFilter == 4 or m_collectionFilter == 0:
 		var promoCards = DbManager.getPromoCards()

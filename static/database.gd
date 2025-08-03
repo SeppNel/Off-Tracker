@@ -4,12 +4,12 @@ const SaveManager = preload("res://static/save_manager.gd")
 
 const VERBOSITY_LEVEL : int = SQLite.QUIET
 const DB_NAME := "res://data/db.sqlite"
-const DEFAULT_LTP : int = 11
-const DEFAULT_LTC : int = 8
+const DEFAULT_LTP : int = 12 # Latest Tradeable Pack
+const DEFAULT_LC : int = 9 # Latest Collection
 
 static var db : SQLite = null
 static var latest_tradeable_pack : int = DEFAULT_LTP
-static var latest_tradeable_collection : int = DEFAULT_LTC
+static var latest_collection : int = DEFAULT_LC
 
 # Called when the node enters the scene tree for the first time.
 static func _static_init() -> void:
@@ -23,7 +23,7 @@ static func _static_init() -> void:
 static func updateLatestTradeable():
 	if not SaveManager.m_tradeOverride:
 		latest_tradeable_pack = DEFAULT_LTP
-		latest_tradeable_collection = DEFAULT_LTC
+		latest_collection = DEFAULT_LC
 		return
 	
 	db.query("
@@ -33,7 +33,7 @@ static func updateLatestTradeable():
 	
 	var packs_in_latest_col: int = db.query_result_by_reference[0]["count"]
 	latest_tradeable_pack += packs_in_latest_col
-	latest_tradeable_collection = DEFAULT_LTC + 1
+	latest_collection = DEFAULT_LC + 1
 
 static func getAllCards():
 	db.query("SELECT * FROM cards;")
@@ -229,7 +229,7 @@ static func getTradeableCards():
 		SELECT * 
 		FROM cards 
 		WHERE rarity > 0 AND rarity < 6
-		AND pack <= ?
+		AND pack <= ? AND is_multipack = 0
 
 		UNION
 
@@ -241,7 +241,7 @@ static func getTradeableCards():
 		WHERE col.id != ?
 		AND rarity > 0 and rarity < 6;"
 		
-	db.query_with_bindings(query, [latest_tradeable_pack, latest_tradeable_collection])
+	db.query_with_bindings(query, [latest_tradeable_pack, latest_collection])
 	
 	return db.query_result_by_reference
 	
@@ -250,7 +250,7 @@ static func getTradeableCardsIds():
 		SELECT id 
 		FROM cards 
 		WHERE rarity > 0 AND rarity < 6
-		AND pack <= ?
+		AND pack <= ? AND is_multipack = 0
 
 		UNION
 
@@ -262,7 +262,7 @@ static func getTradeableCardsIds():
 		WHERE col.id != ?
 		AND rarity > 0 and rarity < 6;"
 	
-	var result = db.query_with_bindings(query, [latest_tradeable_pack, latest_tradeable_collection])
+	var result = db.query_with_bindings(query, [latest_tradeable_pack, latest_collection])
 	var id_array = []
 	for item in result:
 		id_array.append(item["id"])
@@ -321,6 +321,26 @@ static func getEeveeGroveCards(order: String = "c.id ASC"):
 		SELECT c.*
 		FROM cards c
 		WHERE c.pack = 12
+		ORDER BY " + order + ";")
+	
+	return db.query_result_by_reference
+
+static func getWisdomSeaSkyCards(order: String = "c.id ASC"):
+	db.query("
+		SELECT c.*
+		FROM cards c
+		JOIN packs p ON c.pack = p.id
+		JOIN collections col ON p.collection = col.id
+		WHERE col.id = 9
+
+		UNION
+
+		SELECT c.*
+		FROM cards c
+		JOIN card_packs cp ON c.id = cp.card_id
+		JOIN packs p ON cp.pack = p.id
+		JOIN collections col ON p.collection = col.id
+		WHERE col.id = 9
 		ORDER BY " + order + ";")
 	
 	return db.query_result_by_reference
