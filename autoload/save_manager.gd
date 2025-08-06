@@ -9,6 +9,7 @@ var m_friend_code: int = -1
 var m_friends: Dictionary = {}
 var m_secret: String = ""
 var m_tradeOverride: bool = false
+var m_gotCards: Dictionary = {}
 
 func _ready() -> void:
 	checkVersion()
@@ -16,27 +17,25 @@ func _ready() -> void:
 
 func saveCard(id: int) -> void:
 	var sId = str(id)
-	var gotCards = getGotCards()
-	if gotCards.has(sId):
-		gotCards[sId] += 1
+	if m_gotCards.has(sId):
+		m_gotCards[sId] += 1
 	else:
-		gotCards[sId] = 1
+		m_gotCards[sId] = 1
 	
-	save(gotCards)
+	save()
 	gotCardsChanged.emit()
 	
 func removeSavedCard(id: int) -> void:
 	var sId = str(id)
-	var gotCards = getGotCards()
-	gotCards[sId] -= 1
-	if gotCards[sId] < 1:
-		gotCards.erase(sId)
+	m_gotCards[sId] -= 1
+	if m_gotCards[sId] < 1:
+		m_gotCards.erase(sId)
 	
-	save(gotCards)
+	save()
 
-func getGotCards():
+func readGotCards() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
-		return {}# Error! We don't have a save to load.
+		return # Error! We don't have a save to load.
 
 	var save_file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	var json_string = save_file.get_line()
@@ -47,34 +46,21 @@ func getGotCards():
 	# Check if there is any error while parsing the JSON string
 	if not json.parse(json_string) == OK:
 		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+		return
 
 	# Get the data from the JSON object
 	var data = json.get_data()
+	m_gotCards = data["got_cards"]
 
-	return data["got_cards"]
+func getGotCards() -> Dictionary:
+	return m_gotCards
 
 func getGotCardsIds() -> Array[int]:
-	if not FileAccess.file_exists(SAVE_PATH):
-		return []# Error! We don't have a save to load.
+	var gotCardsIds: Array[int] = []
+	for card_id in m_gotCards.keys():
+		gotCardsIds.append(int(card_id))
 
-	var save_file = FileAccess.open(SAVE_PATH, FileAccess.READ)
-	var json_string = save_file.get_line()
-
-	# Creates the helper class to interact with JSON
-	var json = JSON.new()
-
-	# Check if there is any error while parsing the JSON string
-	if not json.parse(json_string) == OK:
-		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
-
-	# Get the data from the JSON object
-	var data = json.get_data()
-
-	var gotCards: Array[int] = []
-	for card_id in data["got_cards"].keys():
-		gotCards.append(int(card_id))
-
-	return gotCards
+	return gotCardsIds
 
 func getSaveJson():
 	if not FileAccess.file_exists(SAVE_PATH):
@@ -147,17 +133,18 @@ func migrateSave2_3() -> void:
 	m_friend_code = int(data["friend_code"])
 	m_friends = data["friends"]
 	m_secret = data["secret"]
+	m_gotCards = data["got_cards"]
 	
 	DirAccess.remove_absolute(SAVE_PATH)
-	save(data["got_cards"])
+	save()
 
-func save(gotCards) -> void:
+func save() -> void:
 	var save_dict = {
 		"version" : CURR_VER,
 		"secret": m_secret,
 		"friend_code": m_friend_code,
 		"tradeOverride": m_tradeOverride,
-		"got_cards" : gotCards,
+		"got_cards" : m_gotCards,
 		"friends": m_friends,
 	}
 
@@ -168,33 +155,34 @@ func save(gotCards) -> void:
 func setFriendCode(fc: int) -> void:
 	m_friend_code = fc
 	addFriend(fc, "Myself")
-	save(getGotCards())
+	save()
 
 func addFriend(fc: int, name: String) -> void:
 	var fc_str = str(fc)
 	if not m_friends.has(fc_str):
 		m_friends[fc_str] = name
-		save(getGotCards())
+		save()
 		
 func deleteFriend(fc: int) -> void:
 	var fc_str = str(fc)
 	if m_friends.has(fc_str):
 		m_friends.erase(fc_str)
-		save(getGotCards())
+		save()
 
 func getFriendName(fc: int) -> String:
 	return m_friends[str(fc)]
 
 func setSecret(s) -> void:
 	m_secret = s
-	save(getGotCards())
+	save()
 	
 func setTradeOverride(b: bool) -> void:
 	m_tradeOverride = b
-	save(getGotCards())
+	save()
 	
 func update() -> void:
 	readSavedValues()
+	readGotCards()
 
 func readSavedValues() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2dbuou6nswco"
-path="res://.godot/imported/eevee_grove.webp-2d35c76c9bbb778165e24c75908cf744.ctex"
+uid="uid://5f0ld80jyqjq"
+path="res://.godot/imported/promo_a.webp-1afe19cb86cbc00ceec3deb3e007e466.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/eevee_grove.webp"
-dest_files=["res://.godot/imported/eevee_grove.webp-2d35c76c9bbb778165e24c75908cf744.ctex"]
+source_file="res://img/collections/promo_a.webp"
+dest_files=["res://.godot/imported/promo_a.webp-1afe19cb86cbc00ceec3deb3e007e466.ctex"]
 
 [params]
 

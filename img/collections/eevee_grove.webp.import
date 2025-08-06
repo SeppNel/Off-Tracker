@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bikmcw6ats1hi"
-path="res://.godot/imported/space_time_smackdown.webp-bbc0353a295005f6438935d77196ef28.ctex"
+uid="uid://b2dbuou6nswco"
+path="res://.godot/imported/eevee_grove.webp-162a91b59be34fab5a31410dcdebcc03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/space_time_smackdown.webp"
-dest_files=["res://.godot/imported/space_time_smackdown.webp-bbc0353a295005f6438935d77196ef28.ctex"]
+source_file="res://img/collections/eevee_grove.webp"
+dest_files=["res://.godot/imported/eevee_grove.webp-162a91b59be34fab5a31410dcdebcc03.ctex"]
 
 [params]
 

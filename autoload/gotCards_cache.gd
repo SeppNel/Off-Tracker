@@ -1,15 +1,15 @@
 extends Node
 
-var gotcardsIds: Array[int] = []
+var gotCardsIds: Array[int] = []
 
 func _ready() -> void:
 	SaveManager.connect("gotCardsChanged", invalidateCache) 
 
 func getGotCardsIds() -> Array[int]:
-	if gotcardsIds.is_empty():
-		gotcardsIds = SaveManager.getGotCardsIds()
+	if gotCardsIds.is_empty():
+		gotCardsIds = SaveManager.getGotCardsIds()
 	
-	return gotcardsIds
+	return gotCardsIds
 
 func invalidateCache() -> void:
-	gotcardsIds.clear()
+	gotCardsIds.clear()

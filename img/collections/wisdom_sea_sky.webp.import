@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do85wte2cmrda"
-path="res://.godot/imported/extra_crisis.webp-8e5bba27e98fb08c1f30ea2af1dac43c.ctex"
+uid="uid://cs6cd15c6jdfk"
+path="res://.godot/imported/wisdom_sea_sky.webp-6e189c10bee21e6e03e682af38817612.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/extra_crisis.webp"
-dest_files=["res://.godot/imported/extra_crisis.webp-8e5bba27e98fb08c1f30ea2af1dac43c.ctex"]
+source_file="res://img/collections/wisdom_sea_sky.webp"
+dest_files=["res://.godot/imported/wisdom_sea_sky.webp-6e189c10bee21e6e03e682af38817612.ctex"]
 
 [params]
 

@@ -95,52 +95,52 @@ func loadCards():
 
 	if m_collectionFilter == 1 or m_collectionFilter == 0:
 		var genApexCards = DbManager.getGeneticApexCards(parse_order())
-		addCollectionTitle("res://img/genetic_apex.webp")
+		addCollectionTitle("res://img/collections/genetic_apex.webp")
 		addCollectionCards(genApexCards, gotCards)
 			
 	if m_collectionFilter == 2 or m_collectionFilter == 0:
 		var mythIslandCards = DbManager.getMythicalIslandsCards(parse_order())
-		addCollectionTitle("res://img/mythical_island.webp")
+		addCollectionTitle("res://img/collections/mythical_island.webp")
 		addCollectionCards(mythIslandCards, gotCards)
 	
 	if m_collectionFilter == 3 or m_collectionFilter == 0:
 		var spaceTimeCards = DbManager.getSpaceTimeCards(parse_order())
-		addCollectionTitle("res://img/space_time_smackdown.webp")
+		addCollectionTitle("res://img/collections/space_time_smackdown.webp")
 		addCollectionCards(spaceTimeCards, gotCards)
 		
 	if m_collectionFilter == 5 or m_collectionFilter == 0:
 		var tlCards = DbManager.getTriumphantLightCards(parse_order())
-		addCollectionTitle("res://img/triumphant_light.webp")
+		addCollectionTitle("res://img/collections/triumphant_light.webp")
 		addCollectionCards(tlCards, gotCards)
 		
 	if m_collectionFilter == 6 or m_collectionFilter == 0:
 		var srCards = DbManager.getShiningRevelryCards(parse_order())
-		addCollectionTitle("res://img/shining_revelry.webp")
+		addCollectionTitle("res://img/collections/shining_revelry.webp")
 		addCollectionCards(srCards, gotCards)
 		
 	if m_collectionFilter == 7 or m_collectionFilter == 0:
 		var cgCards = DbManager.getCelestialGuardiansCards(parse_order())
-		addCollectionTitle("res://img/celestial_guardians.webp")
+		addCollectionTitle("res://img/collections/celestial_guardians.webp")
 		addCollectionCards(cgCards, gotCards)
 		
 	if m_collectionFilter == 8 or m_collectionFilter == 0:
 		var cards = DbManager.getExtraCrisisCards(parse_order())
-		addCollectionTitle("res://img/extra_crisis.webp")
+		addCollectionTitle("res://img/collections/extra_crisis.webp")
 		addCollectionCards(cards, gotCards)
 		
 	if m_collectionFilter == 9 or m_collectionFilter == 0:
 		var cards = DbManager.getEeveeGroveCards(parse_order())
-		addCollectionTitle("res://img/eevee_grove.webp")
+		addCollectionTitle("res://img/collections/eevee_grove.webp")
 		addCollectionCards(cards, gotCards)
 		
 	if m_collectionFilter == 10 or m_collectionFilter == 0:
 		var cards = DbManager.getWisdomSeaSkyCards(parse_order())
-		addCollectionTitle("res://img/wisdom_sea_sky.webp")
+		addCollectionTitle("res://img/collections/wisdom_sea_sky.webp")
 		addCollectionCards(cards, gotCards)
 	
 	if m_collectionFilter == 4 or m_collectionFilter == 0:
 		var promoCards = DbManager.getPromoCards()
-		addCollectionTitle("res://img/promo_a.webp")
+		addCollectionTitle("res://img/collections/promo_a.webp")
 		addCollectionCards(promoCards, gotCards)
 
 func clearCardList():

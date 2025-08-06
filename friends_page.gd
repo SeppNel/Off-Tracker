@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func update() -> void:
 	clear()
-	m_gotCards = SaveManager.getGotCardsIds()
+	m_gotCards = GotCardsCache.getGotCardsIds()
 	fillFriends()
 
 func fillFriends() -> void:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuwa2scl268ij"
-path="res://.godot/imported/genetic_apex.webp-9422d068ae63093c84eaa476da2b8643.ctex"
+uid="uid://b2fdlssuy8xsj"
+path="res://.godot/imported/mythical_island.webp-69eaa6c2e85f7ff8ccf886c20f80e3b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/genetic_apex.webp"
-dest_files=["res://.godot/imported/genetic_apex.webp-9422d068ae63093c84eaa476da2b8643.ctex"]
+source_file="res://img/collections/mythical_island.webp"
+dest_files=["res://.godot/imported/mythical_island.webp-69eaa6c2e85f7ff8ccf886c20f80e3b3.ctex"]
 
 [params]
 

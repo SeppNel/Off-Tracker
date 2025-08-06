@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dystwyoh0358r"
-path="res://.godot/imported/triumphant_light.webp-a40f03a6e548cec267cb150d34150fb7.ctex"
+uid="uid://bikmcw6ats1hi"
+path="res://.godot/imported/space_time_smackdown.webp-000e85e3dcf6ef7b4070cb69230c2cab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/triumphant_light.webp"
-dest_files=["res://.godot/imported/triumphant_light.webp-a40f03a6e548cec267cb150d34150fb7.ctex"]
+source_file="res://img/collections/space_time_smackdown.webp"
+dest_files=["res://.godot/imported/space_time_smackdown.webp-000e85e3dcf6ef7b4070cb69230c2cab.ctex"]
 
 [params]
 

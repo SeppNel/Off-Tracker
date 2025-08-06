@@ -5,32 +5,32 @@
 [ext_resource type="Texture2D" uid="uid://xvpp8eeqjbbc" path="res://img/checkbox_filled.png" id="2_347lu"]
 [ext_resource type="Script" uid="uid://cso072s1a660n" path="res://card_list.gd" id="2_y1fm4"]
 [ext_resource type="Theme" uid="uid://dlrghbkew0egs" path="res://themes/homeLabelTheme.tres" id="3_4c0bm"]
-[ext_resource type="Texture2D" uid="uid://cs6cd15c6jdfk" path="res://img/wisdom_sea_sky.webp" id="3_50hb7"]
-[ext_resource type="Texture2D" uid="uid://c8tso54rwow5n" path="res://img/celestial_guardians.webp" id="3_aecaf"]
-[ext_resource type="Texture2D" uid="uid://do85wte2cmrda" path="res://img/extra_crisis.webp" id="3_k3ivj"]
+[ext_resource type="Texture2D" uid="uid://cs6cd15c6jdfk" path="res://img/collections/wisdom_sea_sky.webp" id="3_50hb7"]
+[ext_resource type="Texture2D" uid="uid://c8tso54rwow5n" path="res://img/collections/celestial_guardians.webp" id="3_aecaf"]
+[ext_resource type="Texture2D" uid="uid://do85wte2cmrda" path="res://img/collections/extra_crisis.webp" id="3_k3ivj"]
 [ext_resource type="Texture2D" uid="uid://cqqj3cjw8qbrf" path="res://img/checkbox_empty.png" id="3_q3pvi"]
-[ext_resource type="Texture2D" uid="uid://cuwa2scl268ij" path="res://img/genetic_apex.webp" id="3_s1xry"]
+[ext_resource type="Texture2D" uid="uid://cuwa2scl268ij" path="res://img/collections/genetic_apex.webp" id="3_s1xry"]
 [ext_resource type="Theme" uid="uid://b0tymje06mj6e" path="res://themes/OptionsTheme.tres" id="4_3d3hq"]
 [ext_resource type="Script" uid="uid://cljuo1cssygka" path="res://pack.gd" id="4_6iyjs"]
 [ext_resource type="Texture2D" uid="uid://12oshvv4xokb" path="res://img/packs/ho-oh.webp" id="5_4y5qx"]
 [ext_resource type="Texture2D" uid="uid://dmg8g4bec5mkg" path="res://img/packs/solgaleo.webp" id="5_7uosv"]
 [ext_resource type="Texture2D" uid="uid://ceaqivicy3nn2" path="res://img/packs/buzzwole.webp" id="5_crccl"]
 [ext_resource type="Texture2D" uid="uid://bbrlj14blx20a" path="res://img/packs/mewtwo.webp" id="5_xddto"]
-[ext_resource type="Texture2D" uid="uid://b2dbuou6nswco" path="res://img/eevee_grove.webp" id="7_utseg"]
+[ext_resource type="Texture2D" uid="uid://b2dbuou6nswco" path="res://img/collections/eevee_grove.webp" id="7_utseg"]
 [ext_resource type="Texture2D" uid="uid://whl3hsnh77j5" path="res://img/packs/lunala.webp" id="8_gik1q"]
 [ext_resource type="Texture2D" uid="uid://ptmtodnuk43k" path="res://img/packs/charizard.webp" id="8_gv0qj"]
 [ext_resource type="Texture2D" uid="uid://2ryxmmdd5u52" path="res://img/packs/lugia.webp" id="8_x10cs"]
 [ext_resource type="Texture2D" uid="uid://dpdvc2rw5kn06" path="res://img/packs/eevee.webp" id="9_k10ro"]
 [ext_resource type="Texture2D" uid="uid://bf3ke3ep7vigh" path="res://img/packs/pikachu.webp" id="10_ndfky"]
-[ext_resource type="Texture2D" uid="uid://b2fdlssuy8xsj" path="res://img/mythical_island.webp" id="11_awswk"]
+[ext_resource type="Texture2D" uid="uid://b2fdlssuy8xsj" path="res://img/collections/mythical_island.webp" id="11_awswk"]
 [ext_resource type="Texture2D" uid="uid://2qrx6xnoex1i" path="res://img/packs/mew.webp" id="13_u2sdk"]
-[ext_resource type="Texture2D" uid="uid://bikmcw6ats1hi" path="res://img/space_time_smackdown.webp" id="14_jfb4s"]
+[ext_resource type="Texture2D" uid="uid://bikmcw6ats1hi" path="res://img/collections/space_time_smackdown.webp" id="14_jfb4s"]
 [ext_resource type="Script" uid="uid://ca05kiixdkh7m" path="res://tab_bar.gd" id="15_fu1sk"]
 [ext_resource type="Texture2D" uid="uid://2ysbdxy4c8yg" path="res://img/packs/dialga.webp" id="16_24lec"]
 [ext_resource type="Texture2D" uid="uid://ddcg8uahry7em" path="res://img/packs/palkia.webp" id="18_8d08n"]
-[ext_resource type="Texture2D" uid="uid://dystwyoh0358r" path="res://img/triumphant_light.webp" id="19_0thj2"]
+[ext_resource type="Texture2D" uid="uid://dystwyoh0358r" path="res://img/collections/triumphant_light.webp" id="19_0thj2"]
 [ext_resource type="Texture2D" uid="uid://boawury6jclwf" path="res://img/packs/arceus.webp" id="20_ihgxh"]
-[ext_resource type="Texture2D" uid="uid://cyopws0jghl1q" path="res://img/shining_revelry.webp" id="22_0hve6"]
+[ext_resource type="Texture2D" uid="uid://cyopws0jghl1q" path="res://img/collections/shining_revelry.webp" id="22_0hve6"]
 [ext_resource type="Script" uid="uid://du3ov6cfvkgxn" path="res://settings.gd" id="22_7rxlr"]
 [ext_resource type="Script" uid="uid://bkpktvfp7ytlm" path="res://search_modal.gd" id="23_3jxyi"]
 [ext_resource type="Texture2D" uid="uid://d0ubk1htgggof" path="res://img/donate.webp" id="23_4gfh8"]
@@ -634,7 +634,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("4_6iyjs")
-PACK_ID = 4
+PACK_ID = 1
 
 [node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs/MewPack"]
 layout_mode = 2
@@ -723,7 +723,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("4_6iyjs")
-PACK_ID = 1
+PACK_ID = 4
 
 [node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs/CharizardPack"]
 layout_mode = 2
