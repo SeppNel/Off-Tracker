@@ -1,18 +1,16 @@
 extends Node
 
-const SaveManager = preload("res://static/save_manager.gd")
-
 const VERBOSITY_LEVEL : int = SQLite.QUIET
 const DB_NAME := "res://data/db.sqlite"
 const DEFAULT_LTP : int = 12 # Latest Tradeable Pack
 const DEFAULT_LC : int = 9 # Latest Collection
 
-static var db : SQLite = null
-static var latest_tradeable_pack : int = DEFAULT_LTP
-static var latest_collection : int = DEFAULT_LC
+var db : SQLite = null
+var latest_tradeable_pack : int = DEFAULT_LTP
+var latest_collection : int = DEFAULT_LC
 
 # Called when the node enters the scene tree for the first time.
-static func _static_init() -> void:
+func _ready() -> void:
 	db = SQLite.new()
 	db.path = DB_NAME
 	db.verbosity_level = VERBOSITY_LEVEL
@@ -20,7 +18,7 @@ static func _static_init() -> void:
 	db.open_db()
 	updateLatestTradeable()
 	
-static func updateLatestTradeable():
+func updateLatestTradeable():
 	if not SaveManager.m_tradeOverride:
 		latest_tradeable_pack = DEFAULT_LTP
 		latest_collection = DEFAULT_LC
@@ -35,11 +33,11 @@ static func updateLatestTradeable():
 	latest_tradeable_pack += packs_in_latest_col
 	latest_collection = DEFAULT_LC + 1
 
-static func getAllCards():
+func getAllCards():
 	db.query("SELECT * FROM cards;")
 	return db.query_result_by_reference
 	
-static func getGeneticApexCards(order: String = "c.id ASC"):
+func getGeneticApexCards(order: String = "c.id ASC"):
 	db.query("
 		SELECT c.*
 		FROM cards c
@@ -63,7 +61,7 @@ static func getGeneticApexCards(order: String = "c.id ASC"):
 	
 	return db.query_result_by_reference
 	
-static func getMythicalIslandsCards(order: String = "c.id ASC"):
+func getMythicalIslandsCards(order: String = "c.id ASC"):
 	db.query("
 		SELECT c.*
 		FROM cards c
@@ -84,7 +82,7 @@ static func getMythicalIslandsCards(order: String = "c.id ASC"):
 	
 	return db.query_result_by_reference
 	
-static func getPromoCards():
+func getPromoCards():
 	db.query("
 		SELECT *
 		FROM cards
@@ -92,7 +90,7 @@ static func getPromoCards():
 	
 	return db.query_result_by_reference
 	
-static func getSpaceTimeCards(order: String = "c.id ASC"):
+func getSpaceTimeCards(order: String = "c.id ASC"):
 	db.query("
 		SELECT c.*
 		FROM cards c
@@ -112,7 +110,7 @@ static func getSpaceTimeCards(order: String = "c.id ASC"):
 	
 	return db.query_result_by_reference
 
-static func getCardsIdFromPack(pack: int):
+func getCardsIdFromPack(pack: int):
 	var query = "
 		SELECT DISTINCT c.id
 		FROM cards c
@@ -128,7 +126,7 @@ static func getCardsIdFromPack(pack: int):
 	
 	return id_array
 	
-static func countRarityCardsFromPack(pack: int, r: int):
+func countRarityCardsFromPack(pack: int, r: int):
 	var query = "
 		SELECT COUNT(c.id) AS count
 		FROM cards c
@@ -139,7 +137,7 @@ static func countRarityCardsFromPack(pack: int, r: int):
 	
 	return db.query_result[0]["count"]
 
-static func getPacksOfCard(card: int):
+func getPacksOfCard(card: int):
 	var query = "
 		SELECT pack
 		FROM cards
@@ -159,7 +157,7 @@ static func getPacksOfCard(card: int):
 	
 	return arr
 	
-static func getCardRarity(card: int):
+func getCardRarity(card: int):
 	var query = "
 		SELECT rarity
 		FROM cards
@@ -169,7 +167,7 @@ static func getCardRarity(card: int):
 	
 	return db.query_result[0]["rarity"]
 	
-static func getCardName(card: int):
+func getCardName(card: int):
 	var query = "
 		SELECT name
 		FROM cards
@@ -179,7 +177,7 @@ static func getCardName(card: int):
 	
 	return db.query_result[0]["name"]
 
-static func search(n: String, t: int, s: int, r: int, p: int, w: int, order: String = "c.id ASC"):
+func search(n: String, t: int, s: int, r: int, p: int, w: int, order: String = "c.id ASC"):
 	n = "'" + n + "%'"
 	var format_query = "
 		SELECT id, image
@@ -214,7 +212,7 @@ static func search(n: String, t: int, s: int, r: int, p: int, w: int, order: Str
 	db.query(query)
 	return db.query_result_by_reference
 
-static func getCard(id: int):
+func getCard(id: int):
 	var query = "
 		SELECT *
 		FROM cards
@@ -224,7 +222,7 @@ static func getCard(id: int):
 	
 	return db.query_result[0]
 	
-static func getTradeableCards():
+func getTradeableCards():
 	var query = "
 		SELECT * 
 		FROM cards 
@@ -245,7 +243,7 @@ static func getTradeableCards():
 	
 	return db.query_result_by_reference
 	
-static func getTradeableCardsIds():
+func getTradeableCardsIds():
 	var query = "
 		SELECT id 
 		FROM cards 
@@ -269,7 +267,7 @@ static func getTradeableCardsIds():
 	
 	return id_array
 
-static func getTriumphantLightCards(order: String = "c.id ASC"):
+func getTriumphantLightCards(order: String = "c.id ASC"):
 	db.query("
 		SELECT c.*
 		FROM cards c
@@ -278,7 +276,7 @@ static func getTriumphantLightCards(order: String = "c.id ASC"):
 	
 	return db.query_result_by_reference
 	
-static func getShiningRevelryCards(order: String = "c.id ASC"):
+func getShiningRevelryCards(order: String = "c.id ASC"):
 	db.query("
 		SELECT c.*
 		FROM cards c
@@ -287,7 +285,7 @@ static func getShiningRevelryCards(order: String = "c.id ASC"):
 	
 	return db.query_result_by_reference
 	
-static func getCelestialGuardiansCards(order: String = "c.id ASC"):
+func getCelestialGuardiansCards(order: String = "c.id ASC"):
 	db.query("
 		SELECT c.*
 		FROM cards c
@@ -307,7 +305,7 @@ static func getCelestialGuardiansCards(order: String = "c.id ASC"):
 	
 	return db.query_result_by_reference
 
-static func getExtraCrisisCards(order: String = "c.id ASC"):
+func getExtraCrisisCards(order: String = "c.id ASC"):
 	db.query("
 		SELECT c.*
 		FROM cards c
@@ -316,7 +314,7 @@ static func getExtraCrisisCards(order: String = "c.id ASC"):
 	
 	return db.query_result_by_reference
 	
-static func getEeveeGroveCards(order: String = "c.id ASC"):
+func getEeveeGroveCards(order: String = "c.id ASC"):
 	db.query("
 		SELECT c.*
 		FROM cards c
@@ -325,7 +323,7 @@ static func getEeveeGroveCards(order: String = "c.id ASC"):
 	
 	return db.query_result_by_reference
 
-static func getWisdomSeaSkyCards(order: String = "c.id ASC"):
+func getWisdomSeaSkyCards(order: String = "c.id ASC"):
 	db.query("
 		SELECT c.*
 		FROM cards c

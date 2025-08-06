@@ -1,6 +1,5 @@
 extends VBoxContainer
 
-const SaveManager = preload("res://static/save_manager.gd")
 const UuidManager = preload('res://static/uuid.gd')
 const FriendScene = preload("res://friend.tscn")
 

@@ -1,8 +1,6 @@
 extends HFlowContainer
 
-var DbManager = preload("res://static/database.gd")
 var CardScene = preload("res://card.tscn")
-var SaveManager = preload("res://static/save_manager.gd")
 
 func update() -> void:
 	clear()

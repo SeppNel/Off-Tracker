@@ -3,16 +3,18 @@ extends Node
 const SAVE_PATH = "user://user_cards.save"
 const CURR_VER = 3
 
-static var m_friend_code: int = -1
-static var m_friends: Dictionary = {}
-static var m_secret: String = ""
-static var m_tradeOverride: bool = false
+signal gotCardsChanged
 
-static func _static_init() -> void:
+var m_friend_code: int = -1
+var m_friends: Dictionary = {}
+var m_secret: String = ""
+var m_tradeOverride: bool = false
+
+func _ready() -> void:
 	checkVersion()
 	update()
 
-static func saveCard(id: int) -> void:
+func saveCard(id: int) -> void:
 	var sId = str(id)
 	var gotCards = getGotCards()
 	if gotCards.has(sId):
@@ -21,8 +23,9 @@ static func saveCard(id: int) -> void:
 		gotCards[sId] = 1
 	
 	save(gotCards)
+	gotCardsChanged.emit()
 	
-static func removeSavedCard(id: int) -> void:
+func removeSavedCard(id: int) -> void:
 	var sId = str(id)
 	var gotCards = getGotCards()
 	gotCards[sId] -= 1
@@ -31,7 +34,7 @@ static func removeSavedCard(id: int) -> void:
 	
 	save(gotCards)
 
-static func getGotCards():
+func getGotCards():
 	if not FileAccess.file_exists(SAVE_PATH):
 		return {}# Error! We don't have a save to load.
 
@@ -50,7 +53,7 @@ static func getGotCards():
 
 	return data["got_cards"]
 
-static func getGotCardsIds() -> Array[int]:
+func getGotCardsIds() -> Array[int]:
 	if not FileAccess.file_exists(SAVE_PATH):
 		return []# Error! We don't have a save to load.
 
@@ -73,14 +76,14 @@ static func getGotCardsIds() -> Array[int]:
 
 	return gotCards
 
-static func getSaveJson():
+func getSaveJson():
 	if not FileAccess.file_exists(SAVE_PATH):
 		return ""# Error! We don't have a save to load.
 
 	var save_file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	return save_file.get_line()
 
-static func checkVersion() -> void:
+func checkVersion() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
 		return #Error! We don't have a save
 	
@@ -107,7 +110,7 @@ static func checkVersion() -> void:
 			if version == 2:
 				migrateSave2_3()
 
-static func migrateSave1_2() -> void:
+func migrateSave1_2() -> void:
 	var save_file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	var json_string = save_file.get_line()
 	save_file.close()
@@ -127,7 +130,7 @@ static func migrateSave1_2() -> void:
 	for card: int in data["got_cards"]:
 		saveCard(card)
 		
-static func migrateSave2_3() -> void:
+func migrateSave2_3() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
 		return
 
@@ -148,7 +151,7 @@ static func migrateSave2_3() -> void:
 	DirAccess.remove_absolute(SAVE_PATH)
 	save(data["got_cards"])
 
-static func save(gotCards) -> void:
+func save(gotCards) -> void:
 	var save_dict = {
 		"version" : CURR_VER,
 		"secret": m_secret,
@@ -162,38 +165,38 @@ static func save(gotCards) -> void:
 	var json_string = JSON.stringify(save_dict)
 	save_file.store_line(json_string)
 
-static func setFriendCode(fc: int) -> void:
+func setFriendCode(fc: int) -> void:
 	m_friend_code = fc
 	addFriend(fc, "Myself")
 	save(getGotCards())
 
-static func addFriend(fc: int, name: String) -> void:
+func addFriend(fc: int, name: String) -> void:
 	var fc_str = str(fc)
 	if not m_friends.has(fc_str):
 		m_friends[fc_str] = name
 		save(getGotCards())
 		
-static func deleteFriend(fc: int) -> void:
+func deleteFriend(fc: int) -> void:
 	var fc_str = str(fc)
 	if m_friends.has(fc_str):
 		m_friends.erase(fc_str)
 		save(getGotCards())
 
-static func getFriendName(fc: int) -> String:
+func getFriendName(fc: int) -> String:
 	return m_friends[str(fc)]
 
-static func setSecret(s) -> void:
+func setSecret(s) -> void:
 	m_secret = s
 	save(getGotCards())
 	
-static func setTradeOverride(b: bool) -> void:
+func setTradeOverride(b: bool) -> void:
 	m_tradeOverride = b
 	save(getGotCards())
 	
-static func update() -> void:
+func update() -> void:
 	readSavedValues()
 
-static func readSavedValues() -> void:
+func readSavedValues() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
 		return
 

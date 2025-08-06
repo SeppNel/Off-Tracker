@@ -1,6 +1,5 @@
 extends PanelContainer
 
-var DbManager = preload("res://static/database.gd")
 var CardList
 var MainSearchButton
 var CollectionSelect

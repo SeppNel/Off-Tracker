@@ -1,18 +1,12 @@
 extends ScrollContainer
 
-const SaveManager = preload("res://static/save_manager.gd")
-const DbManager = preload("res://static/database.gd")
 const MAX_RARITY = 10
 
-var gotCards = []
 var cardRarity_cache = {}
 var cardPacks_cache = {}
 var cardsOfRarity : Dictionary
-var packsArray = []
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	packsArray = [
+@onready
+var packsArray = [
 	$Home/GeneticApex/Packs/MewtwoPack,
 	$Home/GeneticApex/Packs/CharizardPack,
 	$Home/GeneticApex/Packs/PikachuPack,
@@ -28,14 +22,15 @@ func _ready() -> void:
 	$"Home/WisdomSeaSky/Packs/Ho-OhPack",
 	$Home/WisdomSeaSky/Packs/LugiaPack
 	]
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
 	updateUi()
 	
 func updateUi():
-	gotCards = SaveManager.getGotCardsIds()
 	countCardsOfRarity()
 
 	for pack in packsArray:
-		pack.gotCards = gotCards
 		pack.update()
 
 func initCardsOfRarity():
@@ -47,7 +42,7 @@ func initCardsOfRarity():
 func countCardsOfRarity():
 	initCardsOfRarity()
 	
-	for card in gotCards:
+	for card in GotCardsCache.getGotCardsIds():
 		var rarity: int
 		if card in cardRarity_cache:
 			rarity = cardRarity_cache[card]

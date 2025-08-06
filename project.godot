@@ -18,6 +18,12 @@ boot_splash/fullsize=false
 boot_splash/image="res://img/icon.png"
 config/icon="res://icon.svg"
 
+[autoload]
+
+SaveManager="*res://autoload/save_manager.gd"
+GotCardsCache="*res://autoload/gotCards_cache.gd"
+DbManager="*res://autoload/db_manager.gd"
+
 [display]
 
 window/size/viewport_width=1080

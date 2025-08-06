@@ -1,7 +1,5 @@
 extends PanelContainer
 
-const SaveManager = preload("res://static/save_manager.gd")
-
 func update():
 	clear()
 	loadFriends()

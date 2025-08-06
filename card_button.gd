@@ -1,7 +1,5 @@
 extends TextureButton
 
-var SaveManager = preload("res://static/save_manager.gd")
-
 var PublishModal
 
 func _ready() -> void:

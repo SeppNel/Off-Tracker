@@ -1,9 +1,8 @@
-[gd_scene load_steps=61 format=3 uid="uid://btvagxoog6kxd"]
+[gd_scene load_steps=48 format=3 uid="uid://btvagxoog6kxd"]
 
 [ext_resource type="Texture2D" uid="uid://c5fdp2owmfgit" path="res://img/pokemon.webp" id="1_45rvw"]
 [ext_resource type="Script" uid="uid://caoehmp38luep" path="res://home_page.gd" id="1_72cy4"]
 [ext_resource type="Texture2D" uid="uid://xvpp8eeqjbbc" path="res://img/checkbox_filled.png" id="2_347lu"]
-[ext_resource type="Script" uid="uid://dv5as2ekoestn" path="res://packs/mewtwo_pack.gd" id="2_tk48n"]
 [ext_resource type="Script" uid="uid://cso072s1a660n" path="res://card_list.gd" id="2_y1fm4"]
 [ext_resource type="Theme" uid="uid://dlrghbkew0egs" path="res://themes/homeLabelTheme.tres" id="3_4c0bm"]
 [ext_resource type="Texture2D" uid="uid://cs6cd15c6jdfk" path="res://img/wisdom_sea_sky.webp" id="3_50hb7"]
@@ -12,39 +11,27 @@
 [ext_resource type="Texture2D" uid="uid://cqqj3cjw8qbrf" path="res://img/checkbox_empty.png" id="3_q3pvi"]
 [ext_resource type="Texture2D" uid="uid://cuwa2scl268ij" path="res://img/genetic_apex.webp" id="3_s1xry"]
 [ext_resource type="Theme" uid="uid://b0tymje06mj6e" path="res://themes/OptionsTheme.tres" id="4_3d3hq"]
-[ext_resource type="Script" uid="uid://c3oj2nkg6d5vt" path="res://packs/ho-oh_pack.gd" id="4_smimr"]
-[ext_resource type="Script" uid="uid://cs5qll6mxkpnh" path="res://packs/solgaleo_pack.gd" id="4_ux0lv"]
-[ext_resource type="Script" uid="uid://dj57mwdjqevv" path="res://packs/buzzwole_pack.gd" id="4_yl67v"]
+[ext_resource type="Script" uid="uid://cljuo1cssygka" path="res://pack.gd" id="4_6iyjs"]
 [ext_resource type="Texture2D" uid="uid://12oshvv4xokb" path="res://img/packs/ho-oh.webp" id="5_4y5qx"]
 [ext_resource type="Texture2D" uid="uid://dmg8g4bec5mkg" path="res://img/packs/solgaleo.webp" id="5_7uosv"]
 [ext_resource type="Texture2D" uid="uid://ceaqivicy3nn2" path="res://img/packs/buzzwole.webp" id="5_crccl"]
 [ext_resource type="Texture2D" uid="uid://bbrlj14blx20a" path="res://img/packs/mewtwo.webp" id="5_xddto"]
-[ext_resource type="Script" uid="uid://cwqa8otlljuae" path="res://packs/charizard_pack.gd" id="6_ss7up"]
-[ext_resource type="Script" uid="uid://bydw2e8u34jlj" path="res://packs/lugia_pack.gd" id="7_8mm6x"]
-[ext_resource type="Script" uid="uid://dohjawwp282j3" path="res://packs/lunala_pack.gd" id="7_hh5nt"]
 [ext_resource type="Texture2D" uid="uid://b2dbuou6nswco" path="res://img/eevee_grove.webp" id="7_utseg"]
-[ext_resource type="Script" uid="uid://cuihku2r6dad0" path="res://packs/pikachu_pack.gd" id="8_2wd2h"]
-[ext_resource type="Script" uid="uid://v32eiqof1amb" path="res://packs/eevee_pack.gd" id="8_4u113"]
 [ext_resource type="Texture2D" uid="uid://whl3hsnh77j5" path="res://img/packs/lunala.webp" id="8_gik1q"]
 [ext_resource type="Texture2D" uid="uid://ptmtodnuk43k" path="res://img/packs/charizard.webp" id="8_gv0qj"]
 [ext_resource type="Texture2D" uid="uid://2ryxmmdd5u52" path="res://img/packs/lugia.webp" id="8_x10cs"]
 [ext_resource type="Texture2D" uid="uid://dpdvc2rw5kn06" path="res://img/packs/eevee.webp" id="9_k10ro"]
 [ext_resource type="Texture2D" uid="uid://bf3ke3ep7vigh" path="res://img/packs/pikachu.webp" id="10_ndfky"]
 [ext_resource type="Texture2D" uid="uid://b2fdlssuy8xsj" path="res://img/mythical_island.webp" id="11_awswk"]
-[ext_resource type="Script" uid="uid://dtdq8hcusyphb" path="res://packs/mew_pack.gd" id="11_mj6ji"]
 [ext_resource type="Texture2D" uid="uid://2qrx6xnoex1i" path="res://img/packs/mew.webp" id="13_u2sdk"]
 [ext_resource type="Texture2D" uid="uid://bikmcw6ats1hi" path="res://img/space_time_smackdown.webp" id="14_jfb4s"]
-[ext_resource type="Script" uid="uid://cdjhekbet2dmx" path="res://packs/dialga_pack.gd" id="14_oadtb"]
 [ext_resource type="Script" uid="uid://ca05kiixdkh7m" path="res://tab_bar.gd" id="15_fu1sk"]
 [ext_resource type="Texture2D" uid="uid://2ysbdxy4c8yg" path="res://img/packs/dialga.webp" id="16_24lec"]
-[ext_resource type="Script" uid="uid://crb0icxyueb26" path="res://packs/palkia_pack.gd" id="16_cqi2a"]
 [ext_resource type="Texture2D" uid="uid://ddcg8uahry7em" path="res://img/packs/palkia.webp" id="18_8d08n"]
 [ext_resource type="Texture2D" uid="uid://dystwyoh0358r" path="res://img/triumphant_light.webp" id="19_0thj2"]
-[ext_resource type="Script" uid="uid://cg58tl57tp7km" path="res://packs/arceus_pack.gd" id="20_5ck2r"]
 [ext_resource type="Texture2D" uid="uid://boawury6jclwf" path="res://img/packs/arceus.webp" id="20_ihgxh"]
 [ext_resource type="Texture2D" uid="uid://cyopws0jghl1q" path="res://img/shining_revelry.webp" id="22_0hve6"]
 [ext_resource type="Script" uid="uid://du3ov6cfvkgxn" path="res://settings.gd" id="22_7rxlr"]
-[ext_resource type="Script" uid="uid://bo26hv5wyp2vu" path="res://packs/shining_pack.gd" id="22_nmi2e"]
 [ext_resource type="Script" uid="uid://bkpktvfp7ytlm" path="res://search_modal.gd" id="23_3jxyi"]
 [ext_resource type="Texture2D" uid="uid://d0ubk1htgggof" path="res://img/donate.webp" id="23_4gfh8"]
 [ext_resource type="StyleBox" uid="uid://bay7lpvne6o2x" path="res://themes/donate.tres" id="23_nfep2"]
@@ -152,7 +139,8 @@ alignment = 1
 [node name="Ho-OhPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/WisdomSeaSky/Packs"]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("4_smimr")
+script = ExtResource("4_6iyjs")
+PACK_ID = 13
 
 [node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/WisdomSeaSky/Packs/Ho-OhPack"]
 layout_mode = 2
@@ -180,7 +168,8 @@ horizontal_alignment = 1
 [node name="LugiaPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/WisdomSeaSky/Packs"]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("7_8mm6x")
+script = ExtResource("4_6iyjs")
+PACK_ID = 14
 
 [node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/WisdomSeaSky/Packs/LugiaPack"]
 layout_mode = 2
@@ -239,7 +228,8 @@ alignment = 1
 [node name="BuzzwolePack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/ExtraCrisis/Packs"]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("4_yl67v")
+script = ExtResource("4_6iyjs")
+PACK_ID = 11
 
 [node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/ExtraCrisis/Packs/BuzzwolePack"]
 layout_mode = 2
@@ -292,7 +282,8 @@ alignment = 1
 [node name="EeveePack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/EeveeGrove/Packs"]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("8_4u113")
+script = ExtResource("4_6iyjs")
+PACK_ID = 12
 
 [node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/EeveeGrove/Packs/EeveePack"]
 layout_mode = 2
@@ -351,7 +342,8 @@ alignment = 1
 [node name="SolgaleoPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/CelestialGuardians/Packs"]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("4_ux0lv")
+script = ExtResource("4_6iyjs")
+PACK_ID = 9
 
 [node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/CelestialGuardians/Packs/SolgaleoPack"]
 layout_mode = 2
@@ -379,7 +371,8 @@ horizontal_alignment = 1
 [node name="LunalaPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/CelestialGuardians/Packs"]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("7_hh5nt")
+script = ExtResource("4_6iyjs")
+PACK_ID = 10
 
 [node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/CelestialGuardians/Packs/LunalaPack"]
 layout_mode = 2
@@ -437,7 +430,8 @@ alignment = 1
 [node name="ShiningPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Packs"]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("22_nmi2e")
+script = ExtResource("4_6iyjs")
+PACK_ID = 8
 
 [node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/ShiningRevelry/Packs/ShiningPack"]
 layout_mode = 2
@@ -490,7 +484,8 @@ alignment = 1
 [node name="ArceusPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs"]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("20_5ck2r")
+script = ExtResource("4_6iyjs")
+PACK_ID = 7
 
 [node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/TriumphantLight/Packs/ArceusPack"]
 layout_mode = 2
@@ -549,7 +544,8 @@ alignment = 1
 [node name="DialgaPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs"]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("14_oadtb")
+script = ExtResource("4_6iyjs")
+PACK_ID = 5
 
 [node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/DialgaPack"]
 layout_mode = 2
@@ -577,7 +573,8 @@ horizontal_alignment = 1
 [node name="PalkiaPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs"]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("16_cqi2a")
+script = ExtResource("4_6iyjs")
+PACK_ID = 6
 
 [node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/SpaceTime/Packs/PalkiaPack"]
 layout_mode = 2
@@ -636,7 +633,8 @@ alignment = 1
 [node name="MewPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs"]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("11_mj6ji")
+script = ExtResource("4_6iyjs")
+PACK_ID = 4
 
 [node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/MythicalIsland/Packs/MewPack"]
 layout_mode = 2
@@ -695,7 +693,8 @@ alignment = 1
 [node name="MewtwoPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs"]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("2_tk48n")
+script = ExtResource("4_6iyjs")
+PACK_ID = 3
 
 [node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs/MewtwoPack"]
 layout_mode = 2
@@ -723,7 +722,8 @@ horizontal_alignment = 1
 [node name="CharizardPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs"]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("6_ss7up")
+script = ExtResource("4_6iyjs")
+PACK_ID = 1
 
 [node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs/CharizardPack"]
 layout_mode = 2
@@ -751,7 +751,8 @@ horizontal_alignment = 1
 [node name="PikachuPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs"]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("8_2wd2h")
+script = ExtResource("4_6iyjs")
+PACK_ID = 2
 
 [node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/GeneticApex/Packs/PikachuPack"]
 layout_mode = 2
