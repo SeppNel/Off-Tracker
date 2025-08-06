@@ -1,10 +1,10 @@
 [gd_scene load_steps=61 format=3 uid="uid://btvagxoog6kxd"]
 
 [ext_resource type="Texture2D" uid="uid://c5fdp2owmfgit" path="res://img/pokemon.webp" id="1_45rvw"]
-[ext_resource type="Script" path="res://home_page.gd" id="1_72cy4"]
+[ext_resource type="Script" uid="uid://caoehmp38luep" path="res://home_page.gd" id="1_72cy4"]
 [ext_resource type="Texture2D" uid="uid://xvpp8eeqjbbc" path="res://img/checkbox_filled.png" id="2_347lu"]
-[ext_resource type="Script" path="res://packs/mewtwo_pack.gd" id="2_tk48n"]
-[ext_resource type="Script" path="res://card_list.gd" id="2_y1fm4"]
+[ext_resource type="Script" uid="uid://dv5as2ekoestn" path="res://packs/mewtwo_pack.gd" id="2_tk48n"]
+[ext_resource type="Script" uid="uid://cso072s1a660n" path="res://card_list.gd" id="2_y1fm4"]
 [ext_resource type="Theme" uid="uid://dlrghbkew0egs" path="res://themes/homeLabelTheme.tres" id="3_4c0bm"]
 [ext_resource type="Texture2D" uid="uid://cs6cd15c6jdfk" path="res://img/wisdom_sea_sky.webp" id="3_50hb7"]
 [ext_resource type="Texture2D" uid="uid://c8tso54rwow5n" path="res://img/celestial_guardians.webp" id="3_aecaf"]
@@ -12,48 +12,48 @@
 [ext_resource type="Texture2D" uid="uid://cqqj3cjw8qbrf" path="res://img/checkbox_empty.png" id="3_q3pvi"]
 [ext_resource type="Texture2D" uid="uid://cuwa2scl268ij" path="res://img/genetic_apex.webp" id="3_s1xry"]
 [ext_resource type="Theme" uid="uid://b0tymje06mj6e" path="res://themes/OptionsTheme.tres" id="4_3d3hq"]
-[ext_resource type="Script" path="res://packs/ho-oh_pack.gd" id="4_smimr"]
-[ext_resource type="Script" path="res://packs/solgaleo_pack.gd" id="4_ux0lv"]
-[ext_resource type="Script" path="res://packs/buzzwole_pack.gd" id="4_yl67v"]
+[ext_resource type="Script" uid="uid://c3oj2nkg6d5vt" path="res://packs/ho-oh_pack.gd" id="4_smimr"]
+[ext_resource type="Script" uid="uid://cs5qll6mxkpnh" path="res://packs/solgaleo_pack.gd" id="4_ux0lv"]
+[ext_resource type="Script" uid="uid://dj57mwdjqevv" path="res://packs/buzzwole_pack.gd" id="4_yl67v"]
 [ext_resource type="Texture2D" uid="uid://12oshvv4xokb" path="res://img/packs/ho-oh.webp" id="5_4y5qx"]
 [ext_resource type="Texture2D" uid="uid://dmg8g4bec5mkg" path="res://img/packs/solgaleo.webp" id="5_7uosv"]
 [ext_resource type="Texture2D" uid="uid://ceaqivicy3nn2" path="res://img/packs/buzzwole.webp" id="5_crccl"]
 [ext_resource type="Texture2D" uid="uid://bbrlj14blx20a" path="res://img/packs/mewtwo.webp" id="5_xddto"]
-[ext_resource type="Script" path="res://packs/charizard_pack.gd" id="6_ss7up"]
-[ext_resource type="Script" path="res://packs/lugia_pack.gd" id="7_8mm6x"]
-[ext_resource type="Script" path="res://packs/lunala_pack.gd" id="7_hh5nt"]
+[ext_resource type="Script" uid="uid://cwqa8otlljuae" path="res://packs/charizard_pack.gd" id="6_ss7up"]
+[ext_resource type="Script" uid="uid://bydw2e8u34jlj" path="res://packs/lugia_pack.gd" id="7_8mm6x"]
+[ext_resource type="Script" uid="uid://dohjawwp282j3" path="res://packs/lunala_pack.gd" id="7_hh5nt"]
 [ext_resource type="Texture2D" uid="uid://b2dbuou6nswco" path="res://img/eevee_grove.webp" id="7_utseg"]
-[ext_resource type="Script" path="res://packs/pikachu_pack.gd" id="8_2wd2h"]
-[ext_resource type="Script" path="res://packs/eevee_pack.gd" id="8_4u113"]
+[ext_resource type="Script" uid="uid://cuihku2r6dad0" path="res://packs/pikachu_pack.gd" id="8_2wd2h"]
+[ext_resource type="Script" uid="uid://v32eiqof1amb" path="res://packs/eevee_pack.gd" id="8_4u113"]
 [ext_resource type="Texture2D" uid="uid://whl3hsnh77j5" path="res://img/packs/lunala.webp" id="8_gik1q"]
 [ext_resource type="Texture2D" uid="uid://ptmtodnuk43k" path="res://img/packs/charizard.webp" id="8_gv0qj"]
 [ext_resource type="Texture2D" uid="uid://2ryxmmdd5u52" path="res://img/packs/lugia.webp" id="8_x10cs"]
 [ext_resource type="Texture2D" uid="uid://dpdvc2rw5kn06" path="res://img/packs/eevee.webp" id="9_k10ro"]
 [ext_resource type="Texture2D" uid="uid://bf3ke3ep7vigh" path="res://img/packs/pikachu.webp" id="10_ndfky"]
 [ext_resource type="Texture2D" uid="uid://b2fdlssuy8xsj" path="res://img/mythical_island.webp" id="11_awswk"]
-[ext_resource type="Script" path="res://packs/mew_pack.gd" id="11_mj6ji"]
+[ext_resource type="Script" uid="uid://dtdq8hcusyphb" path="res://packs/mew_pack.gd" id="11_mj6ji"]
 [ext_resource type="Texture2D" uid="uid://2qrx6xnoex1i" path="res://img/packs/mew.webp" id="13_u2sdk"]
 [ext_resource type="Texture2D" uid="uid://bikmcw6ats1hi" path="res://img/space_time_smackdown.webp" id="14_jfb4s"]
-[ext_resource type="Script" path="res://packs/dialga_pack.gd" id="14_oadtb"]
-[ext_resource type="Script" path="res://tab_bar.gd" id="15_fu1sk"]
+[ext_resource type="Script" uid="uid://cdjhekbet2dmx" path="res://packs/dialga_pack.gd" id="14_oadtb"]
+[ext_resource type="Script" uid="uid://ca05kiixdkh7m" path="res://tab_bar.gd" id="15_fu1sk"]
 [ext_resource type="Texture2D" uid="uid://2ysbdxy4c8yg" path="res://img/packs/dialga.webp" id="16_24lec"]
-[ext_resource type="Script" path="res://packs/palkia_pack.gd" id="16_cqi2a"]
+[ext_resource type="Script" uid="uid://crb0icxyueb26" path="res://packs/palkia_pack.gd" id="16_cqi2a"]
 [ext_resource type="Texture2D" uid="uid://ddcg8uahry7em" path="res://img/packs/palkia.webp" id="18_8d08n"]
 [ext_resource type="Texture2D" uid="uid://dystwyoh0358r" path="res://img/triumphant_light.webp" id="19_0thj2"]
-[ext_resource type="Script" path="res://packs/arceus_pack.gd" id="20_5ck2r"]
+[ext_resource type="Script" uid="uid://cg58tl57tp7km" path="res://packs/arceus_pack.gd" id="20_5ck2r"]
 [ext_resource type="Texture2D" uid="uid://boawury6jclwf" path="res://img/packs/arceus.webp" id="20_ihgxh"]
 [ext_resource type="Texture2D" uid="uid://cyopws0jghl1q" path="res://img/shining_revelry.webp" id="22_0hve6"]
-[ext_resource type="Script" path="res://settings.gd" id="22_7rxlr"]
-[ext_resource type="Script" path="res://packs/shining_pack.gd" id="22_nmi2e"]
-[ext_resource type="Script" path="res://search_modal.gd" id="23_3jxyi"]
+[ext_resource type="Script" uid="uid://du3ov6cfvkgxn" path="res://settings.gd" id="22_7rxlr"]
+[ext_resource type="Script" uid="uid://bo26hv5wyp2vu" path="res://packs/shining_pack.gd" id="22_nmi2e"]
+[ext_resource type="Script" uid="uid://bkpktvfp7ytlm" path="res://search_modal.gd" id="23_3jxyi"]
 [ext_resource type="Texture2D" uid="uid://d0ubk1htgggof" path="res://img/donate.webp" id="23_4gfh8"]
 [ext_resource type="StyleBox" uid="uid://bay7lpvne6o2x" path="res://themes/donate.tres" id="23_nfep2"]
 [ext_resource type="StyleBox" uid="uid://cpid8ybowndxq" path="res://themes/donate_hover.tres" id="24_7pxmk"]
-[ext_resource type="Script" path="res://friends_page.gd" id="24_ngodf"]
+[ext_resource type="Script" uid="uid://bql5ps61uskfo" path="res://friends_page.gd" id="24_ngodf"]
 [ext_resource type="Texture2D" uid="uid://c1wjm3o3a67te" path="res://img/packs/shining-revelry.webp" id="24_y2cia"]
-[ext_resource type="Script" path="res://publish_modal.gd" id="25_1xfmc"]
-[ext_resource type="Script" path="res://publish_card_list.gd" id="25_utdwa"]
-[ext_resource type="Script" path="res://manage_friends.gd" id="31_oj3rj"]
+[ext_resource type="Script" uid="uid://c81102vwm7y2x" path="res://publish_modal.gd" id="25_1xfmc"]
+[ext_resource type="Script" uid="uid://d18tohs2sk31u" path="res://publish_card_list.gd" id="25_utdwa"]
+[ext_resource type="Script" uid="uid://b3x7bc2t85gg4" path="res://manage_friends.gd" id="31_oj3rj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlw3j"]
 bg_color = Color(0.211765, 0.211765, 0.211765, 1)
@@ -849,6 +849,7 @@ selected = 1
 fit_to_longest_item = false
 item_count = 11
 popup/item_0/text = "All"
+popup/item_0/id = 0
 popup/item_1/text = "Wisdom of Sea and Sky"
 popup/item_1/id = 10
 popup/item_2/text = "Eevee Grove"
@@ -886,6 +887,7 @@ theme = ExtResource("4_3d3hq")
 selected = 0
 item_count = 4
 popup/item_0/text = "ID ↓"
+popup/item_0/id = 0
 popup/item_1/text = "ID ↑"
 popup/item_1/id = 1
 popup/item_2/text = "Rarity ↓"
@@ -950,6 +952,7 @@ theme_override_font_sizes/font_size = 40
 selected = 0
 item_count = 11
 popup/item_0/text = "Any"
+popup/item_0/id = 0
 popup/item_1/text = "Colorless"
 popup/item_1/id = 1
 popup/item_2/text = "Fire"
@@ -987,6 +990,7 @@ theme_override_font_sizes/font_size = 40
 selected = 0
 item_count = 7
 popup/item_0/text = "Any"
+popup/item_0/id = 0
 popup/item_1/text = "Basic"
 popup/item_1/id = 4
 popup/item_2/text = "Stage 1"
@@ -1016,6 +1020,7 @@ theme_override_font_sizes/font_size = 40
 selected = 0
 item_count = 11
 popup/item_0/text = "Any"
+popup/item_0/id = 0
 popup/item_1/text = "1 Diamond"
 popup/item_1/id = 1
 popup/item_2/text = "2 Diamond"
@@ -1053,6 +1058,7 @@ theme_override_font_sizes/font_size = 40
 selected = 0
 item_count = 15
 popup/item_0/text = "Any"
+popup/item_0/id = 0
 popup/item_1/text = "Charizard"
 popup/item_1/id = 4
 popup/item_2/text = "Mewtwo"
@@ -1098,6 +1104,7 @@ theme_override_font_sizes/font_size = 40
 selected = 0
 item_count = 11
 popup/item_0/text = "Any"
+popup/item_0/id = 0
 popup/item_1/text = "Colorless"
 popup/item_1/id = 1
 popup/item_2/text = "Fire"
