@@ -31,7 +31,6 @@ func _on_button_up() -> void:
 
 func _on_pubish_card_selected():
 	var card = get_parent()
-	print(card.id)
 	
 	if PublishModal.addWantCard(card.id):
 		card.get_node("NotGotOverlay").visible = !card.get_node("NotGotOverlay").visible

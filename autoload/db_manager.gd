@@ -259,8 +259,10 @@ func getTradeableCardsIds():
 		JOIN collections col ON p.collection = col.id
 		WHERE col.id != ?
 		AND rarity > 0 and rarity < 6;"
+		
+	db.query_with_bindings(query, [latest_tradeable_pack, latest_collection])
 	
-	var result = db.query_with_bindings(query, [latest_tradeable_pack, latest_collection])
+	var result = db.query_result_by_reference
 	var id_array = []
 	for item in result:
 		id_array.append(item["id"])
