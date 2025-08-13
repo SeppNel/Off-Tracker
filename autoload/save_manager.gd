@@ -183,6 +183,7 @@ func setTradeOverride(b: bool) -> void:
 func update() -> void:
 	readSavedValues()
 	readGotCards()
+	gotCardsChanged.emit()
 
 func readSavedValues() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):

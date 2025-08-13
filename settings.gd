@@ -54,8 +54,8 @@ func _on_read_file_picked(temp_path: String, mime_type: String) -> void:
 		if not fail:	
 			DirAccess.copy_absolute(temp_path, SaveManager.SAVE_PATH)
 			SaveManager.checkVersion()
-			%CardPage/CardList.update()
 			SaveManager.update()
+			%CardPage/CardList.update()
 			self.update()
 			
 			if %FriendsPage/NoCodeAlert.visible and SaveManager.m_friend_code != -1:
