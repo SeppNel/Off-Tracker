@@ -32,6 +32,7 @@ func removeSavedCard(id: int) -> void:
 		m_gotCards.erase(sId)
 	
 	save()
+	gotCardsChanged.emit()
 
 func readGotCards() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
