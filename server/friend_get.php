@@ -3,14 +3,9 @@ define("ERROR_MSG", "Error");
 $BD_PATH = "../../bd/off/trades/";
 
 function validateFriendCode($fc){
-	$nonValidChars = ["&", "|", ";", "\n", ">", "$", "`", "(", "{", ".", "/"];
-
-	//Prevent shell injection
-	foreach ($nonValidChars as $c) {
-		if(strpos($fc, $c) !== false){
-			exit(ERROR_MSG);
-		}
-	}
+	if (!preg_match('/^[0-9]+$/', $fc)) {
+        exit(ERROR_MSG);
+    }
 }
 
 if (!isset($_GET["friend_code"])) {
