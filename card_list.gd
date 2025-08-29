@@ -137,6 +137,11 @@ func loadCards():
 		var cards = DbManager.getWisdomSeaSkyCards(parse_order())
 		addCollectionTitle("res://img/collections/wisdom_sea_sky.webp")
 		addCollectionCards(cards, gotCards)
+		
+	if m_collectionFilter == 11 or m_collectionFilter == 0:
+		var cards = DbManager.getSecludedSpringsCards(parse_order())
+		addCollectionTitle("res://img/collections/secluded_springs.webp")
+		addCollectionCards(cards, gotCards)
 	
 	if m_collectionFilter == 4 or m_collectionFilter == 0:
 		var promoCards = DbManager.getPromoCards()

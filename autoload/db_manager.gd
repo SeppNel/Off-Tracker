@@ -344,3 +344,12 @@ func getWisdomSeaSkyCards(order: String = "c.id ASC"):
 		ORDER BY " + order + ";")
 	
 	return db.query_result_by_reference
+
+func getSecludedSpringsCards(order: String = "c.id ASC"):
+	db.query("
+		SELECT c.*
+		FROM cards c
+		WHERE c.pack = 15
+		ORDER BY " + order + ";")
+	
+	return db.query_result_by_reference

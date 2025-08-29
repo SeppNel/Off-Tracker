@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://btvagxoog6kxd"]
+[gd_scene load_steps=50 format=3 uid="uid://btvagxoog6kxd"]
 
 [ext_resource type="Texture2D" uid="uid://c5fdp2owmfgit" path="res://img/pokemon.webp" id="1_45rvw"]
 [ext_resource type="Script" uid="uid://caoehmp38luep" path="res://home_page.gd" id="1_72cy4"]
@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://dlrghbkew0egs" path="res://themes/homeLabelTheme.tres" id="3_4c0bm"]
 [ext_resource type="Texture2D" uid="uid://cs6cd15c6jdfk" path="res://img/collections/wisdom_sea_sky.webp" id="3_50hb7"]
 [ext_resource type="Texture2D" uid="uid://c8tso54rwow5n" path="res://img/collections/celestial_guardians.webp" id="3_aecaf"]
+[ext_resource type="Texture2D" uid="uid://by1apgdr6ttex" path="res://img/collections/secluded_springs.webp" id="3_d2t1y"]
 [ext_resource type="Texture2D" uid="uid://do85wte2cmrda" path="res://img/collections/extra_crisis.webp" id="3_k3ivj"]
 [ext_resource type="Texture2D" uid="uid://cqqj3cjw8qbrf" path="res://img/checkbox_empty.png" id="3_q3pvi"]
 [ext_resource type="Texture2D" uid="uid://cuwa2scl268ij" path="res://img/collections/genetic_apex.webp" id="3_s1xry"]
@@ -15,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://12oshvv4xokb" path="res://img/packs/ho-oh.webp" id="5_4y5qx"]
 [ext_resource type="Texture2D" uid="uid://dmg8g4bec5mkg" path="res://img/packs/solgaleo.webp" id="5_7uosv"]
 [ext_resource type="Texture2D" uid="uid://ceaqivicy3nn2" path="res://img/packs/buzzwole.webp" id="5_crccl"]
+[ext_resource type="Texture2D" uid="uid://4yi2fkjcl5ul" path="res://img/packs/suicune.webp" id="5_gngh3"]
 [ext_resource type="Texture2D" uid="uid://bbrlj14blx20a" path="res://img/packs/mewtwo.webp" id="5_xddto"]
 [ext_resource type="Texture2D" uid="uid://b2dbuou6nswco" path="res://img/collections/eevee_grove.webp" id="7_utseg"]
 [ext_resource type="Texture2D" uid="uid://whl3hsnh77j5" path="res://img/packs/lunala.webp" id="8_gik1q"]
@@ -106,6 +108,67 @@ layout_mode = 2
 
 [node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home"]
 custom_minimum_size = Vector2(1080, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Secluded Springs" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+
+[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/Secluded Springs"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/Secluded Springs/Title"]
+custom_minimum_size = Vector2(410, 130)
+layout_mode = 2
+texture = ExtResource("3_d2t1y")
+stretch_mode = 5
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/Secluded Springs"]
+custom_minimum_size = Vector2(1080, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/Secluded Springs"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="SuicunePack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/Secluded Springs/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_6iyjs")
+PACK_ID = 15
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/Secluded Springs/Packs/SuicunePack"]
+layout_mode = 2
+texture = ExtResource("5_gngh3")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/Secluded Springs/Packs/SuicunePack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/Secluded Springs/Packs/SuicunePack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/Secluded Springs/Packs/SuicunePack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="MarginTop10" type="Control" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 60)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -848,29 +911,31 @@ theme = ExtResource("4_3d3hq")
 alignment = 1
 selected = 1
 fit_to_longest_item = false
-item_count = 11
+item_count = 12
 popup/item_0/text = "All"
 popup/item_0/id = 0
-popup/item_1/text = "Wisdom of Sea and Sky"
-popup/item_1/id = 10
-popup/item_2/text = "Eevee Grove"
-popup/item_2/id = 9
-popup/item_3/text = "Extradimensional Crisis"
-popup/item_3/id = 8
-popup/item_4/text = "Celestial Guardians"
-popup/item_4/id = 7
-popup/item_5/text = "Shining Revelry"
-popup/item_5/id = 6
-popup/item_6/text = "Triumphant Light"
-popup/item_6/id = 5
-popup/item_7/text = "Space-Time Smackdown"
-popup/item_7/id = 3
-popup/item_8/text = "Mythical Island"
-popup/item_8/id = 2
-popup/item_9/text = "Genetic Apex"
-popup/item_9/id = 1
-popup/item_10/text = "Promo"
-popup/item_10/id = 4
+popup/item_1/text = "Secluded Springs"
+popup/item_1/id = 11
+popup/item_2/text = "Wisdom of Sea and Sky"
+popup/item_2/id = 10
+popup/item_3/text = "Eevee Grove"
+popup/item_3/id = 9
+popup/item_4/text = "Extradimensional Crisis"
+popup/item_4/id = 8
+popup/item_5/text = "Celestial Guardians"
+popup/item_5/id = 7
+popup/item_6/text = "Shining Revelry"
+popup/item_6/id = 6
+popup/item_7/text = "Triumphant Light"
+popup/item_7/id = 5
+popup/item_8/text = "Space-Time Smackdown"
+popup/item_8/id = 3
+popup/item_9/text = "Mythical Island"
+popup/item_9/id = 2
+popup/item_10/text = "Genetic Apex"
+popup/item_10/id = 1
+popup/item_11/text = "Promo"
+popup/item_11/id = 4
 
 [node name="OrderContainer" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList/Controls/Level1"]
 layout_mode = 2
@@ -1057,7 +1122,7 @@ size_flags_horizontal = 4
 theme = SubResource("Theme_7tex0")
 theme_override_font_sizes/font_size = 40
 selected = 0
-item_count = 15
+item_count = 16
 popup/item_0/text = "Any"
 popup/item_0/id = 0
 popup/item_1/text = "Charizard"
@@ -1088,6 +1153,8 @@ popup/item_13/text = "Ho-Oh"
 popup/item_13/id = 13
 popup/item_14/text = "Lugia"
 popup/item_14/id = 14
+popup/item_15/text = "Suicune"
+popup/item_15/id = 15
 
 [node name="WeaknessLabel" type="Label" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
 custom_minimum_size = Vector2(1080, 80)

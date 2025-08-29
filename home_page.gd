@@ -20,7 +20,8 @@ var packsArray = [
 	$Home/ExtraCrisis/Packs/BuzzwolePack,
 	$Home/EeveeGrove/Packs/EeveePack,
 	$"Home/WisdomSeaSky/Packs/Ho-OhPack",
-	$Home/WisdomSeaSky/Packs/LugiaPack
+	$Home/WisdomSeaSky/Packs/LugiaPack,
+	$"Home/Secluded Springs/Packs/SuicunePack"
 	]
 
 # Called when the node enters the scene tree for the first time.
