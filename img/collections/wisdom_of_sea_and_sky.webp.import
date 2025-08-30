@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cs6cd15c6jdfk"
-path="res://.godot/imported/wisdom_sea_sky.webp-6e189c10bee21e6e03e682af38817612.ctex"
+path="res://.godot/imported/wisdom_of_sea_and_sky.webp-1375474479888d416b3bd98bf0e95b83.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/collections/wisdom_sea_sky.webp"
-dest_files=["res://.godot/imported/wisdom_sea_sky.webp-6e189c10bee21e6e03e682af38817612.ctex"]
+source_file="res://img/collections/wisdom_of_sea_and_sky.webp"
+dest_files=["res://.godot/imported/wisdom_of_sea_and_sky.webp-1375474479888d416b3bd98bf0e95b83.ctex"]
 
 [params]
 

@@ -1,13 +1,13 @@
 extends Node
 
-const VERBOSITY_LEVEL : int = SQLite.QUIET
-const DB_NAME := "res://data/db.sqlite"
-const DEFAULT_LTP : int = 12 # Latest Tradeable Pack
-const DEFAULT_LC : int = 9 # Latest Collection
+const VERBOSITY_LEVEL: int = SQLite.QUIET
+const DB_NAME: String = "res://data/db.sqlite"
 
-var db : SQLite = null
-var latest_tradeable_pack : int = DEFAULT_LTP
-var latest_collection : int = DEFAULT_LC
+var db: SQLite = null
+var DEFAULT_LTP: int # Latest Tradeable Pack
+var DEFAULT_LC: int # Latest Collection
+var latest_tradeable_pack: int
+var latest_collection: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,8 +16,23 @@ func _ready() -> void:
 	db.verbosity_level = VERBOSITY_LEVEL
 	db.read_only = true
 	db.open_db()
+	DEFAULT_LC = default_lc()
+	DEFAULT_LTP = default_ltp()
 	updateLatestTradeable()
 	
+func default_lc() -> int:
+	db.query("SELECT MAX(id) as id FROM collections;")
+	return db.query_result_by_reference[0]["id"]
+
+func default_ltp() -> int:
+	var query: String = "
+		SELECT MAX(id) as id
+		FROM packs
+		WHERE collection = ?"
+		
+	db.query_with_bindings(query, [DEFAULT_LC - 1])
+	return db.query_result_by_reference[0]["id"]
+
 func updateLatestTradeable():
 	if not SaveManager.m_tradeOverride:
 		latest_tradeable_pack = DEFAULT_LTP
@@ -37,76 +52,11 @@ func getAllCards():
 	db.query("SELECT * FROM cards;")
 	return db.query_result_by_reference
 	
-func getGeneticApexCards(order: String = "c.id ASC"):
-	db.query("
-		SELECT c.*
-		FROM cards c
-		JOIN packs p ON c.pack = p.id
-		JOIN collections col ON p.collection = col.id
-		WHERE col.id = 1
-
-		UNION
-
-		SELECT c.*
-		FROM cards c
-		JOIN card_packs cp ON c.id = cp.card_id
-		JOIN packs p ON cp.pack = p.id
-		JOIN collections col ON p.collection = col.id
-		WHERE col.id = 1
-		
-		UNION
-
-		SELECT * FROM cards where id = 283 
-		ORDER BY " + order + ";") # Add Mew
-	
-	return db.query_result_by_reference
-	
-func getMythicalIslandsCards(order: String = "c.id ASC"):
-	db.query("
-		SELECT c.*
-		FROM cards c
-		JOIN packs p ON c.pack = p.id
-		JOIN collections col ON p.collection = col.id
-		WHERE col.id = 2
-
-		UNION
-
-		SELECT c.*
-		FROM cards c
-		JOIN card_packs cp ON c.id = cp.card_id
-		JOIN packs p ON cp.pack = p.id
-		JOIN collections col ON p.collection = col.id
-		WHERE col.id = 2
-		  AND c.id != 218
-		ORDER BY " + order + ";") # Remove Old Amber
-	
-	return db.query_result_by_reference
-	
 func getPromoCards():
 	db.query("
 		SELECT *
 		FROM cards
 		WHERE rarity = 0;")
-	
-	return db.query_result_by_reference
-	
-func getSpaceTimeCards(order: String = "c.id ASC"):
-	db.query("
-		SELECT c.*
-		FROM cards c
-		JOIN packs p ON c.pack = p.id
-		JOIN collections col ON p.collection = col.id
-		WHERE col.id = 3
-
-		UNION
-
-		SELECT c.*
-		FROM cards c
-		JOIN card_packs cp ON c.id = cp.card_id
-		JOIN packs p ON cp.pack = p.id
-		JOIN collections col ON p.collection = col.id
-		WHERE col.id = 3
-		ORDER BY " + order + ";")
 	
 	return db.query_result_by_reference
 
@@ -222,7 +172,7 @@ func getCard(id: int):
 	
 	return db.query_result[0]
 	
-func getTradeableCards():
+func getTradeableCards() -> Array[Dictionary]:
 	var query = "
 		SELECT * 
 		FROM cards 
@@ -243,7 +193,7 @@ func getTradeableCards():
 	
 	return db.query_result_by_reference
 	
-func getTradeableCardsIds():
+func getTradeableCardsIds() -> Array[int]:
 	var query = "
 		SELECT id 
 		FROM cards 
@@ -263,37 +213,35 @@ func getTradeableCardsIds():
 	db.query_with_bindings(query, [latest_tradeable_pack, latest_collection])
 	
 	var result = db.query_result_by_reference
-	var id_array = []
+	var id_array: Array[int] = []
 	for item in result:
 		id_array.append(item["id"])
 	
 	return id_array
 
-func getTriumphantLightCards(order: String = "c.id ASC"):
+func getCollectionName(col: int) -> String:
+	var query: String = "
+		SELECT name
+		FROM collections
+		WHERE id = ?;"
+	
+	db.query_with_bindings(query, [col])
+	return db.query_result_by_reference[0]["name"]
+
+func getCollections() -> Array[Dictionary]:
 	db.query("
-		SELECT c.*
-		FROM cards c
-		WHERE c.pack = 7
-		ORDER BY " + order + ";")
+		SELECT *
+		FROM collections;")
 	
 	return db.query_result_by_reference
-	
-func getShiningRevelryCards(order: String = "c.id ASC"):
-	db.query("
-		SELECT c.*
-		FROM cards c
-		WHERE c.pack = 8
-		ORDER BY " + order + ";")
-	
-	return db.query_result_by_reference
-	
-func getCelestialGuardiansCards(order: String = "c.id ASC"):
-	db.query("
+
+func getCardsInCollection(col: int, order: String = "c.id ASC") -> Array[Dictionary]:
+	var query: String = "
 		SELECT c.*
 		FROM cards c
 		JOIN packs p ON c.pack = p.id
 		JOIN collections col ON p.collection = col.id
-		WHERE col.id = 6
+		WHERE col.id = ?
 
 		UNION
 
@@ -302,54 +250,15 @@ func getCelestialGuardiansCards(order: String = "c.id ASC"):
 		JOIN card_packs cp ON c.id = cp.card_id
 		JOIN packs p ON cp.pack = p.id
 		JOIN collections col ON p.collection = col.id
-		WHERE col.id = 6
-		ORDER BY " + order + ";")
-	
+		WHERE col.id = ?
+		ORDER BY " + order + ";"
+		
+	db.query_with_bindings(query, [col, col])
 	return db.query_result_by_reference
 
-func getExtraCrisisCards(order: String = "c.id ASC"):
+func getPacks() -> Array[Dictionary]:
 	db.query("
-		SELECT c.*
-		FROM cards c
-		WHERE c.pack = 11
-		ORDER BY " + order + ";")
-	
-	return db.query_result_by_reference
-	
-func getEeveeGroveCards(order: String = "c.id ASC"):
-	db.query("
-		SELECT c.*
-		FROM cards c
-		WHERE c.pack = 12
-		ORDER BY " + order + ";")
-	
-	return db.query_result_by_reference
-
-func getWisdomSeaSkyCards(order: String = "c.id ASC"):
-	db.query("
-		SELECT c.*
-		FROM cards c
-		JOIN packs p ON c.pack = p.id
-		JOIN collections col ON p.collection = col.id
-		WHERE col.id = 9
-
-		UNION
-
-		SELECT c.*
-		FROM cards c
-		JOIN card_packs cp ON c.id = cp.card_id
-		JOIN packs p ON cp.pack = p.id
-		JOIN collections col ON p.collection = col.id
-		WHERE col.id = 9
-		ORDER BY " + order + ";")
-	
-	return db.query_result_by_reference
-
-func getSecludedSpringsCards(order: String = "c.id ASC"):
-	db.query("
-		SELECT c.*
-		FROM cards c
-		WHERE c.pack = 15
-		ORDER BY " + order + ";")
+		SELECT *
+		FROM packs;")
 	
 	return db.query_result_by_reference

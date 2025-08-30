@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://do85wte2cmrda"
-path="res://.godot/imported/extra_crisis.webp-7f6f144ee10c587cc14bcc33c97681aa.ctex"
+path="res://.godot/imported/extradimensional_crisis.webp-2bfb10ba6cb411380d4768ea599f8c28.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/collections/extra_crisis.webp"
-dest_files=["res://.godot/imported/extra_crisis.webp-7f6f144ee10c587cc14bcc33c97681aa.ctex"]
+source_file="res://img/collections/extradimensional_crisis.webp"
+dest_files=["res://.godot/imported/extradimensional_crisis.webp-2bfb10ba6cb411380d4768ea599f8c28.ctex"]
 
 [params]
 
