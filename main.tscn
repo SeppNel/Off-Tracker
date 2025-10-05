@@ -909,7 +909,6 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme = ExtResource("4_3d3hq")
 alignment = 1
-selected = 1
 fit_to_longest_item = false
 
 [node name="OrderContainer" type="HBoxContainer" parent="DaddyDiv/CardPage/CardList/Controls/Level1"]
@@ -1096,7 +1095,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_7tex0")
 theme_override_font_sizes/font_size = 40
-selected = 0
 
 [node name="WeaknessLabel" type="Label" parent="DaddyDiv/CardPage/SearchModal/VFlowContainer"]
 custom_minimum_size = Vector2(1080, 80)

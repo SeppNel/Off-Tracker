@@ -128,7 +128,7 @@ func getCardName(card: int):
 	return db.query_result[0]["name"]
 
 func search(n: String, t: int, s: int, r: int, p: int, w: int, order: String = "c.id ASC"):
-	n = "'" + n + "%'"
+	n = "'%" + n + "%'"
 	var format_query = "
 		SELECT id, image
 		FROM cards c
