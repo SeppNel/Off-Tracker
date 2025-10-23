@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://btvagxoog6kxd"]
+[gd_scene load_steps=52 format=3 uid="uid://btvagxoog6kxd"]
 
 [ext_resource type="Texture2D" uid="uid://c5fdp2owmfgit" path="res://img/pokemon.webp" id="1_45rvw"]
 [ext_resource type="Script" uid="uid://caoehmp38luep" path="res://home_page.gd" id="1_72cy4"]
@@ -18,9 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://ceaqivicy3nn2" path="res://img/packs/buzzwole.webp" id="5_crccl"]
 [ext_resource type="Texture2D" uid="uid://4yi2fkjcl5ul" path="res://img/packs/suicune.webp" id="5_gngh3"]
 [ext_resource type="Texture2D" uid="uid://bbrlj14blx20a" path="res://img/packs/mewtwo.webp" id="5_xddto"]
+[ext_resource type="Texture2D" uid="uid://dx7yn4q2jsm1i" path="res://img/collections/deluxe_ex.webp" id="7_0n3wm"]
 [ext_resource type="Texture2D" uid="uid://b2dbuou6nswco" path="res://img/collections/eevee_grove.webp" id="7_utseg"]
 [ext_resource type="Texture2D" uid="uid://whl3hsnh77j5" path="res://img/packs/lunala.webp" id="8_gik1q"]
 [ext_resource type="Texture2D" uid="uid://ptmtodnuk43k" path="res://img/packs/charizard.webp" id="8_gv0qj"]
+[ext_resource type="Texture2D" uid="uid://cxojwrka3e4eu" path="res://img/packs/deluxe.webp" id="8_qnost"]
 [ext_resource type="Texture2D" uid="uid://2ryxmmdd5u52" path="res://img/packs/lugia.webp" id="8_x10cs"]
 [ext_resource type="Texture2D" uid="uid://dpdvc2rw5kn06" path="res://img/packs/eevee.webp" id="9_k10ro"]
 [ext_resource type="Texture2D" uid="uid://bf3ke3ep7vigh" path="res://img/packs/pikachu.webp" id="10_ndfky"]
@@ -113,11 +115,10 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="Secluded Springs" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
-custom_minimum_size = Vector2(1080, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/Secluded Springs"]
-custom_minimum_size = Vector2(1080, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -128,7 +129,7 @@ texture = ExtResource("3_d2t1y")
 stretch_mode = 5
 
 [node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/Secluded Springs"]
-custom_minimum_size = Vector2(1080, 30)
+custom_minimum_size = Vector2(400, 30)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -167,6 +168,54 @@ theme = ExtResource("3_4c0bm")
 text = "12.454%"
 horizontal_alignment = 1
 
+[node name="Deluxe Ex" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/Deluxe Ex"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/Deluxe Ex/Title"]
+custom_minimum_size = Vector2(410, 130)
+layout_mode = 2
+texture = ExtResource("7_0n3wm")
+stretch_mode = 5
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/Deluxe Ex"]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/Deluxe Ex"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="DeluxePack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/Deluxe Ex/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_6iyjs")
+PACK_ID = 16
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/Deluxe Ex/Packs/DeluxePack"]
+layout_mode = 2
+texture = ExtResource("8_qnost")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/Deluxe Ex/Packs/DeluxePack"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/Deluxe Ex/Packs/DeluxePack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
 [node name="MarginTop10" type="Control" parent="DaddyDiv/HomePage/Home"]
 custom_minimum_size = Vector2(1080, 60)
 layout_mode = 2
@@ -174,6 +223,7 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="WisdomSeaSky" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
+visible = false
 custom_minimum_size = Vector2(1080, 0)
 layout_mode = 2
 

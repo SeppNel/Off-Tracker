@@ -58,5 +58,6 @@ func calcNewCardProbability() -> float:
 	return 1 - N28
 	
 func updateNewCardProbability() -> void:
-	var p = calcNewCardProbability()
-	$Probability.text = str(snapped(p * 100, 0.001)) + "%" 
+	if PACK_ID != 16:
+		var p = calcNewCardProbability()
+		$Probability.text = str(snapped(p * 100, 0.001)) + "%"
