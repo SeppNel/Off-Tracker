@@ -22,7 +22,10 @@ var packsArray = [
 	$"Home/WisdomSeaSky/Packs/Ho-OhPack",
 	$Home/WisdomSeaSky/Packs/LugiaPack,
 	$"Home/Secluded Springs/Packs/SuicunePack",
-	$"Home/Deluxe Ex/Packs/DeluxePack"
+	$"Home/Deluxe Ex/Packs/DeluxePack",
+	$Home/MegaRising/Packs/AltariaPack,
+	$Home/MegaRising/Packs/BlazikenPack,
+	$Home/MegaRising/Packs/GyaradosPack
 	]
 
 # Called when the node enters the scene tree for the first time.
@@ -38,8 +41,8 @@ func updateUi():
 func initCardsOfRarity():
 	for rarity in range(1, MAX_RARITY + 1):
 		cardsOfRarity[rarity] = {}
-		for pack in range(1, packsArray.size() + 1):
-			cardsOfRarity[rarity][pack] = 0
+		for pack in DbManager.getPacks():
+			cardsOfRarity[rarity][pack["id"]] = 0
 			
 func countCardsOfRarity():
 	initCardsOfRarity()

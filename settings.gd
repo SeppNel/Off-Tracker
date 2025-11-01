@@ -14,9 +14,6 @@ func _ready() -> void:
 func update() -> void:
 	if SaveManager.m_friend_code != -1:
 		$VFlowContainer/FCContainer/FriendCodeLabel.text = "Friend Code: " + str(SaveManager.m_friend_code)
-	
-	if SaveManager.m_tradeOverride:
-		$VFlowContainer/TradeOverrideContainer/CheckButton.button_pressed = true
 
 func _on_export_button_pressed() -> void:
 	var file = FileAccess.open(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/ptcgp_export.json", FileAccess.WRITE)  # Open file for writing
@@ -121,8 +118,3 @@ func _on_faq_button_pressed() -> void:
 func _on_close_faq_button_pressed() -> void:
 	%SettingsPage/FAQModal.hide()
 	self.show()
-
-
-func _on_trade_override_button_pressed() -> void:
-	SaveManager.setTradeOverride(!SaveManager.m_tradeOverride)
-	DbManager.updateLatestTradeable()

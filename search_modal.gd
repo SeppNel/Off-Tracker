@@ -10,8 +10,6 @@ func fillPackInput() -> void:
 	
 	var packs: Array[Dictionary] = DbManager.getPacks()
 	for p in packs:
-		if p["id"] == 0:
-			continue
 		r_PackInput.add_item(p["name"], p["id"])
 
 func _ready() -> void:

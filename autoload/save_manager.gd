@@ -8,7 +8,6 @@ signal gotCardsChanged
 var m_friend_code: int = -1
 var m_friends: Dictionary = {}
 var m_secret: String = ""
-var m_tradeOverride: bool = false
 var m_gotCards: Dictionary = {}
 
 func _ready() -> void:
@@ -144,7 +143,7 @@ func save() -> void:
 		"version" : CURR_VER,
 		"secret": m_secret,
 		"friend_code": m_friend_code,
-		"tradeOverride": m_tradeOverride,
+		"tradeOverride": false,
 		"got_cards" : m_gotCards,
 		"friends": m_friends,
 	}
@@ -177,10 +176,6 @@ func setSecret(s) -> void:
 	m_secret = s
 	save()
 	
-func setTradeOverride(b: bool) -> void:
-	m_tradeOverride = b
-	save()
-	
 func update() -> void:
 	readSavedValues()
 	readGotCards()
@@ -203,4 +198,3 @@ func readSavedValues() -> void:
 	m_friend_code = int(data["friend_code"])
 	m_friends = data["friends"]
 	m_secret = data["secret"]
-	m_tradeOverride = bool(data["tradeOverride"])

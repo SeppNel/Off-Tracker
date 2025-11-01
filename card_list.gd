@@ -2,7 +2,8 @@ extends HFlowContainer
 
 # Static includes
 const CardScene = preload("res://card.tscn")
-const PROMO_COL_ID = 999
+const PROMOA_COL_ID = 999
+const PROMOB_COL_ID = 998
 
 # Node references
 @onready var r_collectionSelect: OptionButton = $Controls/Level1/CollectionContainer/CollectionSelect
@@ -34,8 +35,9 @@ func fillCollectionSelect() -> void:
 	var collections: Array[Dictionary] = DbManager.getCollections()
 	for i in range(collections.size()-1, -1, -1):
 		r_collectionSelect.add_item(collections[i]["name"], collections[i]["id"])
-		
-	r_collectionSelect.add_item("Promo", PROMO_COL_ID)
+	
+	r_collectionSelect.add_item("Promo B", PROMOB_COL_ID)
+	r_collectionSelect.add_item("Promo A", PROMOA_COL_ID)
 	r_collectionSelect.selected = 1
 
 # Called when the node enters the scene tree for the first time.
@@ -117,9 +119,13 @@ func loadCards():
 			var collectionCards = DbManager.getCardsInCollection(col["id"], parse_order())
 			addCollectionTitle("res://img/collections/" + name + ".webp")
 			addCollectionCards(collectionCards, gotCards)
-	elif m_collectionFilter == PROMO_COL_ID:
-		var collectionCards = DbManager.getPromoCards()
+	elif m_collectionFilter == PROMOA_COL_ID:
+		var collectionCards = DbManager.getPromoACards()
 		addCollectionTitle("res://img/collections/promo_a.webp")
+		addCollectionCards(collectionCards, gotCards)
+	elif m_collectionFilter == PROMOB_COL_ID:
+		var collectionCards = DbManager.getPromoBCards()
+		addCollectionTitle("res://img/collections/promo_b.webp")
 		addCollectionCards(collectionCards, gotCards)
 	else:
 		var name = DbManager.getCollectionName(m_collectionFilter)

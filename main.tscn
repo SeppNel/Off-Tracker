@@ -1,9 +1,10 @@
-[gd_scene load_steps=52 format=3 uid="uid://btvagxoog6kxd"]
+[gd_scene load_steps=56 format=3 uid="uid://btvagxoog6kxd"]
 
 [ext_resource type="Texture2D" uid="uid://c5fdp2owmfgit" path="res://img/pokemon.webp" id="1_45rvw"]
 [ext_resource type="Script" uid="uid://caoehmp38luep" path="res://home_page.gd" id="1_72cy4"]
 [ext_resource type="Texture2D" uid="uid://xvpp8eeqjbbc" path="res://img/checkbox_filled.png" id="2_347lu"]
 [ext_resource type="Script" uid="uid://cso072s1a660n" path="res://card_list.gd" id="2_y1fm4"]
+[ext_resource type="Texture2D" uid="uid://vnrsffjr7q4x" path="res://img/collections/mega_rising.webp" id="3_0cbny"]
 [ext_resource type="Theme" uid="uid://dlrghbkew0egs" path="res://themes/homeLabelTheme.tres" id="3_4c0bm"]
 [ext_resource type="Texture2D" uid="uid://cs6cd15c6jdfk" path="res://img/collections/wisdom_of_sea_and_sky.webp" id="3_50hb7"]
 [ext_resource type="Texture2D" uid="uid://c8tso54rwow5n" path="res://img/collections/celestial_guardians.webp" id="3_aecaf"]
@@ -17,9 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://dmg8g4bec5mkg" path="res://img/packs/solgaleo.webp" id="5_7uosv"]
 [ext_resource type="Texture2D" uid="uid://ceaqivicy3nn2" path="res://img/packs/buzzwole.webp" id="5_crccl"]
 [ext_resource type="Texture2D" uid="uid://4yi2fkjcl5ul" path="res://img/packs/suicune.webp" id="5_gngh3"]
+[ext_resource type="Texture2D" uid="uid://dgbjsxrlwyah" path="res://img/packs/gyarados.webp" id="5_hrvbo"]
 [ext_resource type="Texture2D" uid="uid://bbrlj14blx20a" path="res://img/packs/mewtwo.webp" id="5_xddto"]
 [ext_resource type="Texture2D" uid="uid://dx7yn4q2jsm1i" path="res://img/collections/deluxe_ex.webp" id="7_0n3wm"]
 [ext_resource type="Texture2D" uid="uid://b2dbuou6nswco" path="res://img/collections/eevee_grove.webp" id="7_utseg"]
+[ext_resource type="Texture2D" uid="uid://cep22q5orkcyx" path="res://img/packs/blaziken.webp" id="7_uypp3"]
+[ext_resource type="Texture2D" uid="uid://crpvrk44wvj6q" path="res://img/packs/altaria.webp" id="8_blkrb"]
 [ext_resource type="Texture2D" uid="uid://whl3hsnh77j5" path="res://img/packs/lunala.webp" id="8_gik1q"]
 [ext_resource type="Texture2D" uid="uid://ptmtodnuk43k" path="res://img/packs/charizard.webp" id="8_gv0qj"]
 [ext_resource type="Texture2D" uid="uid://cxojwrka3e4eu" path="res://img/packs/deluxe.webp" id="8_qnost"]
@@ -110,6 +114,124 @@ layout_mode = 2
 
 [node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home"]
 custom_minimum_size = Vector2(1080, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="MegaRising" type="HFlowContainer" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+
+[node name="Title" type="CenterContainer" parent="DaddyDiv/HomePage/Home/MegaRising"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Logo" type="TextureRect" parent="DaddyDiv/HomePage/Home/MegaRising/Title"]
+custom_minimum_size = Vector2(620, 110)
+layout_mode = 2
+texture = ExtResource("3_0cbny")
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/MegaRising"]
+custom_minimum_size = Vector2(1080, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Packs" type="HBoxContainer" parent="DaddyDiv/HomePage/Home/MegaRising"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="GyaradosPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/MegaRising/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_6iyjs")
+PACK_ID = 20
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/MegaRising/Packs/GyaradosPack"]
+layout_mode = 2
+texture = ExtResource("5_hrvbo")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/MegaRising/Packs/GyaradosPack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/MegaRising/Packs/GyaradosPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/MegaRising/Packs/GyaradosPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="BlazikenPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/MegaRising/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_6iyjs")
+PACK_ID = 19
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/MegaRising/Packs/BlazikenPack"]
+layout_mode = 2
+texture = ExtResource("7_uypp3")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/MegaRising/Packs/BlazikenPack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/MegaRising/Packs/BlazikenPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/MegaRising/Packs/BlazikenPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="AltariaPack" type="VBoxContainer" parent="DaddyDiv/HomePage/Home/MegaRising/Packs"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_6iyjs")
+PACK_ID = 18
+
+[node name="TextureRect" type="TextureRect" parent="DaddyDiv/HomePage/Home/MegaRising/Packs/AltariaPack"]
+layout_mode = 2
+texture = ExtResource("8_blkrb")
+stretch_mode = 3
+
+[node name="MarginTop" type="Control" parent="DaddyDiv/HomePage/Home/MegaRising/Packs/AltariaPack"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Numbers" type="Label" parent="DaddyDiv/HomePage/Home/MegaRising/Packs/AltariaPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "X of X"
+horizontal_alignment = 1
+
+[node name="Probability" type="Label" parent="DaddyDiv/HomePage/Home/MegaRising/Packs/AltariaPack"]
+layout_mode = 2
+theme = ExtResource("3_4c0bm")
+text = "12.454%"
+horizontal_alignment = 1
+
+[node name="MarginTop11" type="Control" parent="DaddyDiv/HomePage/Home"]
+custom_minimum_size = Vector2(1080, 60)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -1524,17 +1646,6 @@ icon = ExtResource("23_4gfh8")
 icon_alignment = 2
 text_direction = 1
 
-[node name="TradeOverrideContainer" type="CenterContainer" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer"]
-custom_minimum_size = Vector2(1080, 200)
-layout_mode = 2
-
-[node name="CheckButton" type="CheckBox" parent="DaddyDiv/SettingsPage/Settings/VFlowContainer/TradeOverrideContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 60
-theme_override_icons/checked = ExtResource("2_347lu")
-theme_override_icons/unchecked = ExtResource("3_q3pvi")
-text = " Allow trading the latest pack"
-
 [node name="Output" type="Label" parent="DaddyDiv/SettingsPage/Settings"]
 custom_minimum_size = Vector2(0, 83)
 layout_mode = 2
@@ -1812,7 +1923,6 @@ text = "Settings"
 [connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/ImportContainer/ImportButton" to="DaddyDiv/SettingsPage/Settings" method="_on_import_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/FAQContainer/FAQButton" to="DaddyDiv/SettingsPage/Settings" method="_on_faq_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/DonateContainer/DonateButton" to="DaddyDiv/SettingsPage/Settings" method="_on_donate_button_pressed"]
-[connection signal="pressed" from="DaddyDiv/SettingsPage/Settings/VFlowContainer/TradeOverrideContainer/CheckButton" to="DaddyDiv/SettingsPage/Settings" method="_on_trade_override_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/FriendsModal/CloseFriendsButton" to="DaddyDiv/SettingsPage/Settings" method="_on_close_friends_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/SettingsPage/FAQModal/CloseFAQButton" to="DaddyDiv/SettingsPage/Settings" method="_on_close_faq_button_pressed"]
 [connection signal="pressed" from="DaddyDiv/TabBar/Home" to="DaddyDiv/TabBar" method="_on_home_pressed"]

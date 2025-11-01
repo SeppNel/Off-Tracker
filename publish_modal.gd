@@ -1,6 +1,7 @@
 extends PanelContainer
 
 const BASE_URL = "http://pertusa.myftp.org/.resources/php/off/"
+const CARD_LIMIT = 20
 var wantCards = []
 
 func _on_accept_publish_pressed() -> void:
@@ -58,7 +59,7 @@ func addWantCard(id: int) -> bool:
 		removeWantCard(id)
 		return true
 		
-	if wantCards.size() + 1 > 6:
+	if wantCards.size() >= CARD_LIMIT:
 		return false
 		
 	wantCards.append(id)

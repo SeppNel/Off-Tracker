@@ -4,10 +4,6 @@ const VERBOSITY_LEVEL: int = SQLite.QUIET
 const DB_NAME: String = "res://data/db.sqlite"
 
 var db: SQLite = null
-var DEFAULT_LTP: int # Latest Tradeable Pack
-var DEFAULT_LC: int # Latest Collection
-var latest_tradeable_pack: int
-var latest_collection: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,37 +12,6 @@ func _ready() -> void:
 	db.verbosity_level = VERBOSITY_LEVEL
 	db.read_only = true
 	db.open_db()
-	DEFAULT_LC = default_lc()
-	DEFAULT_LTP = default_ltp()
-	updateLatestTradeable()
-	
-func default_lc() -> int:
-	db.query("SELECT MAX(id) as id FROM collections;")
-	return db.query_result_by_reference[0]["id"]
-
-func default_ltp() -> int:
-	var query: String = "
-		SELECT MAX(id) as id
-		FROM packs
-		WHERE collection = ?"
-		
-	db.query_with_bindings(query, [DEFAULT_LC - 1])
-	return db.query_result_by_reference[0]["id"]
-
-func updateLatestTradeable():
-	if not SaveManager.m_tradeOverride:
-		latest_tradeable_pack = DEFAULT_LTP
-		latest_collection = DEFAULT_LC
-		return
-	
-	db.query("
-		SELECT COUNT(id) AS count
-		FROM packs 
-		WHERE collection = (SELECT MAX(id) FROM collections);")
-	
-	var packs_in_latest_col: int = db.query_result_by_reference[0]["count"]
-	latest_tradeable_pack += packs_in_latest_col
-	latest_collection = DEFAULT_LC + 1
 
 func getAllCards():
 	db.query("SELECT * FROM cards;")
@@ -59,7 +24,23 @@ func getPromoCards():
 		WHERE rarity = 0;")
 	
 	return db.query_result_by_reference
+	
+func getPromoACards():
+	db.query("
+		SELECT *
+		FROM cards
+		WHERE rarity = 0 AND pack = 0;")
+	
+	return db.query_result_by_reference
 
+func getPromoBCards():
+	db.query("
+		SELECT *
+		FROM cards
+		WHERE rarity = 0 AND pack = 17;")
+	
+	return db.query_result_by_reference
+	
 func getCardsIdFromPack(pack: int):
 	var query = "
 		SELECT DISTINCT c.id
@@ -176,20 +157,9 @@ func getTradeableCards() -> Array[Dictionary]:
 	var query = "
 		SELECT * 
 		FROM cards 
-		WHERE rarity > 0 AND rarity < 6
-		AND pack <= ? AND is_multipack = 0
-
-		UNION
-
-		SELECT DISTINCT c.*
-		FROM cards c
-		JOIN card_packs cp ON c.id = cp.card_id
-		JOIN packs p ON cp.pack = p.id
-		JOIN collections col ON p.collection = col.id
-		WHERE col.id != ?
-		AND rarity > 0 and rarity < 6;"
+		WHERE rarity > 0 AND rarity <= 9 AND rarity != 7;"
 		
-	db.query_with_bindings(query, [latest_tradeable_pack, latest_collection])
+	db.query(query)
 	
 	return db.query_result_by_reference
 	
@@ -197,20 +167,9 @@ func getTradeableCardsIds() -> Array[int]:
 	var query = "
 		SELECT id 
 		FROM cards 
-		WHERE rarity > 0 AND rarity < 6
-		AND pack <= ? AND is_multipack = 0
-
-		UNION
-
-		SELECT DISTINCT c.id
-		FROM cards c
-		JOIN card_packs cp ON c.id = cp.card_id
-		JOIN packs p ON cp.pack = p.id
-		JOIN collections col ON p.collection = col.id
-		WHERE col.id != ?
-		AND rarity > 0 and rarity < 6;"
+		WHERE rarity > 0 AND rarity <= 9 AND rarity != 7;"
 		
-	db.query_with_bindings(query, [latest_tradeable_pack, latest_collection])
+	db.query(query)
 	
 	var result = db.query_result_by_reference
 	var id_array: Array[int] = []
@@ -259,6 +218,7 @@ func getCardsInCollection(col: int, order: String = "c.id ASC") -> Array[Diction
 func getPacks() -> Array[Dictionary]:
 	db.query("
 		SELECT *
-		FROM packs;")
+		FROM packs
+		WHERE id NOT IN (0, 17);")
 	
 	return db.query_result_by_reference
