@@ -13,8 +13,6 @@ func _ready() -> void:
 	if SaveManager.m_friend_code == -1:
 		$PublishContainer.hide()
 		$NoCodeAlert.show()
-		
-	update()
 
 func update() -> void:
 	clear()

@@ -13,6 +13,8 @@ var m_onlyMissing: bool = false
 var m_collectionFilter: int
 var m_order: int = 0
 var m_cardImgCache = {}
+var m_threaded_paths: Array[String]
+var m_loading_in_progress: bool = false
 
 var m_searchState: bool = false
 var m_lastSearchName: String
@@ -22,10 +24,37 @@ var m_lastSearchRarity: int
 var m_lastSearchPack: int
 var m_lastSearchWeakness: int
 
-func preload_cardImages(cards):
-	for card in cards:
-		var img_path = "res://img/cards/" + card.image
+func preload_cardImages() -> void:
+	for card in DbManager.getCardsInCollection(m_collectionFilter):
+		var img_path: String = "res://img/cards/" + card.image
 		m_cardImgCache[img_path] = load(img_path)
+	
+	m_loading_in_progress = true
+	for card in DbManager.getAllCards():
+		var img_path: String = "res://img/cards/" + card.image
+		m_threaded_paths.append(img_path)
+		ResourceLoader.load_threaded_request(img_path, "Texture2D")
+
+	# Start checking periodically if done
+	set_process(true)
+	
+func _process(_delta):
+	if not m_loading_in_progress:
+		return
+
+	var all_done := true
+	for path in m_threaded_paths:
+		var status = ResourceLoader.load_threaded_get_status(path)
+		if status == ResourceLoader.THREAD_LOAD_LOADED:
+			if not m_cardImgCache.has(path):
+				m_cardImgCache[path] = ResourceLoader.load_threaded_get(path)
+		elif status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+			all_done = false
+
+	if all_done:
+		m_loading_in_progress = false
+		set_process(false)
+		print("All card images preloaded in background")
 
 func fillCollectionSelect() -> void:
 	r_collectionSelect.clear()
@@ -44,7 +73,7 @@ func fillCollectionSelect() -> void:
 func _ready() -> void:
 	fillCollectionSelect()
 	m_collectionFilter = r_collectionSelect.get_item_id(1)
-	preload_cardImages(DbManager.getAllCards())
+	preload_cardImages()
 	loadCards()
 	
 func update() -> void:
@@ -89,6 +118,10 @@ func addCardToList(card, gotCards):
 		card_data.get_node("NotGotOverlay").hide()
 		card_data.got = true
 		card_data.set_count(gotCards[str_id])
+		
+	# Load from cache or load new
+	if not m_cardImgCache.has(img_path):
+		m_cardImgCache[img_path] = load(img_path)
 
 	#Styling
 	card_data.get_node("CardButton").texture_normal = m_cardImgCache[img_path]
