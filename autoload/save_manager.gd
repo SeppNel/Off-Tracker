@@ -8,7 +8,7 @@ signal gotCardsChanged
 var m_friend_code: int = -1
 var m_friends: Dictionary = {}
 var m_secret: String = ""
-var m_gotCards: Dictionary = {}
+var m_gotCards: Dictionary[String, int] = {}
 
 func _ready() -> void:
 	checkVersion()
@@ -50,9 +50,12 @@ func readGotCards() -> void:
 
 	# Get the data from the JSON object
 	var data = json.get_data()
-	m_gotCards = data["got_cards"]
+	var raw_got = data.get("got_cards", {})
+	m_gotCards.clear()
+	for key in raw_got.keys():
+		m_gotCards[str(key)] = int(raw_got[key])
 
-func getGotCards() -> Dictionary:
+func getGotCards() -> Dictionary[String, int]:
 	return m_gotCards
 
 func getGotCardsIds() -> Array[int]:
@@ -133,7 +136,11 @@ func migrateSave2_3() -> void:
 	m_friend_code = int(data["friend_code"])
 	m_friends = data["friends"]
 	m_secret = data["secret"]
-	m_gotCards = data["got_cards"]
+	
+	var raw_got = data.get("got_cards", {})
+	m_gotCards.clear()
+	for key in raw_got.keys():
+		m_gotCards[str(key)] = int(raw_got[key])
 	
 	DirAccess.remove_absolute(SAVE_PATH)
 	save()

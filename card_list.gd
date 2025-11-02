@@ -12,7 +12,7 @@ const PROMOB_COL_ID = 998
 var m_onlyMissing: bool = false
 var m_collectionFilter: int
 var m_order: int = 0
-var m_cardImgCache = {}
+var m_cardImgCache: Dictionary[String, Texture2D] = {}
 var m_threaded_paths: Array[String]
 var m_loading_in_progress: bool = false
 
@@ -38,13 +38,13 @@ func preload_cardImages() -> void:
 	# Start checking periodically if done
 	set_process(true)
 	
-func _process(_delta):
+func _process(_delta) -> void:
 	if not m_loading_in_progress:
 		return
 
 	var all_done := true
 	for path in m_threaded_paths:
-		var status = ResourceLoader.load_threaded_get_status(path)
+		var status := ResourceLoader.load_threaded_get_status(path)
 		if status == ResourceLoader.THREAD_LOAD_LOADED:
 			if not m_cardImgCache.has(path):
 				m_cardImgCache[path] = ResourceLoader.load_threaded_get(path)
@@ -54,7 +54,6 @@ func _process(_delta):
 	if all_done:
 		m_loading_in_progress = false
 		set_process(false)
-		print("All card images preloaded in background")
 
 func fillCollectionSelect() -> void:
 	r_collectionSelect.clear()
@@ -96,24 +95,24 @@ func parse_order() -> String:
 		_:
 			return ""
 
-func addCollectionTitle(img: String):
-	var marginTop = Control.new()
+func addCollectionTitle(img: String) -> void:
+	var marginTop := Control.new()
 	marginTop.custom_minimum_size = Vector2(1080, 20)
 	call_deferred("add_child", marginTop)
-	var titleCont = CenterContainer.new()
+	var titleCont := CenterContainer.new()
 	titleCont.custom_minimum_size = Vector2(1080, 200)
-	var title = TextureRect.new()
+	var title := TextureRect.new()
 	title.texture = load(img)
 	titleCont.add_child(title)
 	call_deferred("add_child", titleCont)
 
-func addCardToList(card, gotCards):
+func addCardToList(card: Dictionary, gotCards: Dictionary[String, int]) -> void:
 	var cs = CardScene.instantiate()
 	var card_data = cs.get_node("Card")
-	var img_path = "res://img/cards/" + card.image
+	var img_path: String = "res://img/cards/" + card.image
 	card_data.id = card.id
 	
-	var str_id = str(card.id)
+	var str_id := str(card.id)
 	if gotCards.has(str_id):
 		card_data.get_node("NotGotOverlay").hide()
 		card_data.got = true
@@ -128,7 +127,7 @@ func addCardToList(card, gotCards):
 	call_deferred("add_child", cs)
 	
 
-func addCollectionCards(cardList, gotCards):
+func addCollectionCards(cardList: Array[Dictionary], gotCards: Dictionary[String, int]) -> void:
 	if m_onlyMissing:
 		for card in cardList:
 			if not gotCards.has(str(card.id)):
@@ -137,9 +136,9 @@ func addCollectionCards(cardList, gotCards):
 		for card in cardList:
 			addCardToList(card, gotCards)
 
-func loadCards():
+func loadCards() -> void:
 	m_searchState = false
-	var gotCards = SaveManager.getGotCards()
+	var gotCards := SaveManager.getGotCards()
 	
 	if m_collectionFilter == 0:
 		var collections: Array[Dictionary] = DbManager.getCollections().duplicate()
@@ -149,7 +148,7 @@ func loadCards():
 			name = name.replace("-", "_")
 			name = name.to_lower()
 			
-			var collectionCards = DbManager.getCardsInCollection(col["id"], parse_order())
+			var collectionCards := DbManager.getCardsInCollection(col["id"], parse_order())
 			addCollectionTitle("res://img/collections/" + name + ".webp")
 			addCollectionCards(collectionCards, gotCards)
 	elif m_collectionFilter == PROMOA_COL_ID:
@@ -171,7 +170,7 @@ func loadCards():
 		addCollectionCards(collectionCards, gotCards)
 	
 
-func clearCardList():
+func clearCardList() -> void:
 	for child in get_children():
 		if child.name != "Controls" and child.name != "MarginTop":  # Ensure we don't remove the controls
 			child.queue_free()
@@ -188,7 +187,7 @@ func _on_order_select_item_selected(index: int) -> void:
 	m_order = index
 	update()
 	
-func loadCardsSearch(n, t, s, r, p, w):
+func loadCardsSearch(n, t, s, r, p, w) -> void:
 	m_lastSearchName = n
 	m_lastSearchType = t
 	m_lastSearchStage = s
@@ -200,8 +199,8 @@ func loadCardsSearch(n, t, s, r, p, w):
 	clearCardList()
 	var cards = DbManager.search(n, t, s, r, p, w, parse_order())
 	
-	var gotCards = SaveManager.getGotCards()
-	var title = Label.new()
+	var gotCards := SaveManager.getGotCards()
+	var title := Label.new()
 	title.text = "    Search results"
 	title.custom_minimum_size = Vector2(1080, 100)
 	title.add_theme_font_size_override("font_size", 40)

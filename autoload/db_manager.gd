@@ -13,7 +13,7 @@ func _ready() -> void:
 	db.read_only = true
 	db.open_db()
 
-func getAllCards():
+func getAllCards() -> Array[Dictionary]:
 	db.query("SELECT * FROM cards;")
 	return db.query_result_by_reference
 	
