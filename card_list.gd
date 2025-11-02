@@ -109,7 +109,7 @@ func loadCards():
 	var gotCards = SaveManager.getGotCards()
 	
 	if m_collectionFilter == 0:
-		var collections: Array[Dictionary] = DbManager.getCollections()
+		var collections: Array[Dictionary] = DbManager.getCollections().duplicate()
 		for col in collections:
 			var name: String = col["name"]
 			name = name.replace(" ", "_")
