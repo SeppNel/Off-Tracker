@@ -57,7 +57,7 @@ func getCardsIdFromPack(pack: int):
 	
 	return id_array
 	
-func countRarityCardsFromPack(pack: int, r: int):
+func countRarityCardsFromPack(pack: int, r: int) -> int:
 	var query = "
 		SELECT COUNT(c.id) AS count
 		FROM cards c
