@@ -1503,7 +1503,7 @@ mouse_filter = 2
 custom_minimum_size = Vector2(1080, 0)
 layout_mode = 2
 theme = ExtResource("3_4c0bm")
-text = "    Select up to 6 cards:"
+text = "    Select up to 20 cards:"
 
 [node name="CardList" type="HFlowContainer" parent="DaddyDiv/FriendsPage/ScrollContainer/PublishModal/VBoxContainer"]
 layout_mode = 2
@@ -1814,7 +1814,7 @@ theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 6
 theme_override_constants/shadow_outline_size = 0
 theme_override_font_sizes/font_size = 50
-text = "A: You can publish up to 6 cards that you want and automatically cards of the same rarity that you have duplicates of will be added to the request as offers. Once you publish your request anyone that adds your Friend Code will be able to see it."
+text = "A: You can publish up to 20 cards that you want and automatically cards of the same rarity that you have duplicates of will be added to the request as offers. Once you publish your request anyone that adds your Friend Code will be able to see it."
 horizontal_alignment = 1
 autowrap_mode = 2
 
